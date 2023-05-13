@@ -125,7 +125,7 @@ export default function Home() {
                         top: '0',
                         left: '0',
                         background:
-                            'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(208,255,59,1) 43%, rgba(0,0,0,1) 100%)',
+                            'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(208,255,59,1) 43%, rgba(0,0,0,1) 70%)',
                     }}
                 ></div>
                 <Box
@@ -136,14 +136,17 @@ export default function Home() {
                     width="100%"
                     alignItems="center"
                     textAlign={breakPoint ? 'left' : 'center'}
-                    sx={{
-                        backdropFilter: 'blur(15px)',
-                    }}
+                    sx={
+                        {
+                            // backdropFilter: 'blur(10px)',
+                        }
+                    }
                 >
                     <Typography
                         variant="h1"
                         width="70%"
                         color={theme.palette.secondary.main}
+                        fontSize={`${breakPoint ? '48px' : '40px'}`}
                     >
                         Experience the thrill of engineering and flying your own
                         creations.
@@ -208,9 +211,10 @@ export default function Home() {
                         variant="h1"
                         width="70%"
                         color={theme.palette.secondary.main}
+                        fontSize={`${breakPoint ? '48px' : '40px'}`}
                     >
-                        Experience the thrill of engineering and flying your own
-                        creations.
+                        Join us, unleash your potential in engineering,
+                        aviation, and teamwork.
                     </Typography>
                 </Box>
             </div>
