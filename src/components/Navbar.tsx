@@ -28,7 +28,9 @@ function Navbar() {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                padding="10px"
+                padding="10px 20px"
+                width="50%"
+                marginX="auto"
                 sx={{
                     backdropFilter: 'blur(30px)',
                 }}
@@ -46,6 +48,8 @@ function Navbar() {
                     minHeight="100%"
                     justifyContent={breakPoint ? 'space-between' : ''}
                     alignItems={breakPoint ? 'center' : ''}
+                    bgcolor="black"
+                    padding="5px"
                 >
                     <Link sx={linkStyles}>
                         <Typography variant="h3" padding="10px">
