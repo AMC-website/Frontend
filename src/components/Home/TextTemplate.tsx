@@ -19,7 +19,6 @@ function TextTemplate({
     content,
     breakPoint,
     src,
-    color,
 }: TextTemplateProps) {
     const theme = useTheme();
 
