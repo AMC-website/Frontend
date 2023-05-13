@@ -56,7 +56,9 @@ function Navbar() {
                             Projects
                         </Typography>
                     </Link>
-                    <Link sx={linkStyles}>
+                    <Link sx={linkStyles}
+                    href='/events'
+                    >
                         <Typography variant="h3" padding="10px">
                             Events
                         </Typography>
