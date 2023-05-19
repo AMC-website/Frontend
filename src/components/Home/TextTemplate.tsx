@@ -11,6 +11,9 @@ interface TextTemplateProps {
     content?: string;
     breakPoint?: boolean;
     src?: string;
+    bgcolor?: string;
+    color?: string;
+    titleColor?: string;
 }
 
 function TextTemplate({
@@ -19,6 +22,9 @@ function TextTemplate({
     content,
     breakPoint,
     src,
+    bgcolor,
+    color,
+    titleColor,
 }: TextTemplateProps) {
     const theme = useTheme();
 
@@ -28,7 +34,7 @@ function TextTemplate({
                 style={{
                     minHeight: '100vh',
                     width: '100%',
-                    backgroundColor: 'rgba(0,0,0,0.7)',
+                    backgroundColor: `${bgcolor}`,
                     display: 'flex',
                     justifyContent: 'center',
                     position: 'relative',
@@ -71,16 +77,13 @@ function TextTemplate({
                     width="70%"
                     textAlign={breakPoint ? 'left' : 'center'}
                 >
-                    <Typography
-                        variant="h1"
-                        color={theme.palette.secondary.main}
-                    >
+                    <Typography variant="h1" color={titleColor}>
                         {title}
                     </Typography>
                     <Typography
                         variant="h3"
                         lineHeight="2.5"
-                        color="rgba(255,255,255,0.85)"
+                        color={color}
                         fontSize={breakPoint ? '18px' : '14px'}
                     >
                         {content}
