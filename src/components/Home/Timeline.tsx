@@ -30,8 +30,9 @@ const Timeline = ({ titleColor, color }: TimelineProps) => {
         <>
             <Typography
                 variant="h1"
+                fontSize={breakPoint ? '48px' : '40px'}
                 color={titleColor}
-                textAlign="center"
+                textAlign={breakPoint2 ? 'center' : 'left'}
                 margin={breakPoint ? '0 auto' : '0'}
                 width={breakPoint2 ? '45%' : '100%'}
                 position="relative"
@@ -100,9 +101,10 @@ const Timeline = ({ titleColor, color }: TimelineProps) => {
                 <VerticalTimelineElement iconStyle={lastIconStyle} />
             </VerticalTimeline>
             <Typography
-                variant="h2"
+                variant="h1"
                 color="black"
                 textAlign="center"
+                fontSize={breakPoint ? '48px' : '40px'}
                 margin={breakPoint ? '0 auto' : '0'}
                 minWidth="10%"
                 maxWidth="20%"

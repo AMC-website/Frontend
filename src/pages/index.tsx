@@ -1,51 +1,97 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import { motion, useMotionValue } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import TextTemplate from '@/components/Home/TextTemplate';
 import Timeline from '../components/Home/Timeline';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
 
 export default function Home() {
+    const breakPoint0 = useMediaQuery('(min-width:450px)');
+
     const breakPoint = useMediaQuery('(min-width:600px)');
+    const breakPoint2 = useMediaQuery('(min-width:1000px)');
+
     const theme = useTheme();
-    const yLimit = breakPoint ? 3125 : 4000;
+    const yLimit = breakPoint ? 2500 : 4300;
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
 
+    const changeColors = () => {
+        const y = window.scrollY || window.pageYOffset;
+
+        if (y >= yLimit) {
+            const progress = Math.min((y - yLimit) / 200, 1);
+            const r = Math.round(240 * progress);
+            const g = Math.round(228 * progress);
+            const b = Math.round(220 * progress);
+            setBackgroundColor(`rgb(${r}, ${g}, ${b})`);
+
+            const tR = Math.round((0 - 154) * progress + 154);
+            const tG = Math.round((0 - 205) * progress + 205);
+            const tB = Math.round((0 - 50) * progress + 50);
+            setTitleColor(`rgb(${tR}, ${tG}, ${tB})`);
+
+            const cR = Math.round((0 - 255) * progress + 255);
+            const cG = Math.round((0 - 255) * progress + 255);
+            const cB = Math.round((0 - 255) * progress + 255);
+            setColor(`rgb(${cR}, ${cG}, ${cB})`);
+        }
+    };
+
+    const animateColors = () => {
+        requestAnimationFrame(() => {
+            changeColors();
+            animateColors();
+        });
+    };
+
     useEffect(() => {
         const handleScroll = () => {
             const y = window.scrollY || window.pageYOffset;
-            if (y >= yLimit) {
-                const progress = Math.min((y - 3150) / 200, 1);
-                const r = Math.round(240 * progress);
-                const g = Math.round(228 * progress);
-                const b = Math.round(220 * progress);
-                setBackgroundColor(`rgb(${r}, ${g}, ${b})`);
 
-                const tR = Math.round((0 - 154) * progress + 154);
-                const tG = Math.round((0 - 205) * progress + 205);
-                const tB = Math.round((0 - 50) * progress + 50);
-                setTitleColor(`rgb(${tR}, ${tG}, ${tB})`);
+            const scale = breakPoint2 ? y * 0.0013 : y * 0.0006; // Adjust the scaling factor as needed
 
-                const cR = Math.round((0 - 255) * progress + 255);
-                const cG = Math.round((0 - 255) * progress + 255);
-                const cB = Math.round((0 - 255) * progress + 255);
-                setColor(`rgb(${cR}, ${cG}, ${cB})`);
+            const boxElement2 = document.getElementById('boxElement2');
+
+            if (boxElement2) {
+                boxElement2.style.transition = 'transform 0.3s ease-out'; // Adjust the duration and easing as needed
+                // boxElement2.style.transform = `translateX(${newPosition2}px)`;
+                boxElement2.style.transform = `scale(${scale})`;
             }
+            animateColors();
         };
 
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
+    const xMotionValue = useMotionValue(0);
+    const yMotionValue = useMotionValue(0);
+
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            xMotionValue.set(-(event.clientX / window.innerWidth - 0.5) * 40);
+            yMotionValue.set(-(event.clientY / window.innerHeight - 0.5) * 40);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [xMotionValue, yMotionValue]);
+
     return (
-        <div>
+        <div style={{ scrollBehavior: 'smooth' }}>
             <div
                 id="one"
                 style={{
@@ -138,91 +184,107 @@ export default function Home() {
                 </Box>
             </div>
 
-            {/* <div
-                    style={{
-                        height: '100%',
-                        width: '100%',
-                        overflow: 'hidden',
-                        backgroundColor: 'black',
-                        display: 'flex',
-                        justifyContent: 'right',
-                        alignItems: 'center',
-                        zIndex: '-10',
-                        position: 'absolute',
-                        top: '0',
-                        left: '0',
-                        background:
-                            'radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 35%, rgba(0,0,0,1) 70%)',
-                    }}
-                ></div> */}
             <Box
-                color="white"
-                display="flex"
-                gap="30px"
                 width="100%"
-                alignItems="center"
-                textAlign="center"
-                minHeight="50vh"
+                height="100vh"
+                position="relative"
                 bgcolor="black"
+                textAlign="center"
             >
-                <Box
-                    width="50%"
-                    height="100%"
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="40px"
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.7 }}
+                    transition={{
+                        duration: 0.6,
+                        type: 'spring',
+                        stiffness: 120,
+                        damping: 20,
+                    }}
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                    }}
+                    style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '25%',
+                        width: '50%',
+                        x: xMotionValue,
+                        y: yMotionValue,
+                    }}
                 >
                     <Typography
                         variant="h1"
                         color={theme.palette.secondary.main}
-                        fontSize={`${breakPoint ? '48px' : '40px'}`}
-                        textAlign="center"
+                        fontSize={`${breakPoint ? '88px' : '48px'}`}
                     >
-                        What do we do?
+                        Who are we?
                     </Typography>
-                    <Typography variant="h3" width="70%" lineHeight="2">
+                    <br />
+                    <Typography
+                        variant="h3"
+                        lineHeight="2"
+                        color="white"
+                        margin="0 auto"
+                        fontSize={`${breakPoint ? '28px' : '18px'}`}
+                    >
                         We are a community of builders with a passion for
                         aviation, fostering a culture of intellectual curiosity
                         and collaborative ingenuity.
                     </Typography>
-                </Box>
+                </motion.div>
+            </Box>
+            <Box
+                width="100%"
+                height="120vh"
+                position="relative"
+                bgcolor="black"
+                textAlign="center"
+                zIndex="-1"
+            >
                 <Box
+                    position="absolute"
+                    top="50%"
+                    // right={y * 1.25 - 1500}
+                    id="boxElement2"
                     width="50%"
-                    height="100%"
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="40px"
+                    right="25%"
                 >
                     <Typography
                         variant="h1"
                         color={theme.palette.secondary.main}
-                        fontSize={`${breakPoint ? '48px' : '40px'}`}
-                        textAlign="center"
+                        fontSize={`${breakPoint ? '88px' : '48px'}`}
                     >
                         What do we do?
                     </Typography>
-                    <Typography variant="h3" width="70%" lineHeight="2">
+                    <br />
+                    <Typography
+                        variant="h3"
+                        lineHeight="2"
+                        color="white"
+                        margin="0 auto"
+                        fontSize={`${breakPoint ? '28px' : '18px'}`}
+                    >
+                        {' '}
                         We engineer airborne wonders, defying limits.
-                    </Typography>{' '}
+                    </Typography>
                 </Box>
             </Box>
 
-            <CardHolder />
+            <CardHolder
+                titleColor={titleColor}
+                color={color}
+                backgroundColor={backgroundColor}
+            />
 
             <div
                 style={{
-                    width: '100%',
-                    backgroundColor: 'black',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    padding: '30px 0',
+                    backgroundColor: `${backgroundColor}`,
                 }}
-            ></div>
+            >
+                <Timeline titleColor={titleColor} color={color} />
+            </div>
 
             <div style={{ backgroundColor: '#f0e4dc' }}>
                 <TextTemplate
@@ -245,13 +307,7 @@ export default function Home() {
                     titleColor={titleColor}
                     color={color}
                 />
-                <div
-                    style={{
-                        backgroundColor: `${backgroundColor}`,
-                    }}
-                >
-                    <Timeline titleColor={titleColor} color={color} />
-                </div>
+
                 <div
                     style={{
                         minHeight: '100vh',
@@ -261,22 +317,6 @@ export default function Home() {
                         position: 'relative',
                     }}
                 >
-                    <div
-                        style={{
-                            height: '100%',
-                            width: '100%',
-                            overflow: 'hidden',
-                            backgroundColor: 'black',
-                            display: 'flex',
-                            justifyContent: 'right',
-                            alignItems: 'center',
-                            zIndex: '-10',
-                            position: 'absolute',
-                            top: '0',
-                            left: '0',
-                            background: ` linear-gradient(180deg, rgba(0,0,0,1) 45%, ${theme.palette.secondary.main} 98%)`,
-                        }}
-                    ></div>
                     <Box
                         color="white"
                         display="flex"

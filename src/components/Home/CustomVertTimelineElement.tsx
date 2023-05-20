@@ -1,10 +1,8 @@
-import {
-    VerticalTimeline,
-    VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
+import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import dynamic from 'next/dynamic';
-import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import { Typography } from '@mui/material';
 
 interface CustomVerticalTimelineProps {
@@ -22,6 +20,8 @@ const CustomVerticalTimelineElement = ({
     title,
     content,
 }: CustomVerticalTimelineProps) => {
+    const breakPoint = useMediaQuery('(min-width:600px)');
+
     const contentStyle = {
         background: `${primary}`,
         color: `${primary}`,
@@ -31,7 +31,12 @@ const CustomVerticalTimelineElement = ({
         borderRight: `7px solid ${primary}`,
     };
 
-    const iconStyle = { background: `black`, color: 'white' };
+    const iconStyle = {
+        background: `black`,
+        color: 'black',
+        transform: 'scale(0.6)',
+        transition: 'transform 5s ease-out',
+    };
     return (
         <VerticalTimelineElement
             className="vertical-timeline-element--work"
@@ -42,12 +47,21 @@ const CustomVerticalTimelineElement = ({
         >
             <h3 className="vertical-timeline-element-title">
                 <div>
-                    <Typography variant="h2">{title}</Typography>
+                    <Typography
+                        variant="h2"
+                        fontSize={breakPoint ? '36px' : '28px'}
+                    >
+                        {title}
+                    </Typography>
                 </div>
             </h3>
             <br></br>
 
-            <Typography variant="h4" color="white">
+            <Typography
+                variant="h4"
+                color="white"
+                fontSize={breakPoint ? '18px' : '10px'}
+            >
                 {content}
             </Typography>
         </VerticalTimelineElement>
