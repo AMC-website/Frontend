@@ -57,7 +57,7 @@ function Footer() {
                 >
                     <Box>
                         <Typography
-                            variant="h6"
+                            variant="h4"
                             style={{
                                 color: theme.palette.primary.main,
                                 paddingBottom: '20px',
@@ -83,7 +83,7 @@ function Footer() {
 
                     <Box>
                         <Typography
-                            variant="h6"
+                            variant="h4"
                             style={{
                                 color: theme.palette.primary.main,
                                 paddingBottom: '20px',
@@ -136,7 +136,7 @@ function Footer() {
 
                     <Box>
                         <Typography
-                            variant="h6"
+                            variant="h4"
                             style={{
                                 color: theme.palette.primary.main,
                                 paddingBottom: '20px',
