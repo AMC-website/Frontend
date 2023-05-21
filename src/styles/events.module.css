@@ -6,26 +6,34 @@
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-    height: 500px;
+    height: fit-content;
     padding: 0 20px;
     cursor: pointer;
   }
 
-  .cardItems{
-    transition: transform 0.5s ease;
-  }
-  .card:hover .cardItems {
-    transform: translateY(-100%);
-  }
-  .card:hover .card_img {
-    transform: translateY(-80%);
-   
-  }
+  
 
-.card_content{
-    display: none;
-    transition: transform 0.5s ease;
-}
-.card:hover .card_content{
-   display: flex;
+  @media screen and (min-width:1050px) {
+    .cardItems{
+      transition: transform 0.5s ease;
+    }
+    .card:hover .cardItems {
+      transform: translateY(-100%);
+    }
+    .card:hover .card_img {
+      transform: translateY(-80%);
+     
+    }
+  
+  .card_content{
+      display: none;
+      transition: transform 0.5s ease;
+  }
+  .card:hover .card_content{
+     display: flex;
+    }
+    .card{
+      height: 500px;
+    }
+
   }
