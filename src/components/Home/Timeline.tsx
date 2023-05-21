@@ -11,8 +11,8 @@ import { Typography } from '@mui/material';
 import CustomVerticalTimelineElement from './CustomVertTimelineElement';
 
 interface TimelineProps {
-    titleColor: string;
-    color: string;
+    titleColor?: string;
+    color?: string;
 }
 
 const Timeline = ({ titleColor, color }: TimelineProps) => {

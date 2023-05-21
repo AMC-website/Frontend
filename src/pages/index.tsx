@@ -1,12 +1,10 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion, useMotionValue } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import TextTemplate from '@/components/Home/TextTemplate';
 import Timeline from '../components/Home/Timeline';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
 
@@ -21,35 +19,88 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
+    const startPercentage = 0.4;
+    const endPercentage = 0.5;
 
-    const changeColors = () => {
-        const y = window.scrollY || window.pageYOffset;
+    type RGBColor = {
+        r: number;
+        g: number;
+        b: number;
+    };
 
-        if (y >= yLimit) {
-            const progress = Math.min((y - yLimit) / 200, 1);
-            const r = Math.round(240 * progress);
-            const g = Math.round(228 * progress);
-            const b = Math.round(220 * progress);
-            setBackgroundColor(`rgb(${r}, ${g}, ${b})`);
+    const changeColorOnScroll = (
+        startPercentage: number,
+        endPercentage: number,
+        startColor: RGBColor,
+        endColor: RGBColor,
+        setState: React.Dispatch<React.SetStateAction<string>>
+    ): void => {
+        const scrollPosition =
+            window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+        const scrollFraction = scrollPosition / scrollHeight;
 
-            const tR = Math.round((0 - 154) * progress + 154);
-            const tG = Math.round((0 - 205) * progress + 205);
-            const tB = Math.round((0 - 50) * progress + 50);
-            setTitleColor(`rgb(${tR}, ${tG}, ${tB})`);
+        let backgroundColor = '';
 
-            const cR = Math.round((0 - 255) * progress + 255);
-            const cG = Math.round((0 - 255) * progress + 255);
-            const cB = Math.round((0 - 255) * progress + 255);
-            setColor(`rgb(${cR}, ${cG}, ${cB})`);
+        if (scrollFraction < startPercentage) {
+            backgroundColor = `rgb(${startColor.r}, ${startColor.g}, ${startColor.b})`; // Start color until startPercentage scroll percentage
+        } else if (
+            scrollFraction >= startPercentage &&
+            scrollFraction <= endPercentage
+        ) {
+            const opacity =
+                (scrollFraction - startPercentage) /
+                (endPercentage - startPercentage); // Opacity transition from 0 to 1
+            const r = Math.round(
+                opacity * (endColor.r - startColor.r) + startColor.r
+            );
+            const g = Math.round(
+                opacity * (endColor.g - startColor.g) + startColor.g
+            );
+            const b = Math.round(
+                opacity * (endColor.b - startColor.b) + startColor.b
+            );
+            backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        } else {
+            backgroundColor = `rgb(${endColor.r}, ${endColor.g}, ${endColor.b})`; // End color after endPercentage scroll percentage
         }
+
+        setState(backgroundColor);
     };
 
-    const animateColors = () => {
-        requestAnimationFrame(() => {
-            changeColors();
-            animateColors();
-        });
-    };
+    useEffect(() => {
+        const handleScroll = () => {
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 0, g: 0, b: 0 },
+                { r: 240, g: 228, b: 220 },
+                setBackgroundColor
+            );
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 154, g: 205, b: 50 },
+                { r: 0, g: 0, b: 0 },
+                setTitleColor
+            );
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 255, g: 255, b: 255 },
+
+                { r: 0, g: 0, b: 0 },
+                setColor
+            );
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -64,7 +115,6 @@ export default function Home() {
                 // boxElement2.style.transform = `translateX(${newPosition2}px)`;
                 boxElement2.style.transform = `scale(${scale})`;
             }
-            animateColors();
         };
 
         window.addEventListener('scroll', handleScroll);

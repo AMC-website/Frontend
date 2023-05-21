@@ -6,8 +6,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Typography } from '@mui/material';
 
 interface CustomVerticalTimelineProps {
-    primary: string;
-    secondary: string;
+    primary?: string;
+    secondary?: string;
     date?: string;
     title: string;
     content: string;
