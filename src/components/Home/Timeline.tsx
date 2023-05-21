@@ -32,7 +32,7 @@ const Timeline = ({ titleColor, color }: TimelineProps) => {
                 variant="h1"
                 fontSize={breakPoint ? '48px' : '40px'}
                 color={titleColor}
-                textAlign={breakPoint2 ? 'center' : 'left'}
+                textAlign="center"
                 margin={breakPoint ? '0 auto' : '0'}
                 width={breakPoint2 ? '45%' : '100%'}
                 position="relative"
@@ -43,7 +43,7 @@ const Timeline = ({ titleColor, color }: TimelineProps) => {
                     color="white"
                     textAlign="center"
                     position="absolute"
-                    left={breakPoint ? '30%' : '0'}
+                    left={breakPoint ? '30%' : '6%'}
                     top="110%"
                     width="40%"
                     bgcolor={theme.palette.primary.main}
@@ -104,7 +104,7 @@ const Timeline = ({ titleColor, color }: TimelineProps) => {
                 variant="h1"
                 color="black"
                 textAlign="center"
-                fontSize={breakPoint ? '48px' : '40px'}
+                fontSize={breakPoint ? '36px' : '28px'}
                 margin={breakPoint ? '0 auto' : '0'}
                 minWidth="10%"
                 maxWidth="20%"

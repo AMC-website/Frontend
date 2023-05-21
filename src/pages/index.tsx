@@ -19,8 +19,8 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-    const startPercentage = 0.4;
-    const endPercentage = 0.5;
+    const startPercentage = breakPoint2 ? 0.35 : 0.39;
+    const endPercentage = breakPoint2 ? 0.45 : 0.5;
 
     type RGBColor = {
         r: number;
@@ -236,7 +236,7 @@ export default function Home() {
 
             <Box
                 width="100%"
-                height="100vh"
+                height="80vh"
                 position="relative"
                 bgcolor="black"
                 textAlign="center"
@@ -324,13 +324,13 @@ export default function Home() {
 
             <CardHolder
                 titleColor={titleColor}
-                color={color}
                 backgroundColor={backgroundColor}
             />
 
             <div
                 style={{
                     backgroundColor: `${backgroundColor}`,
+                    padding: '60px 0',
                 }}
             >
                 <Timeline titleColor={titleColor} color={color} />
@@ -368,7 +368,6 @@ export default function Home() {
                     }}
                 >
                     <Box
-                        color="white"
                         display="flex"
                         gap="30px"
                         justifyContent="center"
@@ -384,6 +383,7 @@ export default function Home() {
                             width="70%"
                             color={theme.palette.primary.main}
                             fontSize={`${breakPoint ? '48px' : '40px'}`}
+                            textAlign="center"
                         >
                             Join us, unleash your potential in engineering,
                             aviation, and teamwork.

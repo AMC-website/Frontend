@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Navbar/Navbar';
 import type { AppProps } from 'next/app';
 import { Box } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';

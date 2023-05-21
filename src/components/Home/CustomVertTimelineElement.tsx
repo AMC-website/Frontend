@@ -25,7 +25,7 @@ const CustomVerticalTimelineElement = ({
     const contentStyle = {
         background: `${primary}`,
         color: `${primary}`,
-        borderRadius: '0px',
+        borderRadius: '5px',
     };
     const contentArrowStyle = {
         borderRight: `7px solid ${primary}`,
