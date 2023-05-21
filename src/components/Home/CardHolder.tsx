@@ -28,12 +28,9 @@ const CustomGrid = ({ children }: { children: React.ReactNode }) => {
 
 interface CardHolderProps {
     titleColor: string;
-    color: string;
     backgroundColor: string;
 }
-function CardHolder({ color, titleColor, backgroundColor }: CardHolderProps) {
-    const theme = useTheme();
-
+function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
     return (
         <Box
             color="white"
@@ -42,7 +39,7 @@ function CardHolder({ color, titleColor, backgroundColor }: CardHolderProps) {
             gap="90px"
             textAlign="center"
             bgcolor={backgroundColor}
-            padding="60px 10px"
+            padding="80px 10px"
         >
             <div>
                 <Typography variant="h1" color={titleColor}>
