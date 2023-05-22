@@ -15,7 +15,7 @@ export default function Events() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     minHeight: 'maxContent',
-                    padding: '40'
+                    paddingTop: '100px'
                 }}
             >
                 <Box
@@ -43,8 +43,13 @@ export default function Events() {
                             md:"grid",
                             xs:"flex",
                         },
-                        gridTemplateColumns: 'auto auto ',
-                        padding: '0 100px',
+                        gridTemplateColumns: {
+                            lg:'auto auto auto',
+                            md:'auto auto',
+                            xs:'auto',
+                            
+                        },
+                        padding: '140px 100px',
                         gridGap: '30px',
                         flexDirection:"column",
                         
