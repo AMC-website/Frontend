@@ -7,6 +7,7 @@ import Timeline from '../components/Home/Timeline';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
+import changeColorOnScroll from '@/components/ChangeColorOnScroll';
 
 export default function Home() {
     const breakPoint0 = useMediaQuery('(min-width:450px)');
@@ -15,59 +16,11 @@ export default function Home() {
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
 
     const theme = useTheme();
-    const yLimit = breakPoint ? 2500 : 4300;
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
     const startPercentage = breakPoint2 ? 0.35 : 0.39;
     const endPercentage = breakPoint2 ? 0.45 : 0.5;
-
-    type RGBColor = {
-        r: number;
-        g: number;
-        b: number;
-    };
-
-    const changeColorOnScroll = (
-        startPercentage: number,
-        endPercentage: number,
-        startColor: RGBColor,
-        endColor: RGBColor,
-        setState: React.Dispatch<React.SetStateAction<string>>
-    ): void => {
-        const scrollPosition =
-            window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-        const scrollFraction = scrollPosition / scrollHeight;
-
-        let backgroundColor = '';
-
-        if (scrollFraction < startPercentage) {
-            backgroundColor = `rgb(${startColor.r}, ${startColor.g}, ${startColor.b})`; // Start color until startPercentage scroll percentage
-        } else if (
-            scrollFraction >= startPercentage &&
-            scrollFraction <= endPercentage
-        ) {
-            const opacity =
-                (scrollFraction - startPercentage) /
-                (endPercentage - startPercentage); // Opacity transition from 0 to 1
-            const r = Math.round(
-                opacity * (endColor.r - startColor.r) + startColor.r
-            );
-            const g = Math.round(
-                opacity * (endColor.g - startColor.g) + startColor.g
-            );
-            const b = Math.round(
-                opacity * (endColor.b - startColor.b) + startColor.b
-            );
-            backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        } else {
-            backgroundColor = `rgb(${endColor.r}, ${endColor.g}, ${endColor.b})`; // End color after endPercentage scroll percentage
-        }
-
-        setState(backgroundColor);
-    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -248,8 +201,10 @@ export default function Home() {
                     transition={{
                         duration: 0.6,
                         type: 'spring',
-                        stiffness: 120,
-                        damping: 20,
+                        ease: 'linear',
+                        damping: 10,
+                        stiffness: 80,
+                        restDelta: 0.001,
                     }}
                     variants={{
                         hidden: { opacity: 0 },

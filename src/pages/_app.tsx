@@ -9,13 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <ThemeProvider theme={theme}>
             <Box position="relative" overflow="hidden">
-                <Box
-                    position="absolute"
-                    zIndex="10"
-                    top="0"
-                    width="100vw"
-                    left="0"
-                >
+                <Box position="absolute" top="0" width="100vw" left="0">
                     <Navbar />
                 </Box>
                 <Component {...pageProps} />

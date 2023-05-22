@@ -1,7 +1,6 @@
 import { Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
-import { useState } from 'react';
 
 const linkStyles = {
     textDecoration: 'none',
@@ -40,7 +39,10 @@ function NavItem({ isHovered, title, onSomethingElse }: NavItemProps) {
                     backgroundColor: theme.palette.secondary.main,
                 }}
             />{' '}
-            <Link sx={linkStyles}>
+            <Link
+                sx={linkStyles}
+                href={title.charAt(0).toLowerCase() + title.slice(1)}
+            >
                 <Typography variant="h3" padding="10px">
                     {title}
                 </Typography>

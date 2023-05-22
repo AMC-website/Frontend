@@ -15,7 +15,7 @@ export default function Events() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     minHeight: 'maxContent',
-                    padding: '40'
+                    padding: '40',
                 }}
             >
                 <Box
@@ -37,17 +37,15 @@ export default function Events() {
                 </Box>
 
                 <Box
-                   
                     sx={{
-                        display:{
-                            md:"grid",
-                            xs:"flex",
+                        display: {
+                            md: 'grid',
+                            xs: 'flex',
                         },
                         gridTemplateColumns: 'auto auto ',
                         padding: '0 100px',
                         gridGap: '30px',
-                        flexDirection:"column",
-                        
+                        flexDirection: 'column',
                     }}
                 >
                     {array.map((item, index) => (
