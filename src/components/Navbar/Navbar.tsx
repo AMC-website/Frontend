@@ -38,12 +38,42 @@ function Navbar() {
                 padding="10px 60px"
                 width="50%"
                 marginX="auto"
-                sx={{
-                    backdropFilter: 'blur(30px)',
-                }}
                 color={theme.palette.secondary.main}
-                bgcolor="rgba(255,255,255,0.05)"
+                position="relative"
+                zIndex="10"
             >
+                <Box
+                    sx={{
+                        backdropFilter: 'blur(25px)',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        zIndex: -1,
+                    }}
+                    bgcolor="rgba(255,255,255,0.05)"
+                />
+                <motion.div
+                    style={{
+                        height: '30%',
+                        width: '10%',
+                        backgroundColor: '#9acd32',
+                        zIndex: -10,
+                        position: 'absolute',
+                        top: '35%',
+                    }}
+                    animate={{
+                        left: ['5%', '85%'],
+                        width: ['6%', '10%', '6%'],
+                    }}
+                    transition={{
+                        duration: 7,
+                        ease: [0.4, 0, 0.6, 1],
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                    }}
+                />
                 <Typography variant="h1">Hello</Typography>
                 <Box
                     display={breakPoint ? 'flex' : isOpen ? 'grid' : 'none'}

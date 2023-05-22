@@ -77,7 +77,11 @@ function TextTemplate({
                     width="70%"
                     textAlign={breakPoint ? 'left' : 'center'}
                 >
-                    <Typography variant="h1" color={titleColor}>
+                    <Typography
+                        variant="h1"
+                        color={titleColor}
+                        textAlign="center"
+                    >
                         {title}
                     </Typography>
                     <Typography
@@ -85,6 +89,7 @@ function TextTemplate({
                         lineHeight="2.5"
                         color={color}
                         fontSize={breakPoint ? '18px' : '14px'}
+                        textAlign="center"
                     >
                         {content}
                     </Typography>

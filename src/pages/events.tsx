@@ -37,7 +37,6 @@ export default function Events() {
                 </Box>
 
                 <Box
-                   
                     sx={{
                         display:{
                             md:"grid",
@@ -51,8 +50,7 @@ export default function Events() {
                         },
                         padding: '140px 100px',
                         gridGap: '30px',
-                        flexDirection:"column",
-                        
+                        flexDirection: 'column',
                     }}
                 >
                     {array.map((item, index) => (
