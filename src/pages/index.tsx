@@ -1,5 +1,5 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue,useScroll } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import TextTemplate from '@/components/Home/TextTemplate';
@@ -8,6 +8,8 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
 import changeColorOnScroll from '@/components/ChangeColorOnScroll';
+import ParallaxImage from '@/components/Home/ParallaxImage';
+import MovingText from '@/components/Home/MovingText';
 
 export default function Home() {
     const breakPoint0 = useMediaQuery('(min-width:450px)');
@@ -19,9 +21,9 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-    const startPercentage = breakPoint2 ? 0.35 : 0.39;
-    const endPercentage = breakPoint2 ? 0.45 : 0.5;
-
+    const startPercentage = breakPoint2 ? 0.42 : 0.5;
+    const endPercentage = breakPoint2 ? 0.52 : 0.6;
+    const {scrollYProgress}= useScroll()
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -187,6 +189,10 @@ export default function Home() {
                 </Box>
             </div>
 
+         
+           <ParallaxImage></ParallaxImage>
+           
+           
             <Box
                 width="100%"
                 height="80vh"
@@ -219,6 +225,8 @@ export default function Home() {
                         y: yMotionValue,
                     }}
                 >
+                    
+                    
                     <Typography
                         variant="h1"
                         color={theme.palette.secondary.main}
@@ -226,6 +234,7 @@ export default function Home() {
                     >
                         Who are we?
                     </Typography>
+                   
                     <br />
                     <Typography
                         variant="h3"
@@ -259,7 +268,7 @@ export default function Home() {
                     <Typography
                         variant="h1"
                         color={theme.palette.secondary.main}
-                        fontSize={`${breakPoint ? '88px' : '48px'}`}
+                        fontSize={`${breakPoint ? '70px' : '48px'}`}
                     >
                         What do we do?
                     </Typography>
@@ -281,6 +290,7 @@ export default function Home() {
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
             />
+            <MovingText color='black' bgColor='#f0e4dc' ></MovingText>
 
             <div
                 style={{
