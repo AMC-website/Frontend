@@ -5,9 +5,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../theme.js';
 import Footer from '@/components/Footer';
 import '@/styles/global.css';
+import Cursor from '@/components/Cursor';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <ThemeProvider theme={theme}>
+            <Cursor>
+            </Cursor>
             <Box position="relative" overflow="hidden">
                 <Box position="absolute" top="0" width="100vw" left="0">
                     <Navbar />
@@ -17,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Footer />
                 </Box>
             </Box>
+           
         </ThemeProvider>
     );
 }

@@ -2,3 +2,7 @@ body{
     margin: 0;
     padding: 0;
 }
+
+.links:hover ~ .cursor{
+    transform: scale(2);
+}
