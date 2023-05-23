@@ -2,6 +2,7 @@ import EventCard from '@/components/EventCard';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
+
 const array = [1, 2, 3, 4, 5, 6];
 
 export default function Events() {
@@ -54,7 +55,9 @@ export default function Events() {
                     }}
                 >
                     {array.map((item, index) => (
+                        
                         <EventCard key={index + 1}></EventCard>
+                       
                     ))}
                 </Box>
             </Box>

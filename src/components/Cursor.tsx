@@ -20,6 +20,7 @@ useEffect(()=>{
 
 return(
     <motion.div
+    id='cursor'
     className='cursor'
     style={{
         position:"fixed",

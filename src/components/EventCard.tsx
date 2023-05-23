@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import styles from '@/styles/events.module.css';
 import { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
-
+import ThreeDCard from '@/components/ThreeDCard';
 export default function EventCard() {
     const theme = useTheme();
     const [open,setOpen] = useState(false);
@@ -17,6 +17,7 @@ export default function EventCard() {
 
     return (
         <Box>
+    <ThreeDCard>
     <Card onClick={()=>handleOpen()} sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
@@ -32,7 +33,7 @@ export default function EventCard() {
         </CardContent>
       </CardActionArea>
     </Card>
-
+    </ThreeDCard>
 
         <Backdrop
         

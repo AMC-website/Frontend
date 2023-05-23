@@ -3,6 +3,3 @@ body{
     padding: 0;
 }
 
-.links:hover ~ .cursor{
-    transform: scale(2);
-}
