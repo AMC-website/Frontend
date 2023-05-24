@@ -22,8 +22,8 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-    const startPercentage = breakPoint2 ? 0.42 : 0.5;
-    const endPercentage = breakPoint2 ? 0.52 : 0.6;
+    const startPercentage = breakPoint2 ? 0.58 : 0.6;
+    const endPercentage = breakPoint2 ? 0.62 : 0.68;
     const { scrollYProgress } = useScroll();
     useEffect(() => {
         const handleScroll = () => {
@@ -62,7 +62,7 @@ export default function Home() {
         const handleScroll = () => {
             const y = window.scrollY || window.pageYOffset;
 
-            const scale = breakPoint2 ? y * 0.0008 : y * 0.0005; // Adjust the scaling factor as needed
+            const scale = breakPoint2 ? y * 0.00055 : y * 0.0003; // Adjust the scaling factor as needed
 
             const boxElement2 = document.getElementById('boxElement2');
 
@@ -85,8 +85,8 @@ export default function Home() {
 
     return (
         <div>
-            <WelcomeSection />
-            <div
+            {/* <WelcomeSection /> */}
+            {/* <div
                 style={{
                     backgroundColor: 'black',
                     width: '100%',
@@ -94,7 +94,7 @@ export default function Home() {
                 }}
             >
                 <Navbar />
-            </div>
+            </div> */}
             <AMCSection />
 
             <ParallaxImage></ParallaxImage>
@@ -194,7 +194,11 @@ export default function Home() {
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
             />
-            <MovingText color="black" bgColor="#f0e4dc"></MovingText>
+            <MovingText
+                color={titleColor}
+                bgColor={backgroundColor}
+                fontSize={breakPoint ? '48px' : '40px'}
+            ></MovingText>
 
             <div
                 style={{
