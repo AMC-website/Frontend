@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+// import Roobert from './fonts/Roobert-Regular.ttf';
 
 export const shades = {
     pink: {
@@ -70,11 +71,11 @@ export const theme = createTheme({
         fontFamily: ['Poppins', 'sans-serif'].join(','),
         fontSize: 11,
         h1: {
-            fontFamily: ['Space Mono', 'monospace'].join(','),
+            fontFamily: ['Darker Grotesque', 'sans-serif'].join(','),
             fontSize: 48,
         },
         h2: {
-            fontFamily: ['Space Mono', 'monospace'].join(','),
+            fontFamily: ['Darker Grotesque', 'sans-serif'].join(','),
             fontSize: 36,
         },
         h3: {

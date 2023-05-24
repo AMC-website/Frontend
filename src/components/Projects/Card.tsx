@@ -1,6 +1,6 @@
-import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 
 interface CardProps {
     projectName: string;
@@ -17,6 +17,8 @@ export default function Card({
     function handleClick() {
         setIsClicked(!isClicked);
     }
+    const breakPoint = useMediaQuery('(min-width:600px)');
+
     return (
         <>
             <motion.div
@@ -52,11 +54,11 @@ export default function Card({
                 </span>
                 <motion.div
                     initial={{
-                        scale: isClicked ? 0 : 1.1,
+                        scale: isClicked ? 0 : breakPoint ? 1.1 : 1,
                         opacity: isClicked ? 0 : 1,
                     }}
                     animate={{
-                        scale: isClicked ? 1.1 : 0,
+                        scale: isClicked ? (breakPoint ? 1.1 : 1) : 0,
                         opacity: isClicked ? 1 : 0,
                     }}
                     transition={{

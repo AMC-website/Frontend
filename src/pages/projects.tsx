@@ -24,6 +24,7 @@ const CustomGrid = ({ children }: { children: React.ReactNode }) => {
 export default function Projects() {
     const primary = '#f0e4dc';
     const breakPoint = useMediaQuery('(min-width:600px)');
+    const breakPoint2 = useMediaQuery('(min-width:400px)');
 
     const xMotionValue = useMotionValue(0);
     const yMotionValue = useMotionValue(0);
@@ -122,7 +123,9 @@ export default function Projects() {
                     <Typography
                         variant="h1"
                         color={titleColor}
-                        fontSize={`${breakPoint ? '48px' : '40px'}`}
+                        fontSize={`${
+                            breakPoint ? '48px' : breakPoint2 ? '40px' : '30px'
+                        }`}
                     >
                         Aviation Unleashed: AMC&apos;s Projects
                     </Typography>
@@ -132,7 +135,9 @@ export default function Projects() {
                         lineHeight="2"
                         color={color}
                         margin="0 auto"
-                        fontSize={`${breakPoint ? '28px' : '18px'}`}
+                        fontSize={`${
+                            breakPoint ? '28px' : breakPoint2 ? '20px' : '15px'
+                        }`}
                     >
                         AMC&apos;s projects soar beyond conventional boundaries,
                         merging imagination with engineering precision. From
@@ -239,7 +244,9 @@ export default function Projects() {
                     <Typography
                         variant="h1"
                         color={titleColor}
-                        fontSize={`${breakPoint ? '48px' : '40px'}`}
+                        fontSize={`${
+                            breakPoint ? '48px' : breakPoint2 ? '40px' : '30px'
+                        }`}
                     >
                         Excellence Takes Flight: AMC&apos;s Achievements
                     </Typography>
@@ -249,7 +256,9 @@ export default function Projects() {
                         lineHeight="2"
                         color={color}
                         margin="0 auto"
-                        fontSize={`${breakPoint ? '28px' : '18px'}`}
+                        fontSize={`${
+                            breakPoint ? '28px' : breakPoint2 ? '18px' : '15px'
+                        }`}
                     >
                         AMC&apos;s achievements defy expectations within the
                         college aviation community. Their remarkable innovations

@@ -4,11 +4,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import NavItem from './NavItem';
 
 function Navbar() {
-    const breakPoint = useMediaQuery('(min-width:600px)');
+    const breakPoint = useMediaQuery('(min-width:900px)');
+    const breakPoint2 = useMediaQuery('(min-width:600px)');
+
     const [isOpen, setIsOpen] = useState(false);
     const theme = useTheme();
 
@@ -35,8 +37,8 @@ function Navbar() {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
-                padding="10px 60px"
-                width="50%"
+                padding="10px 5%"
+                width={breakPoint2 ? '70%' : '90%'}
                 marginX="auto"
                 color={theme.palette.secondary.main}
                 position="relative"
@@ -51,6 +53,7 @@ function Navbar() {
                         right: 0,
                         bottom: 0,
                         zIndex: -1,
+                        borderRadius: '10px',
                     }}
                     bgcolor="rgba(255,255,255,0.05)"
                 />
@@ -74,7 +77,19 @@ function Navbar() {
                         repeatType: 'reverse',
                     }}
                 />
-                <Typography variant="h1">Hello</Typography>
+                <div style={{ height: '100%', minWidth: '20%' }}>
+                    <Link href="/">
+                        <img
+                            src="logo.png"
+                            alt="drone image"
+                            style={{
+                                objectFit: 'cover',
+                                height: '100%',
+                                width: '100%',
+                            }}
+                        />
+                    </Link>
+                </div>
                 <Box
                     display={breakPoint ? 'flex' : isOpen ? 'grid' : 'none'}
                     gap="4px"

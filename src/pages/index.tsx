@@ -8,10 +8,10 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
 import changeColorOnScroll from '@/components/ChangeColorOnScroll';
-
+import Navbar from '@/components/Navbar/Navbar';
+import WelcomeSection from '@/components/Home/WelcomeSection';
+import AMCSection from '@/components/Home/AMCSection';
 export default function Home() {
-    const breakPoint0 = useMediaQuery('(min-width:450px)');
-
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
 
@@ -19,8 +19,9 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-    const startPercentage = breakPoint2 ? 0.35 : 0.39;
-    const endPercentage = breakPoint2 ? 0.45 : 0.5;
+
+    const startPercentage = breakPoint2 ? 0.45 : 0.55;
+    const endPercentage = breakPoint2 ? 0.55 : 0.65;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -59,7 +60,7 @@ export default function Home() {
         const handleScroll = () => {
             const y = window.scrollY || window.pageYOffset;
 
-            const scale = breakPoint2 ? y * 0.0013 : y * 0.0006; // Adjust the scaling factor as needed
+            const scale = breakPoint2 ? y * 0.0008 : y * 0.0005; // Adjust the scaling factor as needed
 
             const boxElement2 = document.getElementById('boxElement2');
 
@@ -80,112 +81,19 @@ export default function Home() {
     const xMotionValue = useMotionValue(0);
     const yMotionValue = useMotionValue(0);
 
-    useEffect(() => {
-        const handleMouseMove = (event) => {
-            xMotionValue.set(-(event.clientX / window.innerWidth - 0.5) * 40);
-            yMotionValue.set(-(event.clientY / window.innerHeight - 0.5) * 40);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, [xMotionValue, yMotionValue]);
-
     return (
-        <div style={{ scrollBehavior: 'smooth' }}>
+        <div>
+            <WelcomeSection />
             <div
-                id="one"
                 style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100vh',
-                    width: '100vw',
-                    overflowX: 'hidden',
-                    backgroundColor: 'rgba(0,0,0,0.7)',
-                    position: 'relative',
+                    backgroundColor: 'black',
+                    width: '100%',
+                    padding: '20px 0',
                 }}
             >
-                <div
-                    style={{
-                        height: '100%',
-                        width: '100%',
-                        overflow: 'hidden',
-                        backgroundColor: 'black',
-                        display: 'flex',
-                        justifyContent: 'right',
-                        alignItems: 'center',
-                        zIndex: '-10',
-                        position: 'absolute',
-                        top: '0',
-                        left: '0',
-                    }}
-                >
-                    <img
-                        src="/black drone new.jpg"
-                        alt="drone image"
-                        style={{
-                            objectFit: 'cover',
-                            height: '95%',
-                            width: '95%',
-                        }}
-                    />
-                </div>
-
-                <Box width="auto" textAlign="center">
-                    <Typography
-                        color="white"
-                        variant="h1"
-                        style={{
-                            fontSize: `${breakPoint ? '100px' : '60px'}`,
-                        }}
-                        display="grid"
-                        justifyItems="center"
-                        gap="10px"
-                    >
-                        <div>
-                            <span
-                                style={{
-                                    color: `${theme.palette.secondary.main}`,
-                                }}
-                            >
-                                A
-                            </span>
-                            ero{' '}
-                        </div>
-                        <div>
-                            <span
-                                style={{
-                                    color: `${theme.palette.secondary.main}`,
-                                }}
-                            >
-                                M
-                            </span>
-                            odelling {` `}
-                        </div>
-                        <div>
-                            <span
-                                style={{
-                                    color: `${theme.palette.secondary.main}`,
-                                }}
-                            >
-                                C
-                            </span>
-                            lub
-                        </div>
-                        <Typography
-                            color="white"
-                            variant="h2"
-                            style={{ fontSize: '20px' }}
-                        >
-                            {' '}
-                            IIT (BHU), Varanasi
-                        </Typography>
-                    </Typography>
-                </Box>
+                <Navbar />
             </div>
+            <AMCSection />
 
             <Box
                 width="100%"
