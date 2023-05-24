@@ -95,6 +95,7 @@ export default function Home() {
             >
                 <Navbar />
             </div>
+            <AMCSection />
 
             <ParallaxImage></ParallaxImage>
 
