@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styles from '@/styles/members.module.css';
+import { Box } from '@mui/material';
 
 type MemberData = {
     name: string;
@@ -43,6 +44,9 @@ export default function MemberCard({ name, role, image }: MemberData) {
                     alt="profile"
                 />
             </div>
+            <Box
+            
+            ></Box>
         </div>
     );
 }

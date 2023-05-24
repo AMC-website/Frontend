@@ -1,5 +1,5 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion, useMotionValue, useScroll } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import TextTemplate from '@/components/Home/TextTemplate';
@@ -11,6 +11,9 @@ import changeColorOnScroll from '@/components/ChangeColorOnScroll';
 import Navbar from '@/components/Navbar/Navbar';
 import WelcomeSection from '@/components/Home/WelcomeSection';
 import AMCSection from '@/components/Home/AMCSection';
+import ParallaxImage from '@/components/Home/ParallaxImage';
+import MovingText from '@/components/Home/MovingText';
+
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
@@ -19,10 +22,9 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-
-    const startPercentage = breakPoint2 ? 0.45 : 0.55;
-    const endPercentage = breakPoint2 ? 0.55 : 0.65;
-
+    const startPercentage = breakPoint2 ? 0.42 : 0.5;
+    const endPercentage = breakPoint2 ? 0.52 : 0.6;
+    const { scrollYProgress } = useScroll();
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -93,7 +95,8 @@ export default function Home() {
             >
                 <Navbar />
             </div>
-            <AMCSection />
+
+            <ParallaxImage></ParallaxImage>
 
             <Box
                 width="100%"
@@ -134,6 +137,7 @@ export default function Home() {
                     >
                         Who are we?
                     </Typography>
+
                     <br />
                     <Typography
                         variant="h3"
@@ -167,7 +171,7 @@ export default function Home() {
                     <Typography
                         variant="h1"
                         color={theme.palette.secondary.main}
-                        fontSize={`${breakPoint ? '88px' : '48px'}`}
+                        fontSize={`${breakPoint ? '70px' : '48px'}`}
                     >
                         What do we do?
                     </Typography>
@@ -189,6 +193,7 @@ export default function Home() {
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
             />
+            <MovingText color="black" bgColor="#f0e4dc"></MovingText>
 
             <div
                 style={{

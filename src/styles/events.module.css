@@ -1,39 +1,18 @@
 .card_img{
-    width: 100%;
-    transition: transform 0.5s ease;
+  width: 100%;
+  margin-bottom: auto;
 }
-.card {
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    height: fit-content;
-    padding: 0 20px;
-    cursor: pointer;
-  }
 
-  
 
-  @media screen and (min-width:1050px) {
-    .cardItems{
-      transition: transform 0.5s ease;
+  @media screen and (min-width:800px) {
+    .card_img{
+      position: absolute;
+      top: 30px;
+      bottom: 30px;
+      right: 30px;  
+      width: 50%;
+      height: 90%;
     }
-    .card:hover .cardItems {
-      transform: translateY(-100%);
-    }
-    .card:hover .card_img {
-      transform: translateY(-80%);
-     
-    }
-  
-  .card_content{
-      display: none;
-      transition: transform 0.5s ease;
-  }
-  .card:hover .card_content{
-     display: flex;
-    }
-    .card{
-      height: 500px;
-    }
+    
 
   }
