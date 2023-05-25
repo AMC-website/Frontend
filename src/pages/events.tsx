@@ -2,7 +2,6 @@ import EventCard from '@/components/EventCard';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-
 const array = [1, 2, 3, 4, 5, 6];
 
 export default function Events() {
@@ -16,7 +15,7 @@ export default function Events() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     minHeight: 'maxContent',
-                    paddingTop: '100px'
+                    paddingTop: '100px',
                 }}
             >
                 <Box
@@ -39,15 +38,14 @@ export default function Events() {
 
                 <Box
                     sx={{
-                        display:{
-                            md:"grid",
-                            xs:"flex",
+                        display: {
+                            md: 'grid',
+                            xs: 'flex',
                         },
                         gridTemplateColumns: {
-                            lg:'auto auto auto',
-                            md:'auto auto',
-                            xs:'auto',
-                            
+                            lg: 'auto auto auto',
+                            md: 'auto auto',
+                            xs: 'auto',
                         },
                         padding: '140px 100px',
                         gridGap: '30px',
@@ -55,9 +53,7 @@ export default function Events() {
                     }}
                 >
                     {array.map((item, index) => (
-                        
                         <EventCard key={index + 1}></EventCard>
-                       
                     ))}
                 </Box>
             </Box>

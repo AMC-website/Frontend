@@ -40,7 +40,7 @@ export default function WelcomeSection() {
             }}
         >
             <img
-                src="drone.jpg"
+                src="jets.jpg"
                 alt="drone image"
                 style={{
                     objectFit: 'cover',

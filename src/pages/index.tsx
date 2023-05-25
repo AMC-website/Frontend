@@ -13,6 +13,7 @@ import WelcomeSection from '@/components/Home/WelcomeSection';
 import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
+import Tilt from '@/components/TiltComponent';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -83,10 +84,18 @@ export default function Home() {
     const xMotionValue = useMotionValue(0);
     const yMotionValue = useMotionValue(0);
 
+    const options = {
+        scale: 1.1,
+        speed: 1000,
+        max: 10,
+        reverse: true,
+        glare: true,
+    };
+
     return (
         <div>
-            {/* <WelcomeSection /> */}
-            {/* <div
+            <WelcomeSection />
+            <div
                 style={{
                     backgroundColor: 'black',
                     width: '100%',
@@ -94,65 +103,65 @@ export default function Home() {
                 }}
             >
                 <Navbar />
-            </div> */}
+            </div>
             <AMCSection />
 
             <ParallaxImage></ParallaxImage>
 
             <Box
                 width="100%"
-                height="80vh"
+                height="100vh"
                 position="relative"
                 bgcolor="black"
                 textAlign="center"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
             >
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false, amount: 0.7 }}
-                    transition={{
-                        duration: 0.6,
-                        type: 'spring',
-                        ease: 'linear',
-                        damping: 10,
-                        stiffness: 80,
-                        restDelta: 0.001,
-                    }}
-                    variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1 },
-                    }}
+                <Tilt
+                    options={options}
                     style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '25%',
                         width: '50%',
-                        x: xMotionValue,
-                        y: yMotionValue,
+                        padding: breakPoint ? '40px' : '20px',
+                        borderRadius: '10px',
                     }}
                 >
-                    <Typography
-                        variant="h1"
-                        color={theme.palette.secondary.main}
-                        fontSize={`${breakPoint ? '88px' : '48px'}`}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.7 }}
+                        transition={{
+                            duration: 0.6,
+                        }}
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: { opacity: 1 },
+                        }}
                     >
-                        Who are we?
-                    </Typography>
+                        <Typography
+                            variant="h1"
+                            color={theme.palette.secondary.main}
+                            fontSize={`${breakPoint ? '88px' : '48px'}`}
+                        >
+                            Who are we?
+                        </Typography>
 
-                    <br />
-                    <Typography
-                        variant="h3"
-                        lineHeight="2"
-                        color="white"
-                        margin="0 auto"
-                        fontSize={`${breakPoint ? '28px' : '18px'}`}
-                    >
-                        We are a community of builders with a passion for
-                        aviation, fostering a culture of intellectual curiosity
-                        and collaborative ingenuity.
-                    </Typography>
-                </motion.div>
+                        <br />
+                        <Typography
+                            variant="h3"
+                            lineHeight="2"
+                            color="white"
+                            margin="0 auto"
+                            fontSize={`${breakPoint ? '28px' : '18px'}`}
+                        >
+                            We are a community of builders with a passion for
+                            aviation, fostering a culture of intellectual
+                            curiosity and collaborative ingenuity.
+                        </Typography>
+                    </motion.div>
+                </Tilt>
             </Box>
+
             <Box
                 width="100%"
                 height="120vh"

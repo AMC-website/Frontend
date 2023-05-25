@@ -13,7 +13,7 @@ export default function ParallaxImage() {
             opacity: 1,
             transition: {
                 delay: 0.5,
-                staggerChildren: 0.08, // Adjust the stagger delay as needed
+                staggerChildren: 0.065, // Adjust the stagger delay as needed
             },
         },
     };

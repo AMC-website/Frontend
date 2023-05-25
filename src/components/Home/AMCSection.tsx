@@ -12,7 +12,7 @@ export default function AMCSection() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '100vh',
+                height: '80vh',
                 width: '100vw',
                 overflowX: 'hidden',
                 backgroundColor: 'rgba(0,0,0)',

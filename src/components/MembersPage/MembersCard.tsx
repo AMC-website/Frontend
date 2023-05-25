@@ -44,9 +44,7 @@ export default function MemberCard({ name, role, image }: MemberData) {
                     alt="profile"
                 />
             </div>
-            <Box
-            
-            ></Box>
+            <Box></Box>
         </div>
     );
 }

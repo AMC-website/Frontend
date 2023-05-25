@@ -3,6 +3,7 @@ import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
 import { motion, useMotionValue } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import changeColorOnScroll from '@/components/ChangeColorOnScroll';
+import Tilt from '@/components/TiltComponent';
 
 const CustomGrid = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -81,12 +82,17 @@ export default function Projects() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+    const options = {
+        scale: 1.2,
+        speed: 1000,
+        max: 10,
+        reverse: true,
+    };
     return (
         <>
             <Box
                 width="100%"
-                height="100vh"
+                height="80vh"
                 position="relative"
                 bgcolor={backgroundColor}
                 textAlign="center"

@@ -43,6 +43,14 @@ function Navbar() {
                 color={theme.palette.secondary.main}
                 position="relative"
                 zIndex="10"
+                sx={{
+                    boxShadow: '0 8px 100px 0 rgba(255,255,255, 0.37 )',
+                    '&:hover': {
+                        boxShadow: '0',
+                    },
+                    transition:
+                        'box-shadow 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
+                }}
             >
                 <Box
                     sx={{
@@ -54,10 +62,11 @@ function Navbar() {
                         bottom: 0,
                         zIndex: -1,
                         borderRadius: '10px',
+                        webkitBackdropFilter: 'blur( 4px )',
+                        background: 'rgba(255,255,255,0.075)',
                     }}
-                    bgcolor="rgba(255,255,255,0.05)"
                 />
-                <motion.div
+                {/* <motion.div
                     style={{
                         height: '30%',
                         width: '10%',
@@ -76,16 +85,24 @@ function Navbar() {
                         repeat: Infinity,
                         repeatType: 'reverse',
                     }}
-                />
-                <div style={{ height: '100%', minWidth: '20%' }}>
+                /> */}
+                <div
+                    style={{
+                        height: '100%',
+                        minWidth: '20%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
                     <Link href="/">
                         <img
                             src="logo.png"
                             alt="drone image"
                             style={{
                                 objectFit: 'cover',
-                                height: '100%',
-                                width: '100%',
+                                height: '30%',
+                                width: '30%',
                             }}
                         />
                     </Link>

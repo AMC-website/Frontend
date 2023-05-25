@@ -13,14 +13,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <ThemeProvider theme={theme}>
             <Cursor></Cursor>
             <Box position="relative" overflow="hidden">
-                {/* {router.pathname !== '/' && (
-                    <Box position="absolute" top="0" width="100vw" left="0">
+                {router.pathname !== '/' && (
+                    <div
+                        style={{
+                            backgroundColor: 'black',
+                            width: '100%',
+                            padding: '20px 0',
+                        }}
+                    >
                         <Navbar />
-                    </Box>
-                )} */}
-                <Box position="absolute" top="0" width="100vw" left="0">
-                    <Navbar />
-                </Box>
+                    </div>
+                )}
+
                 <Component {...pageProps} />
                 <Box width="100%">
                     <Footer />

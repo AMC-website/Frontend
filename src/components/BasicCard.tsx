@@ -5,9 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import dynamic from 'next/dynamic';
 import { useTheme } from '@mui/material/styles';
-
+import VanillaTilt from 'vanilla-tilt';
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
+import Tilt from './TiltComponent';
 interface BasicCardProps {
     icon: JSX.Element;
     title: string;
@@ -24,44 +26,50 @@ const bull = (
 );
 
 function BasicCard({ icon, title, titleColor }: BasicCardProps) {
-    const theme = useTheme();
     const breakPoint = useMediaQuery('(min-width:600px)');
 
+    const options = {
+        scale: 1.1,
+        speed: 1000,
+        max: 20,
+        reverse: true,
+    };
+
     return (
-        <Card
-            sx={{
-                width: 250,
-                backgroundColor: `white`,
-                transition: 'transform 0.3s ease-out',
-                '&:hover': {
-                    transform: 'scale(1.1)',
-                },
-            }}
-        >
-            <CardContent sx={{ padding: '0' }}>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '30px',
-                        textAlign: 'center',
-                        padding: '30px 0',
-                        justifyContent: 'space-evenly',
-                        minHeight: 150,
-                        color: `${titleColor}`,
+        <>
+            <Tilt options={options}>
+                <Card
+                    sx={{
+                        width: 250,
+                        backgroundColor: `white`,
                     }}
                 >
-                    <div>{icon}</div>
-                    <Typography
-                        variant="h2"
-                        fontSize={breakPoint ? '28px' : '18px'}
-                        color="black"
-                    >
-                        {title}
-                    </Typography>
-                </div>
-            </CardContent>
-        </Card>
+                    <CardContent sx={{ padding: '0' }}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '30px',
+                                textAlign: 'center',
+                                padding: '30px 0',
+                                justifyContent: 'space-evenly',
+                                minHeight: 150,
+                                color: `${titleColor}`,
+                            }}
+                        >
+                            <div>{icon}</div>
+                            <Typography
+                                variant="h2"
+                                fontSize={breakPoint ? '28px' : '18px'}
+                                color="black"
+                            >
+                                {title}
+                            </Typography>
+                        </div>
+                    </CardContent>
+                </Card>
+            </Tilt>
+        </>
     );
 }
 
