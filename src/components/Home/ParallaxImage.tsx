@@ -28,10 +28,10 @@ export default function ParallaxImage() {
         },
     };
 
-    const line1 = 'Where ';
-    const line2 = 'Engineering';
-    const line3 = 'meets ';
-    const line4 = 'Art';
+    const line1 = 'Technology ';
+    const line2 = 'and ';
+    // const line3 = 'meets ';
+    const line4 = 'Craftsmanship';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -110,6 +110,7 @@ export default function ParallaxImage() {
                                     <Typography
                                         variant="h1"
                                         display="inline"
+                                        fontWeight="bold"
                                         fontSize={`${
                                             breakPoint
                                                 ? '60px'
@@ -130,7 +131,6 @@ export default function ParallaxImage() {
                                     <Typography
                                         variant="h1"
                                         display="inline"
-                                        fontWeight="bold"
                                         fontSize={`${
                                             breakPoint
                                                 ? '60px'
@@ -144,7 +144,7 @@ export default function ParallaxImage() {
                                 </motion.span>
                             ))}
                             <br />
-                            {line3.split('').map((char, index) => (
+                            {/* {line3.split('').map((char, index) => (
                                 <motion.span
                                     key={char + '-' + index}
                                     variants={letter}
@@ -163,7 +163,7 @@ export default function ParallaxImage() {
                                         {char}
                                     </Typography>
                                 </motion.span>
-                            ))}
+                            ))} */}
                             {line4.split('').map((char, index) => (
                                 <motion.span
                                     key={char + '-' + index}

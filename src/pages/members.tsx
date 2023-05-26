@@ -34,18 +34,17 @@ export default function Members() {
     const theme = useTheme();
 
     return (
-        <Box
-            sx={{
-                backgroundColor: 'black',
-                paddingTop: '200px',
-            }}
-        >
+        <Box>
             <Box>
                 <Typography
+                    height="40vh"
                     variant="h1"
-                    color="white"
+                    bgcolor="black"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
                     textAlign="center"
-                    paddingBottom="50px"
+                    color={theme.palette.secondary.main}
                 >
                     Members
                 </Typography>

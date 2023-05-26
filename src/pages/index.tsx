@@ -3,7 +3,7 @@ import { motion, useMotionValue, useScroll } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import TextTemplate from '@/components/Home/TextTemplate';
-import Timeline from '../components/Home/Timeline';
+import Timeline from '../components/Home/Timeline/Timeline';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
@@ -95,6 +95,7 @@ export default function Home() {
     return (
         <div>
             <WelcomeSection />
+
             <div
                 style={{
                     backgroundColor: 'black',
@@ -228,17 +229,64 @@ export default function Home() {
                     color={color}
                 />
 
-                <TextTemplate
-                    name="Why us"
-                    title="Why to choose us?"
-                    content="AMC is dedicated to applying theoretical concepts in practical projects, promoting innovation and creativity among its members. By sponsoring the club, you would be supporting the development of cutting-edge technologies in aviation and engineering. 
-                By sponsoring AMC, you can help the club obtain the necessary resources to build and test their projects, and gain exposure to a community of talented and motivated students who are passionate about the field. Additionally, by investing in the education and development of the next generation of engineers and aviation professionals, you will be making a positive contribution to society while also potentially identifying future talent for your own organization.
-                "
-                    bgcolor={backgroundColor}
-                    breakPoint={breakPoint}
-                    titleColor={titleColor}
-                    color={color}
-                />
+                <Box
+                    width="100%"
+                    height="100vh"
+                    position="relative"
+                    textAlign="center"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Tilt
+                        options={options}
+                        style={{
+                            width: '50%',
+                            padding: breakPoint ? '40px' : '20px',
+                            borderRadius: '10px',
+                        }}
+                    >
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.7 }}
+                            transition={{
+                                duration: 0.6,
+                            }}
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: { opacity: 1 },
+                            }}
+                        >
+                            <Typography
+                                variant="h1"
+                                color={titleColor}
+                                fontSize={`${breakPoint ? '88px' : '48px'}`}
+                            >
+                                Why to choose us?
+                            </Typography>
+
+                            <br />
+                            <Typography
+                                variant="h3"
+                                lineHeight="2"
+                                color={color}
+                                margin="0 auto"
+                                fontSize={`${breakPoint ? '28px' : '18px'}`}
+                            >
+                                Sponsor AMC to fuel innovation and creativity.
+                                Your support drives cutting-edge aviation and
+                                engineering projects, empowering talented
+                                students.
+                                <br />
+                                <br />
+                                <b>Invest</b> in education, make an{' '}
+                                <b>impact</b>, and <b>connect</b> with future
+                                industry <b>leaders</b>.
+                            </Typography>
+                        </motion.div>
+                    </Tilt>
+                </Box>
 
                 <div
                     style={{

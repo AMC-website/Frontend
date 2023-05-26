@@ -40,16 +40,17 @@ function Navbar() {
                 padding="10px 5%"
                 width={breakPoint2 ? '70%' : '90%'}
                 marginX="auto"
-                color={theme.palette.secondary.main}
                 position="relative"
                 zIndex="10"
                 sx={{
-                    boxShadow: '0 8px 100px 0 rgba(255,255,255, 0.37 )',
+                    boxShadow: '0 20px 120px 0 rgba(255,255,255, 0.37 )',
                     '&:hover': {
                         boxShadow: '0',
                     },
+                    borderRadius: '10px',
+
                     transition:
-                        'box-shadow 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
+                        'box-shadow 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                 }}
             >
                 <Box

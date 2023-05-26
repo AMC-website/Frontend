@@ -33,6 +33,7 @@ function Footer() {
                     display: 'flex',
                     justifyContent: 'center',
                     flexDirection: 'column',
+                    position: 'relative',
                 }}
             >
                 <Box
@@ -40,7 +41,9 @@ function Footer() {
                         backgroundColor: theme.palette.primary.main,
                         width: '90%',
                         height: '1px',
-                        margin: '0 0 30px 0',
+                        position: 'absolute',
+                        top: '0',
+                        left: '5%',
                     }}
                 ></Box>
 
@@ -57,7 +60,7 @@ function Footer() {
                 >
                     <Box>
                         <Typography
-                            variant="h4"
+                            variant="h1"
                             style={{
                                 color: theme.palette.primary.main,
                                 paddingBottom: '20px',
@@ -83,7 +86,7 @@ function Footer() {
 
                     <Box>
                         <Typography
-                            variant="h4"
+                            variant="h1"
                             style={{
                                 color: theme.palette.primary.main,
                                 paddingBottom: '20px',
@@ -105,7 +108,9 @@ function Footer() {
                                 fontSize="20px"
                                 href="/projects"
                             >
-                                projects
+                                <Typography variant="h4" fontSize="20px">
+                                    Projects
+                                </Typography>
                             </Link>
 
                             <Link
@@ -113,7 +118,10 @@ function Footer() {
                                 fontSize="20px"
                                 href="/members"
                             >
-                                members
+                                <Typography variant="h4" fontSize="20px">
+                                    {' '}
+                                    Members
+                                </Typography>
                             </Link>
 
                             <Link
@@ -121,22 +129,23 @@ function Footer() {
                                 fontSize="20px"
                                 href="/events"
                             >
-                                events
+                                <Typography variant="h4" fontSize="20px">
+                                    {' '}
+                                    Events
+                                </Typography>
                             </Link>
 
-                            <Link
-                                underline="none"
-                                fontSize="20px"
-                                href="/about"
-                            >
-                                about
+                            <Link underline="none" href="/about">
+                                <Typography variant="h4" fontSize="20px">
+                                    About
+                                </Typography>
                             </Link>
                         </Box>
                     </Box>
 
                     <Box>
                         <Typography
-                            variant="h4"
+                            variant="h1"
                             style={{
                                 color: theme.palette.primary.main,
                                 paddingBottom: '20px',
@@ -154,7 +163,7 @@ function Footer() {
                             }}
                         >
                             <Typography
-                                variant="subtitle1"
+                                variant="h4"
                                 style={{
                                     fontSize: '20px',
                                 }}
@@ -162,7 +171,7 @@ function Footer() {
                                 Largos, Largo Santos 9, 1200-656 Lisboa
                             </Typography>
                             <Typography
-                                variant="subtitle1"
+                                variant="h4"
                                 style={{
                                     fontSize: '20px',
                                 }}
@@ -170,7 +179,7 @@ function Footer() {
                                 info@nunospace.com
                             </Typography>
                             <Typography
-                                variant="subtitle1"
+                                variant="h4"
                                 style={{
                                     fontSize: '20px',
                                 }}

@@ -1,5 +1,11 @@
 import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
-import { motion } from 'framer-motion';
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useViewportScroll,
+} from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 export default function WelcomeSection() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -24,19 +30,39 @@ export default function WelcomeSection() {
             },
         },
     };
+    // const [scrollY, setScrollY] = useState(0);
+
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         setScrollY(window.scrollY);
+    //     };
+
+    //     window.addEventListener('scroll', handleScroll);
+
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
+    const { scrollY } = useScroll();
+
+    const y2 = useTransform(scrollY, [0, 300], [0, -100]);
+    const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
 
     const line1 = 'Where ';
     const line2 = 'Engineering';
     const line3 = 'meets ';
     const line4 = 'Art';
     return (
-        <div
+        <motion.div
             style={{
                 height: '100vh',
+                top: y1,
                 width: '100vw',
                 position: 'relative',
                 display: 'flex',
                 justifyContent: 'center',
+                boxSizing: 'border-box',
+                transitionTimingFunction: 'step-start',
             }}
         >
             <img
@@ -50,13 +76,14 @@ export default function WelcomeSection() {
                     zIndex: -2,
                 }}
             />
+
             <div style={{ margin: '10% 0 0 0', textAlign: 'center' }}>
                 <motion.h3
                     variants={sentence}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    style={{ color: 'white' }}
+                    style={{ color: 'white', position: 'relative', top: y2 }}
                 >
                     {line1.split('').map((char, index) => (
                         <motion.span key={char + '-' + index} variants={letter}>
@@ -131,6 +158,6 @@ export default function WelcomeSection() {
                     ))}
                 </motion.h3>
             </div>
-        </div>
+        </motion.div>
     );
 }
