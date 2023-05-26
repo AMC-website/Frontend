@@ -11,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     return (
         <ThemeProvider theme={theme}>
-            <Cursor></Cursor>
+            <Cursor>
+                <></>
+            </Cursor>
             <Box position="relative" overflow="hidden">
                 {router.pathname !== '/' && (
                     <div
