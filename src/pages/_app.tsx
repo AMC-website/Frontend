@@ -28,16 +28,29 @@ export default function App({ Component, pageProps }: AppProps) {
                 )}
 
                 <Component {...pageProps} />
-                {router.pathname === 'events' ||
-                    ('members' && (
-                        <Box width="100%">
-                            <Footer
-                                color="white"
-                                titleColor={theme.palette.secondary.main}
-                                bgColor="black"
-                            />
-                        </Box>
-                    ))}
+
+                <Box width="100%">
+                    <Footer
+                        color={
+                            router.pathname === '/events' ||
+                            router.pathname === '/members'
+                                ? 'white'
+                                : 'black'
+                        }
+                        titleColor={
+                            router.pathname === '/events' ||
+                            router.pathname === '/members'
+                                ? theme.palette.secondary.main
+                                : 'black'
+                        }
+                        bgColor={
+                            router.pathname === '/events' ||
+                            router.pathname === '/members'
+                                ? 'black'
+                                : '#f0e4dc'
+                        }
+                    />
+                </Box>
             </Box>
         </ThemeProvider>
     );
