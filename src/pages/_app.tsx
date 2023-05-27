@@ -28,9 +28,16 @@ export default function App({ Component, pageProps }: AppProps) {
                 )}
 
                 <Component {...pageProps} />
-                <Box width="100%">
-                    <Footer />
-                </Box>
+                {router.pathname === 'events' ||
+                    ('members' && (
+                        <Box width="100%">
+                            <Footer
+                                color="white"
+                                titleColor={theme.palette.secondary.main}
+                                bgColor="black"
+                            />
+                        </Box>
+                    ))}
             </Box>
         </ThemeProvider>
     );

@@ -55,7 +55,7 @@ export default function TimelineElement({
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.7 }}
                         transition={{
-                            duration: 0.3,
+                            duration: 1,
                             type: 'spring',
                             ease: [0, 0.71, 0.2, 1.01],
                             damping: 50,

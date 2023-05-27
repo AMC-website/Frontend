@@ -14,7 +14,7 @@ import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
 import Tilt from '@/components/TiltComponent';
-
+import DroneSVG from '@/components/DroneSVG';
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
@@ -80,9 +80,6 @@ export default function Home() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-    const xMotionValue = useMotionValue(0);
-    const yMotionValue = useMotionValue(0);
 
     const options = {
         scale: 1.1,
@@ -244,6 +241,10 @@ export default function Home() {
                             width: '50%',
                             padding: breakPoint ? '40px' : '20px',
                             borderRadius: '10px',
+                            backdropFilter: 'blur(25px)',
+                            webkitBackdropFilter: 'blur( 4px )',
+                            position: 'relative',
+                            background: 'rgba(255,255,255,0.2)',
                         }}
                     >
                         <motion.div
@@ -280,8 +281,8 @@ export default function Home() {
                                 students.
                                 <br />
                                 <br />
-                                <b>Invest</b> in education, make an{' '}
-                                <b>impact</b>, and <b>connect</b> with future
+                                Invest in <b>education</b>, make an{' '}
+                                <b>impact</b>, and <b>connect with</b> future
                                 industry <b>leaders</b>.
                             </Typography>
                         </motion.div>

@@ -8,7 +8,13 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Email } from '@mui/icons-material';
 
-function Footer() {
+interface FooterProps {
+    bgColor?: string;
+    color?: string;
+    titleColor?: string;
+}
+
+function Footer({ color, bgColor, titleColor }: FooterProps) {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const [isOpen, setIsOpen] = useState(false);
     const theme = useTheme();
@@ -28,7 +34,7 @@ function Footer() {
         <>
             <Box
                 style={{
-                    backgroundColor: '#f0e4dc',
+                    backgroundColor: bgColor,
                     padding: '40px',
                     display: 'flex',
                     justifyContent: 'center',
@@ -38,7 +44,7 @@ function Footer() {
             >
                 <Box
                     style={{
-                        backgroundColor: theme.palette.primary.main,
+                        backgroundColor: color,
                         width: '90%',
                         height: '1px',
                         position: 'absolute',
@@ -62,7 +68,7 @@ function Footer() {
                         <Typography
                             variant="h1"
                             style={{
-                                color: theme.palette.primary.main,
+                                color: titleColor,
                                 paddingBottom: '20px',
                                 fontSize: '30px',
                             }}
@@ -76,6 +82,7 @@ function Footer() {
                                 fontSize: '40px',
                                 justifyContent: 'space-between',
                                 maxWidth: '40%',
+                                color: color,
                             }}
                         >
                             <FacebookIcon fontSize="inherit"></FacebookIcon>
@@ -88,7 +95,7 @@ function Footer() {
                         <Typography
                             variant="h1"
                             style={{
-                                color: theme.palette.primary.main,
+                                color: titleColor,
                                 paddingBottom: '20px',
                                 fontSize: '30px',
                             }}
@@ -107,6 +114,7 @@ function Footer() {
                                 underline="none"
                                 fontSize="20px"
                                 href="/projects"
+                                color={color}
                             >
                                 <Typography variant="h4" fontSize="20px">
                                     Projects
@@ -117,9 +125,9 @@ function Footer() {
                                 underline="none"
                                 fontSize="20px"
                                 href="/members"
+                                color={color}
                             >
                                 <Typography variant="h4" fontSize="20px">
-                                    {' '}
                                     Members
                                 </Typography>
                             </Link>
@@ -128,14 +136,19 @@ function Footer() {
                                 underline="none"
                                 fontSize="20px"
                                 href="/events"
+                                color={color}
                             >
                                 <Typography variant="h4" fontSize="20px">
-                                    {' '}
                                     Events
                                 </Typography>
                             </Link>
 
-                            <Link underline="none" href="/about">
+                            <Link
+                                underline="none"
+                                href="/about"
+                                fontSize="20px"
+                                color={color}
+                            >
                                 <Typography variant="h4" fontSize="20px">
                                     About
                                 </Typography>
@@ -147,7 +160,7 @@ function Footer() {
                         <Typography
                             variant="h1"
                             style={{
-                                color: theme.palette.primary.main,
+                                color: titleColor,
                                 paddingBottom: '20px',
                                 fontSize: '30px',
                             }}
@@ -160,6 +173,7 @@ function Footer() {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 flexDirection: 'column',
+                                color: color,
                             }}
                         >
                             <Typography
