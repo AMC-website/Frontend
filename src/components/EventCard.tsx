@@ -17,8 +17,6 @@ import ThreeDCard from '@/components/ThreeDCard';
 import Tilt from './TiltComponent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-
-
 export default function EventCard() {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -41,15 +39,14 @@ export default function EventCard() {
 
     return (
         <Box>
-          <Tilt
-                    options={options}
-                    style={{
-                        width: '100%',
-                        padding:  '10px',
-                        borderRadius: '10px',
-                    }}
-                >
-                <Card onClick={() => handleOpen()} sx={{  }}>
+            <Tilt
+                options={options}
+                style={{
+                    padding: '10px',
+                    borderRadius: '10px',
+                }}
+            >
+                <Card onClick={() => handleOpen()} sx={{}}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
