@@ -13,8 +13,9 @@ import WelcomeSection from '@/components/Home/WelcomeSection';
 import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
-import Tilt from '@/components/TiltComponent';
-import DroneSVG from '@/components/DroneSVG';
+import CustomTilt from '@/components/TiltComponent';
+import Tilt from 'react-parallax-tilt';
+
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
@@ -23,9 +24,9 @@ export default function Home() {
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-    const startPercentage = breakPoint2 ? 0.58 : 0.6;
-    const endPercentage = breakPoint2 ? 0.62 : 0.68;
-    const { scrollYProgress } = useScroll();
+    const [cardColor, setCardColor] = useState('');
+    const startPercentage = breakPoint2 ? 0.55 : 0.6;
+    const endPercentage = breakPoint2 ? 0.58 : 0.68;
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -50,28 +51,14 @@ export default function Home() {
                 { r: 0, g: 0, b: 0 },
                 setColor
             );
-        };
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 255, g: 255, b: 255 },
 
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const y = window.scrollY || window.pageYOffset;
-
-            const scale = breakPoint2 ? y * 0.00055 : y * 0.0003; // Adjust the scaling factor as needed
-
-            const boxElement2 = document.getElementById('boxElement2');
-
-            if (boxElement2) {
-                boxElement2.style.transition = 'transform 0.3s ease-out'; // Adjust the duration and easing as needed
-                // boxElement2.style.transform = `translateX(${newPosition2}px)`;
-                boxElement2.style.transform = `scale(${scale})`;
-            }
+                { r: 0, g: 0, b: 0 },
+                setCardColor
+            );
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -107,33 +94,27 @@ export default function Home() {
             <ParallaxImage></ParallaxImage>
 
             <Box
-                width="100%"
-                height="100vh"
-                position="relative"
                 bgcolor="black"
-                textAlign="center"
                 display="flex"
+                padding="150px 0"
                 justifyContent="center"
+                textAlign="center"
                 alignItems="center"
             >
                 <Tilt
-                    options={options}
-                    style={{
-                        width: '50%',
-                        padding: breakPoint ? '40px' : '20px',
-                        borderRadius: '10px',
-                    }}
+                    tiltEnable={false}
+                    glareEnable={true}
+                    glareMaxOpacity={0.4}
+                    glareColor="lightblue"
+                    glarePosition="all"
+                    glareBorderRadius="15px"
+                    gyroscope={true}
+                    trackOnWindow={true}
                 >
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: false, amount: 0.7 }}
-                        transition={{
-                            duration: 0.6,
-                        }}
-                        variants={{
-                            hidden: { opacity: 0 },
-                            visible: { opacity: 1 },
+                    <div
+                        style={{
+                            borderRadius: '15px',
+                            padding: '80px',
                         }}
                     >
                         <Typography
@@ -141,9 +122,8 @@ export default function Home() {
                             color={theme.palette.secondary.main}
                             fontSize={`${breakPoint ? '88px' : '48px'}`}
                         >
-                            Who are we?
+                            What do we do?
                         </Typography>
-
                         <br />
                         <Typography
                             variant="h3"
@@ -152,54 +132,17 @@ export default function Home() {
                             margin="0 auto"
                             fontSize={`${breakPoint ? '28px' : '18px'}`}
                         >
-                            We are a community of builders with a passion for
-                            aviation, fostering a culture of intellectual
-                            curiosity and collaborative ingenuity.
+                            {' '}
+                            We engineer airborne wonders, defying limits.
                         </Typography>
-                    </motion.div>
+                    </div>
                 </Tilt>
-            </Box>
-
-            <Box
-                width="100%"
-                height="120vh"
-                position="relative"
-                bgcolor="black"
-                textAlign="center"
-                zIndex="-1"
-            >
-                <Box
-                    position="absolute"
-                    top="50%"
-                    // right={y * 1.25 - 1500}
-                    id="boxElement2"
-                    width="50%"
-                    right="25%"
-                >
-                    <Typography
-                        variant="h1"
-                        color={theme.palette.secondary.main}
-                        fontSize={`${breakPoint ? '70px' : '48px'}`}
-                    >
-                        What do we do?
-                    </Typography>
-                    <br />
-                    <Typography
-                        variant="h3"
-                        lineHeight="2"
-                        color="white"
-                        margin="0 auto"
-                        fontSize={`${breakPoint ? '28px' : '18px'}`}
-                    >
-                        {' '}
-                        We engineer airborne wonders, defying limits.
-                    </Typography>
-                </Box>
             </Box>
 
             <CardHolder
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
+                // cardColor={cardColor}
             />
             <MovingText
                 color={titleColor}
@@ -236,15 +179,20 @@ export default function Home() {
                     alignItems="center"
                 >
                     <Tilt
-                        options={options}
+                        className="parallax-effect-img"
+                        tiltMaxAngleX={20}
+                        tiltMaxAngleY={20}
+                        perspective={800}
+                        transitionSpeed={1500}
+                        scale={1}
+                        gyroscope={true}
                         style={{
                             width: '50%',
                             padding: breakPoint ? '40px' : '20px',
                             borderRadius: '10px',
                             backdropFilter: 'blur(25px)',
-                            webkitBackdropFilter: 'blur( 4px )',
                             position: 'relative',
-                            background: 'rgba(255,255,255,0.2)',
+                            background: 'rgba(255,255,255,0.3)',
                         }}
                     >
                         <motion.div
@@ -305,9 +253,6 @@ export default function Home() {
                         width="100%"
                         alignItems="center"
                         textAlign={breakPoint ? 'left' : 'center'}
-                        sx={{
-                            backdropFilter: 'blur(15px)',
-                        }}
                     >
                         <Typography
                             variant="h1"

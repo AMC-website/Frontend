@@ -29,8 +29,13 @@ const CustomGrid = ({ children }: { children: React.ReactNode }) => {
 interface CardHolderProps {
     titleColor: string;
     backgroundColor: string;
+    cardColor?: string;
 }
-function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
+function CardHolder({
+    titleColor,
+    backgroundColor,
+    cardColor,
+}: CardHolderProps) {
     return (
         <Box
             color="white"
@@ -59,6 +64,7 @@ function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
                             }
                             title="Hands-on learning"
                             titleColor={titleColor}
+                            cardColor={cardColor}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -72,6 +78,7 @@ function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
                             }
                             title="Build-driven"
                             titleColor={titleColor}
+                            cardColor={cardColor}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -85,6 +92,7 @@ function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
                             }
                             title="Cutting-edge aviation"
                             titleColor={titleColor}
+                            cardColor={cardColor}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -98,6 +106,7 @@ function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
                             }
                             title="Inter-disciplinary"
                             titleColor={titleColor}
+                            cardColor={cardColor}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -111,6 +120,7 @@ function CardHolder({ titleColor, backgroundColor }: CardHolderProps) {
                             }
                             title="Collaborative"
                             titleColor={titleColor}
+                            cardColor={cardColor}
                         />
                     </CustomGrid>
                 </Grid>
