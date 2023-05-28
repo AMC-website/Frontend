@@ -14,6 +14,11 @@ import styles from '@/styles/events.module.css';
 import { useState } from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import ThreeDCard from '@/components/ThreeDCard';
+import Tilt from './TiltComponent';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
+
 export default function EventCard() {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -25,14 +30,30 @@ export default function EventCard() {
         setOpen(false);
     }
 
+    const options = {
+        scale: 1.1,
+        speed: 1000,
+        max: 10,
+        reverse: true,
+        glare: true,
+    };
+    const breakPoint2 = useMediaQuery('(min-width:1000px)');
+
     return (
         <Box>
-            <ThreeDCard>
-                <Card onClick={() => handleOpen()} sx={{ maxWidth: 345 }}>
+          <Tilt
+                    options={options}
+                    style={{
+                        width: '100%',
+                        padding:  '10px',
+                        borderRadius: '10px',
+                    }}
+                >
+                <Card onClick={() => handleOpen()} sx={{  }}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            height="140"
+                            height="240"
                             image="/image.jpg"
                             alt="green iguana"
                         />
@@ -42,12 +63,12 @@ export default function EventCard() {
                                 variant="h5"
                                 component="div"
                             >
-                                Lizard
+                                Events
                             </Typography>
                         </CardContent>
                     </CardActionArea>
                 </Card>
-            </ThreeDCard>
+            </Tilt>
 
             <Backdrop
                 sx={{

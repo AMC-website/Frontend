@@ -68,22 +68,22 @@ export const theme = createTheme({
     },
 
     typography: {
-        fontFamily: ['Poppins', 'sans-serif'].join(','),
+        fontFamily: ['Roobert', 'sans-serif'].join(','),
         fontSize: 11,
         h1: {
-            fontFamily: ['Darker Grotesque', 'sans-serif'].join(','),
+            
             fontSize: 48,
         },
         h2: {
-            fontFamily: ['Darker Grotesque', 'sans-serif'].join(','),
+           
             fontSize: 36,
         },
         h3: {
-            fontFamily: ['Poppins', 'sans-serif'].join(','),
+           
             fontSize: 18,
         },
         h4: {
-            fontFamily: ['Poppins', 'sans-serif'].join(','),
+            
             fontSize: 14,
         },
     },
