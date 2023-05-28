@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Email } from '@mui/icons-material';
+import { useRouter } from 'next/router';
 
 interface FooterProps {
     bgColor?: string;
@@ -14,7 +15,11 @@ interface FooterProps {
     titleColor?: string;
 }
 
+
+
 function Footer({ color, bgColor, titleColor }: FooterProps) {
+    const route = useRouter()
+
     const breakPoint = useMediaQuery('(min-width:600px)');
     const [isOpen, setIsOpen] = useState(false);
     const theme = useTheme();
@@ -27,8 +32,17 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
         '&:hover': {
             cursor: 'pointer',
         },
-        color: 'white',
+       
     };
+
+const iconStyles={
+    "&:hover":{
+        scale:'1.2',
+    },
+    transition:"300ms ease",
+    fontSize: '40px',
+    color: (route.pathname==='/events')? 'white':'black',
+};
 
     return (
         <>
@@ -40,7 +54,9 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                     justifyContent: 'center',
                     flexDirection: 'column',
                     position: 'relative',
+                   
                 }}
+            
             >
                 <Box
                     style={{
@@ -79,15 +95,17 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                             style={{
                                 display: 'flex',
                                 gap: '6px',
-                                fontSize: '40px',
+                                
                                 justifyContent: 'space-between',
                                 maxWidth: '40%',
                                 color: color,
                             }}
                         >
-                            <FacebookIcon fontSize="inherit"></FacebookIcon>
-                            <InstagramIcon fontSize="inherit"></InstagramIcon>
-                            <Email fontSize="inherit"></Email>
+                           <Link href='https://www.facebook.com/amc.iitbhu/'><FacebookIcon fontSize="inherit"  sx={iconStyles} ></FacebookIcon></Link> 
+                           <Link  href='/'><InstagramIcon fontSize="inherit" sx={iconStyles}></InstagramIcon></Link>   
+                           <Link href='/'><Email fontSize="inherit" sx={iconStyles}></Email></Link>  
+                       
+                       
                         </Box>
                     </Box>
 
