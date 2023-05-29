@@ -30,11 +30,13 @@ interface CardHolderProps {
     titleColor: string;
     backgroundColor: string;
     cardColor?: string;
+    color?: string;
 }
 function CardHolder({
     titleColor,
     backgroundColor,
     cardColor,
+    color,
 }: CardHolderProps) {
     return (
         <Box
@@ -65,6 +67,7 @@ function CardHolder({
                             title="Hands-on learning"
                             titleColor={titleColor}
                             cardColor={cardColor}
+                            color={color}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -79,6 +82,7 @@ function CardHolder({
                             title="Build-driven"
                             titleColor={titleColor}
                             cardColor={cardColor}
+                            color={color}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -93,6 +97,7 @@ function CardHolder({
                             title="Cutting-edge aviation"
                             titleColor={titleColor}
                             cardColor={cardColor}
+                            color={color}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -107,6 +112,7 @@ function CardHolder({
                             title="Inter-disciplinary"
                             titleColor={titleColor}
                             cardColor={cardColor}
+                            color={color}
                         />
                     </CustomGrid>
                     <CustomGrid>
@@ -121,6 +127,7 @@ function CardHolder({
                             title="Collaborative"
                             titleColor={titleColor}
                             cardColor={cardColor}
+                            color={color}
                         />
                     </CustomGrid>
                 </Grid>

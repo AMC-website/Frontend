@@ -25,8 +25,8 @@ export default function Home() {
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
     const [cardColor, setCardColor] = useState('');
-    const startPercentage = breakPoint2 ? 0.54 : 0.6;
-    const endPercentage = breakPoint2 ? 0.575 : 0.68;
+    const startPercentage = breakPoint2 ? 0.5 : 0.6;
+    const endPercentage = breakPoint2 ? 0.52 : 0.62;
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -115,6 +115,7 @@ export default function Home() {
             <CardHolder
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
+                color={color}
                 // cardColor={cardColor}
             />
             <MovingText

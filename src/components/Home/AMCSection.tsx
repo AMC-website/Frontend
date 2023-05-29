@@ -75,7 +75,7 @@ export default function AMCSection() {
         <motion.div
             style={{
                 display: 'flex',
-                justifyContent: 'space-between',
+                justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: breakPoint2 ? 'row' : 'column',
                 gap: breakPoint2 ? '30px' : '50px',
@@ -140,7 +140,7 @@ export default function AMCSection() {
                     </motion.div>
                 </Typography>
             </motion.div>
-            <motion.div
+            {/* <motion.div
                 viewport={{ once: false, amount: 0.7 }}
                 transition={{
                     duration: 0.8,
@@ -161,7 +161,7 @@ export default function AMCSection() {
                     fostering a culture of intellectual curiosity and
                     collaboration.
                 </Typography>
-            </motion.div>
+            </motion.div> */}
         </motion.div>
     );
 }

@@ -55,7 +55,7 @@ const CustomTimeline = ({ titleColor, color }: TimelineProps) => {
                 fontSize={breakPoint ? '48px' : '40px'}
                 color={titleColor}
                 textAlign="center"
-                margin="0 auto"
+                margin="70px auto"
                 width={breakPoint2 ? '45%' : '100%'}
                 position="relative"
             >
@@ -74,8 +74,7 @@ const CustomTimeline = ({ titleColor, color }: TimelineProps) => {
                     The journey
                 </Typography>
             </Typography>
-            <br />
-            <br />
+
             <Timeline position={breakPoint ? 'alternate' : 'right'}>
                 {timelineElements}
             </Timeline>
@@ -85,7 +84,7 @@ const CustomTimeline = ({ titleColor, color }: TimelineProps) => {
                 fontSize={breakPoint ? '48px' : '40px'}
                 color={titleColor}
                 textAlign="center"
-                margin="0 auto"
+                margin="70px auto"
                 width={breakPoint2 ? '45%' : '100%'}
                 position="relative"
             >

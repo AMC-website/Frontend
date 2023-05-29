@@ -146,6 +146,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 fontSize="20px"
                                 href="/projects"
                                 color={color}
+                                marginBottom="12px"
                             >
                                 <Typography variant="h4" fontSize="20px">
                                     Projects
@@ -157,6 +158,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 fontSize="20px"
                                 href="/events"
                                 color={color}
+                                marginBottom="12px"
                             >
                                 <Typography variant="h4" fontSize="20px">
                                     Events
@@ -168,6 +170,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 href="/about"
                                 fontSize="20px"
                                 color={color}
+                                marginBottom="12px"
                             >
                                 <Typography variant="h4" fontSize="20px">
                                     About
@@ -176,7 +179,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                         </Box>
                     </Box>
 
-                    <Box>
+                    <Box padding="0">
                         <Typography
                             variant="h1"
                             style={{
@@ -201,6 +204,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 style={{
                                     fontSize: '20px',
                                 }}
+                                marginBottom="20px"
                             >
                                 Largos, Largo Santos 9, 1200-656 Lisboa
                             </Typography>
@@ -209,6 +213,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 style={{
                                     fontSize: '20px',
                                 }}
+                                marginBottom="20px"
                             >
                                 info@nunospace.com
                             </Typography>
@@ -217,6 +222,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 style={{
                                     fontSize: '20px',
                                 }}
+                                marginBottom="20px"
                             >
                                 Call us
                             </Typography>
