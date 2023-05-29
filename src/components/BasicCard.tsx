@@ -10,11 +10,13 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import CustomTilt from './TiltComponent';
+import { color } from 'framer-motion';
 interface BasicCardProps {
     icon: JSX.Element;
     title: string;
     titleColor: string;
     cardColor?: string;
+    color?: string;
 }
 
 const bull = (
@@ -26,7 +28,13 @@ const bull = (
     </Box>
 );
 
-function BasicCard({ icon, title, titleColor, cardColor }: BasicCardProps) {
+function BasicCard({
+    icon,
+    title,
+    titleColor,
+    cardColor,
+    color,
+}: BasicCardProps) {
     const breakPoint = useMediaQuery('(min-width:600px)');
 
     const options = {
@@ -43,7 +51,10 @@ function BasicCard({ icon, title, titleColor, cardColor }: BasicCardProps) {
                 <Card
                     sx={{
                         width: 250,
-                        backgroundColor: cardColor || 'rgba(255,255,255,0.5)',
+                        backgroundColor: cardColor || 'transparent',
+                        borderStyle: 'solid',
+                        borderColor: color,
+                        borderWidth: '0.5px',
                     }}
                 >
                     <CardContent sx={{ padding: '0' }}>
@@ -63,7 +74,7 @@ function BasicCard({ icon, title, titleColor, cardColor }: BasicCardProps) {
                             <Typography
                                 variant="h2"
                                 fontSize={breakPoint ? '28px' : '18px'}
-                                color="black"
+                                color={color}
                             >
                                 {title}
                             </Typography>

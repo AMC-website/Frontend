@@ -16,8 +16,6 @@ import MovingText from '@/components/Home/MovingText';
 import CustomTilt from '@/components/TiltComponent';
 import Tilt from 'react-parallax-tilt';
 
-
-
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
@@ -27,8 +25,8 @@ export default function Home() {
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
     const [cardColor, setCardColor] = useState('');
-    const startPercentage = breakPoint2 ? 0.54 : 0.6;
-    const endPercentage = breakPoint2 ? 0.575 : 0.68;
+    const startPercentage = breakPoint2 ? 0.46 : 0.6;
+    const endPercentage = breakPoint2 ? 0.48 : 0.62;
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -75,11 +73,11 @@ export default function Home() {
         speed: 1000,
         max: 10,
         reverse: true,
-        glare: true
+        glare: true,
     };
 
     return (
-        <div  >
+        <div>
             <WelcomeSection />
 
             <Box
@@ -114,55 +112,10 @@ export default function Home() {
 
             <ParallaxImage></ParallaxImage>
 
-            <Box
-                bgcolor="black"
-                display="flex"
-                padding="150px 0"
-                justifyContent="center"
-                textAlign="center"
-                alignItems="center"
-            >
-                <Tilt
-                    tiltEnable={false}
-                    glareEnable={true}
-                    glareMaxOpacity={0.4}
-                    glareColor="lightblue"
-                    glarePosition="all"
-                    glareBorderRadius="15px"
-                    gyroscope={false}
-                    trackOnWindow={true}
-                >
-                    <div
-                        style={{
-                            borderRadius: '15px',
-                            padding: '80px',
-                        }}
-                    >
-                        <Typography
-                            variant="h1"
-                            color={theme.palette.secondary.main}
-                            fontSize={`${breakPoint ? '88px' : '48px'}`}
-                        >
-                            What do we do?
-                        </Typography>
-                        <br />
-                        <Typography
-                            variant="h3"
-                            lineHeight="2"
-                            color="white"
-                            margin="0 auto"
-                            fontSize={`${breakPoint ? '28px' : '18px'}`}
-                        >
-                            {' '}
-                            We engineer airborne wonders, defying limits.
-                        </Typography>
-                    </div>
-                </Tilt>
-            </Box>
-
             <CardHolder
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
+                color={color}
                 // cardColor={cardColor}
             />
             <MovingText
