@@ -79,11 +79,11 @@ export const theme = createTheme({
             fontSize: 36,
         },
         h3: {
-           
+            fontFamily: ['IBM Plex Sans', 'sans-serif'].join(','),
             fontSize: 18,
         },
         h4: {
-            
+            fontFamily: ['IBM Plex Sans', 'sans-serif'].join(','),
             fontSize: 14,
         },
     },
