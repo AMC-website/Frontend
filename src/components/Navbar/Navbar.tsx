@@ -7,15 +7,53 @@ import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import NavItem from './NavItem';
 
+function Path(props) {
+    return (
+        <motion.path
+            fill="transparent"
+            strokeWidth="2"
+            stroke="white"
+            strokeLinecap="round"
+            {...props}
+        ></motion.path>
+    );
+}
+
 function Navbar() {
     const breakPoint = useMediaQuery('(min-width:900px)');
     const breakPoint2 = useMediaQuery('(min-width:600px)');
+    const boxVariants = {
+        open: {
+            height: 'auto',
+            opacity: 1,
+            transition: {
+                type: 'spring',
+                damping: 20,
+                stiffness: 100,
+                duration: 0.3,
+            },
+        },
+        closed: {
+            height: 0,
+            opacity: breakPoint ? 1 : 0,
+            transition: {
+                type: 'spring',
+                damping: 20,
+                stiffness: 100,
+                duration: 0.3,
+            },
+        },
+    };
 
     const [isOpen, setIsOpen] = useState(false);
     const theme = useTheme();
 
     function handleClick() {
-        setIsOpen(!isOpen);
+        if (breakPoint) {
+            setIsOpen(false);
+        } else {
+            setIsOpen(!isOpen);
+        }
     }
 
     const [hoveredIndex, setHoveredIndex] = useState(-1);
@@ -52,6 +90,7 @@ function Navbar() {
                     transition:
                         'box-shadow 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                 }}
+                color={theme.palette.secondary.main}
             >
                 <Box
                     sx={{
@@ -77,7 +116,7 @@ function Navbar() {
                         alignItems: 'center',
                     }}
                 >
-                    <Link href="/">
+                    <Link href="/" style={{ display: 'inline-block' }}>
                         <img
                             src="logo.png"
                             alt="drone image"
@@ -89,17 +128,24 @@ function Navbar() {
                         />
                     </Link>
                 </div>
-                <Box
-                    display={breakPoint ? 'flex' : isOpen ? 'grid' : 'none'}
-                    gap="4px"
-                    position={breakPoint ? 'static' : 'absolute'}
-                    top="100%"
-                    left="0"
-                    width={`${breakPoint ? '55%' : '100%'}`}
-                    minHeight="100%"
-                    justifyContent={breakPoint ? 'space-between' : ''}
-                    alignItems={breakPoint ? 'center' : ''}
-                    padding="5px"
+                <div style={{ width: '50%' }}></div>
+                <motion.div
+                    style={{
+                        display: breakPoint ? 'flex' : isOpen ? 'grid' : 'none',
+                        gap: '4px',
+                        position: breakPoint ? 'static' : 'absolute',
+                        top: '100%',
+                        left: '0',
+                        width: breakPoint ? '55%' : '100%',
+                        minHeight: '100%',
+                        justifyContent: breakPoint ? 'space-between' : '',
+                        alignItems: breakPoint ? 'center' : '',
+                        padding: '5px',
+                        backgroundColor: breakPoint ? '' : 'black',
+                    }}
+                    initial={false}
+                    animate={isOpen ? 'open' : 'closed'}
+                    variants={boxVariants}
                 >
                     {pages.map((title, index) => {
                         return (
@@ -119,13 +165,35 @@ function Navbar() {
                             </span>
                         );
                     })}
-                </Box>
+                </motion.div>
                 <Box display={`${breakPoint ? `none` : `block`}`}>
-                    <CloseIcon
-                        onClick={() => {
-                            handleClick();
-                        }}
-                    />
+                    <Box sx={{ cursor: 'pointer' }} onClick={handleClick}>
+                        <svg width="23" height="23" viewBox="0 0 23 23">
+                            <Path
+                                variants={{
+                                    closed: { d: 'M 2 2.5 L 20 2.5' },
+                                    open: { d: 'M 3 16.5 L 17 2.5' },
+                                }}
+                                animate={isOpen ? 'open' : 'closed'}
+                            />
+                            <Path
+                                d="M 2 9.423 L 20 9.423"
+                                variants={{
+                                    closed: { opacity: 1 },
+                                    open: { opacity: 0 },
+                                }}
+                                animate={isOpen ? 'open' : 'closed'}
+                                transition={{ duration: 0.1 }}
+                            />
+                            <Path
+                                variants={{
+                                    closed: { d: 'M 2 16.346 L 20 16.346' },
+                                    open: { d: 'M 3 2.5 L 17 16.346' },
+                                }}
+                                animate={isOpen ? 'open' : 'closed'}
+                            />
+                        </svg>
+                    </Box>
                 </Box>
             </Box>
         </>

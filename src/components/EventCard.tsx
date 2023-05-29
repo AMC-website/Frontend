@@ -34,6 +34,7 @@ export default function EventCard() {
         max: 10,
         reverse: true,
         glare: true,
+        gyroscope: false,
     };
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
 

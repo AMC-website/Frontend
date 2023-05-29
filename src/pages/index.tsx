@@ -80,6 +80,25 @@ export default function Home() {
         <div>
             <WelcomeSection />
 
+            <Box
+                sx={{
+                    height: '100px' /* adjust based on your needs */,
+                    background: 'linear-gradient(to bottom, #4bb6fe, #000000)',
+                }}
+                position="relative"
+            >
+                <Box
+                    width="100%"
+                    height="110px"
+                    sx={{
+                        backdropFilter: 'blur(10px)',
+                    }}
+                    position="absolute"
+                    bottom="0"
+                    left="0"
+                ></Box>
+            </Box>
+
             <div
                 style={{
                     backgroundColor: 'black',
@@ -108,7 +127,7 @@ export default function Home() {
                     glareColor="lightblue"
                     glarePosition="all"
                     glareBorderRadius="15px"
-                    gyroscope={true}
+                    gyroscope={false}
                     trackOnWindow={true}
                 >
                     <div

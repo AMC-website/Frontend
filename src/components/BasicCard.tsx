@@ -34,6 +34,7 @@ function BasicCard({ icon, title, titleColor, cardColor }: BasicCardProps) {
         speed: 1000,
         max: 20,
         reverse: true,
+        gyroscope: false,
     };
 
     return (

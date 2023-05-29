@@ -152,17 +152,6 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                             <Link
                                 underline="none"
                                 fontSize="20px"
-                                href="/members"
-                                color={color}
-                            >
-                                <Typography variant="h4" fontSize="20px">
-                                    Members
-                                </Typography>
-                            </Link>
-
-                            <Link
-                                underline="none"
-                                fontSize="20px"
                                 href="/events"
                                 color={color}
                             >
