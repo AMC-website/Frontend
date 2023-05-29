@@ -27,6 +27,7 @@
         "react-dom": "18.2.0",
         "react-helmet": "^6.1.0",
         "react-intersection-observer": "^9.4.3",
+        "react-parallax-tilt": "^1.7.142",
         "react-type-animation": "^3.0.1",
         "react-vertical-timeline-component": "^3.6.0",
         "typescript": "4.9.5",

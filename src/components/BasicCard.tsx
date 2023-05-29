@@ -9,11 +9,12 @@ import VanillaTilt from 'vanilla-tilt';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
-import Tilt from './TiltComponent';
+import CustomTilt from './TiltComponent';
 interface BasicCardProps {
     icon: JSX.Element;
     title: string;
     titleColor: string;
+    cardColor?: string;
 }
 
 const bull = (
@@ -25,7 +26,7 @@ const bull = (
     </Box>
 );
 
-function BasicCard({ icon, title, titleColor }: BasicCardProps) {
+function BasicCard({ icon, title, titleColor, cardColor }: BasicCardProps) {
     const breakPoint = useMediaQuery('(min-width:600px)');
 
     const options = {
@@ -37,11 +38,11 @@ function BasicCard({ icon, title, titleColor }: BasicCardProps) {
 
     return (
         <>
-            <Tilt options={options}>
+            <CustomTilt options={options}>
                 <Card
                     sx={{
                         width: 250,
-                        backgroundColor: `white`,
+                        backgroundColor: cardColor || '#f0e4dc',
                     }}
                 >
                     <CardContent sx={{ padding: '0' }}>
@@ -68,7 +69,7 @@ function BasicCard({ icon, title, titleColor }: BasicCardProps) {
                         </div>
                     </CardContent>
                 </Card>
-            </Tilt>
+            </CustomTilt>
         </>
     );
 }

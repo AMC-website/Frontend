@@ -15,10 +15,8 @@ interface FooterProps {
     titleColor?: string;
 }
 
-
-
 function Footer({ color, bgColor, titleColor }: FooterProps) {
-    const route = useRouter()
+    const route = useRouter();
 
     const breakPoint = useMediaQuery('(min-width:600px)');
     const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +30,6 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
         '&:hover': {
             cursor: 'pointer',
         },
-       
     };
 
 const iconStyles={
@@ -54,9 +51,7 @@ const iconStyles={
                     justifyContent: 'center',
                     flexDirection: 'column',
                     position: 'relative',
-                   
                 }}
-            
             >
                 <Box
                     style={{
@@ -78,6 +73,8 @@ const iconStyles={
                         gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
                         flexDirection: 'column',
                         gap: '70px',
+                        width: '90%',
+                        margin: '0 auto',
                     }}
                 >
                     <Box>
@@ -95,17 +92,30 @@ const iconStyles={
                             style={{
                                 display: 'flex',
                                 gap: '6px',
-                                
+
                                 justifyContent: 'space-between',
                                 maxWidth: '40%',
                                 color: color,
                             }}
                         >
-                           <Link href='https://www.facebook.com/amc.iitbhu/'><FacebookIcon fontSize="inherit"  sx={iconStyles} ></FacebookIcon></Link> 
-                           <Link  href='/'><InstagramIcon fontSize="inherit" sx={iconStyles}></InstagramIcon></Link>   
-                           <Link href='/'><Email fontSize="inherit" sx={iconStyles}></Email></Link>  
-                       
-                       
+                            <Link href="https://www.facebook.com/amc.iitbhu/">
+                                <FacebookIcon
+                                    fontSize="inherit"
+                                    sx={iconStyles}
+                                ></FacebookIcon>
+                            </Link>
+                            <Link href="/">
+                                <InstagramIcon
+                                    fontSize="inherit"
+                                    sx={iconStyles}
+                                ></InstagramIcon>
+                            </Link>
+                            <Link href="/">
+                                <Email
+                                    fontSize="inherit"
+                                    sx={iconStyles}
+                                ></Email>
+                            </Link>
                         </Box>
                     </Box>
 

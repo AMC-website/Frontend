@@ -33,19 +33,19 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Footer
                         color={
                             router.pathname === '/events' ||
-                            router.pathname === '/members'
+                            router.pathname === '/about'
                                 ? 'white'
                                 : 'black'
                         }
                         titleColor={
                             router.pathname === '/events' ||
-                            router.pathname === '/members'
+                            router.pathname === '/about'
                                 ? theme.palette.secondary.main
                                 : 'black'
                         }
                         bgColor={
                             router.pathname === '/events' ||
-                            router.pathname === '/members'
+                            router.pathname === '/about'
                                 ? 'black'
                                 : '#f0e4dc'
                         }

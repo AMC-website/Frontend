@@ -28,7 +28,7 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ['Projects', 'Events', 'Members', 'About'];
+    const pages = ['Projects', 'Events', 'About'];
 
     return (
         <>
@@ -43,7 +43,7 @@ function Navbar() {
                 position="relative"
                 zIndex="10"
                 sx={{
-                    boxShadow: '0 20px 120px 0 rgba(255,255,255, 0.37 )',
+                    boxShadow: '0 2.5px 40px 0 rgba(255,255,255, 0.2 )',
                     '&:hover': {
                         boxShadow: '0',
                     },
@@ -67,26 +67,7 @@ function Navbar() {
                         background: 'rgba(255,255,255,0.075)',
                     }}
                 />
-                {/* <motion.div
-                    style={{
-                        height: '30%',
-                        width: '10%',
-                        backgroundColor: '#9acd32',
-                        zIndex: -10,
-                        position: 'absolute',
-                        top: '35%',
-                    }}
-                    animate={{
-                        left: ['5%', '85%'],
-                        width: ['6%', '10%', '6%'],
-                    }}
-                    transition={{
-                        duration: 7,
-                        ease: [0.4, 0, 0.6, 1],
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                    }}
-                /> */}
+
                 <div
                     style={{
                         height: '100%',
@@ -114,7 +95,7 @@ function Navbar() {
                     position={breakPoint ? 'static' : 'absolute'}
                     top="100%"
                     left="0"
-                    width={`${breakPoint ? '70%' : '100%'}`}
+                    width={`${breakPoint ? '55%' : '100%'}`}
                     minHeight="100%"
                     justifyContent={breakPoint ? 'space-between' : ''}
                     alignItems={breakPoint ? 'center' : ''}
