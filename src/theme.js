@@ -1,5 +1,10 @@
 import { createTheme } from '@mui/material/styles';
-// import Roobert from './fonts/Roobert-Regular.ttf';
+import localFont from '@next/font/local';
+const Roobert = localFont({
+    src: '../public/font/Roobert-Regular.ttf',
+    display: 'swap',
+  });
+
 
 export const shades = {
     pink: {
@@ -68,7 +73,7 @@ export const theme = createTheme({
     },
 
     typography: {
-        fontFamily: ['Roobert', 'sans-serif'].join(','),
+        fontFamily: [Roobert.style.fontFamily],
         fontSize: 11,
         h1: {
             
