@@ -38,7 +38,7 @@ const iconStyles={
     },
     transition:"300ms ease",
     fontSize: '40px',
-    color: (route.pathname===('/events'||'/about'))? 'white':'black',
+    color: (route.pathname==='/events'||route.pathname==='/about')? 'white':'black',
 };
 
     return (
