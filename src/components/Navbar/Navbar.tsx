@@ -1,11 +1,12 @@
 import { Box, Typography, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useState,useEffect,useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import NavItem from './NavItem';
+import { useRouter } from 'next/router';
 
 function Path(props) {
     return (
@@ -20,6 +21,25 @@ function Path(props) {
 }
 
 function Navbar() {
+    const route = useRouter()
+    const homeCondition = route.pathname==="/";
+    const [stickyClass, setStickyClass] = useState(false);
+    const ref = useRef(HTMLElement);
+
+  useEffect(() => {
+    window.addEventListener('scroll', stickNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', stickNavbar);
+    };
+  }, []);
+
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      windowHeight > 740 ? setStickyClass(true) : setStickyClass(false);
+    }
+  };
     const breakPoint = useMediaQuery('(min-width:900px)');
     const breakPoint2 = useMediaQuery('(min-width:600px)');
     const boxVariants = {
@@ -71,15 +91,17 @@ function Navbar() {
     return (
         <>
             <Box
-                height="10vh"
+            ref={ref}
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
                 padding="10px 5%"
-                width={breakPoint2 ? '70%' : '90%'}
+                width={homeCondition?(breakPoint2 ? (stickyClass ?'90%':'70%') : (stickyClass ?'100%':'90%')):"90%"}
                 marginX="auto"
-                position="relative"
-                zIndex="10"
+                position=  { homeCondition? (stickyClass? "fixed":"relative"):"fixed" }
+                top={0}
+                
+                zIndex="50"
                 sx={{
                     boxShadow: '0 2.5px 40px 0 rgba(255,255,255, 0.2 )',
                     '&:hover': {
@@ -91,13 +113,13 @@ function Navbar() {
                         'box-shadow 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                 }}
                 color={theme.palette.secondary.main}
+                bgcolor={"black"}
             >
                 <Box
                     sx={{
                         backdropFilter: 'blur(25px)',
                         position: 'absolute',
                         top: 0,
-                        left: 0,
                         right: 0,
                         bottom: 0,
                         zIndex: -1,
