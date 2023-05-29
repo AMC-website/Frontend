@@ -79,7 +79,7 @@ export default function AMCSection() {
                 alignItems: 'center',
                 flexDirection: breakPoint2 ? 'row' : 'column',
                 gap: breakPoint2 ? '30px' : '50px',
-                padding: '75px 100px',
+                padding: '130px 100px',
                 backgroundColor: 'rgba(0,0,0)',
                 position: 'relative',
             }}

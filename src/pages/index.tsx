@@ -112,52 +112,6 @@ export default function Home() {
 
             <ParallaxImage></ParallaxImage>
 
-            <Box
-                bgcolor="black"
-                display="flex"
-                padding="150px 0"
-                justifyContent="center"
-                textAlign="center"
-                alignItems="center"
-            >
-                <Tilt
-                    tiltEnable={false}
-                    glareEnable={true}
-                    glareMaxOpacity={0.4}
-                    glareColor="lightblue"
-                    glarePosition="all"
-                    glareBorderRadius="15px"
-                    gyroscope={false}
-                    trackOnWindow={true}
-                >
-                    <div
-                        style={{
-                            borderRadius: '15px',
-                            padding: '80px',
-                        }}
-                    >
-                        <Typography
-                            variant="h1"
-                            color={theme.palette.secondary.main}
-                            fontSize={`${breakPoint ? '88px' : '48px'}`}
-                        >
-                            What do we do?
-                        </Typography>
-                        <br />
-                        <Typography
-                            variant="h3"
-                            lineHeight="2"
-                            color="white"
-                            margin="0 auto"
-                            fontSize={`${breakPoint ? '28px' : '18px'}`}
-                        >
-                            {' '}
-                            We engineer airborne wonders, defying limits.
-                        </Typography>
-                    </div>
-                </Tilt>
-            </Box>
-
             <CardHolder
                 titleColor={titleColor}
                 backgroundColor={backgroundColor}
