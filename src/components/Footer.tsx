@@ -41,7 +41,7 @@ const iconStyles={
     },
     transition:"300ms ease",
     fontSize: '40px',
-    color: (route.pathname==='/events')? 'white':'black',
+    color: (route.pathname===('/events'||'/about'))? 'white':'black',
 };
 
     return (
