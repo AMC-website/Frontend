@@ -16,8 +16,6 @@ import MovingText from '@/components/Home/MovingText';
 import CustomTilt from '@/components/TiltComponent';
 import Tilt from 'react-parallax-tilt';
 
-
-
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
@@ -27,8 +25,8 @@ export default function Home() {
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
     const [cardColor, setCardColor] = useState('');
-    const startPercentage = breakPoint2 ? 0.5 : 0.6;
-    const endPercentage = breakPoint2 ? 0.52 : 0.62;
+    const startPercentage = breakPoint2 ? 0.46 : 0.6;
+    const endPercentage = breakPoint2 ? 0.48 : 0.62;
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -75,11 +73,11 @@ export default function Home() {
         speed: 1000,
         max: 10,
         reverse: true,
-        glare: true
+        glare: true,
     };
 
     return (
-        <div  >
+        <div>
             <WelcomeSection />
 
             <Box

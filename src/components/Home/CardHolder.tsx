@@ -54,7 +54,12 @@ function CardHolder({
                 </Typography>
             </div>
             <div>
-                <Grid container spacing={4} display="flex">
+                <Grid
+                    container
+                    spacing={4}
+                    display="flex"
+                    justifyContent="center"
+                >
                     <CustomGrid>
                         <BasicCard
                             icon={
