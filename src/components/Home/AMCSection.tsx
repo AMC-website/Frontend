@@ -18,7 +18,7 @@ export default function AMCSection() {
             opacity: 1,
             transition: {
                 delay: 1,
-                staggerChildren: 3.3, // Adjust the stagger delay as needed
+                staggerChildren: 1.7, // Adjust the stagger delay as needed
             },
         },
     };
@@ -31,23 +31,12 @@ export default function AMCSection() {
             opacity: 1,
             transition: {
                 delay: 2,
-                staggerChildren: 0.8,
+                staggerChildren: 0.4,
                 // Adjust the stagger delay as needed
             },
         },
     };
 
-    const amcText1 = {
-        hidden: {
-            opacity: 0,
-
-            y: '-200%',
-        },
-        show: {
-            y: 0,
-            opacity: 1,
-        },
-    };
     const amcText2 = {
         hidden: {
             opacity: 0,

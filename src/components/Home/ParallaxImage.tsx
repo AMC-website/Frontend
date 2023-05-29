@@ -17,6 +17,7 @@ export default function ParallaxImage() {
             },
         },
     };
+
     const letter = {
         hidden: { opacity: 0, y: 50 },
         visible: {

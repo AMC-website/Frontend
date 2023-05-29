@@ -3,7 +3,6 @@ import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
 import { motion, useMotionValue } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import changeColorOnScroll from '@/components/ChangeColorOnScroll';
-import Tilt from '@/components/TiltComponent';
 
 const CustomGrid = ({ children }: { children: React.ReactNode }) => {
     return (

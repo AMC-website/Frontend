@@ -78,13 +78,19 @@ const CustomTimeline = ({ titleColor, color }: TimelineProps) => {
             <br />
             <Timeline position={breakPoint ? 'alternate' : 'right'}>
                 {timelineElements}
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot color="primary" />
-                    </TimelineSeparator>
-                    <TimelineContent></TimelineContent>
-                </TimelineItem>
             </Timeline>
+            <br />
+            <Typography
+                variant="h1"
+                fontSize={breakPoint ? '48px' : '40px'}
+                color={titleColor}
+                textAlign="center"
+                margin="0 auto"
+                width={breakPoint2 ? '45%' : '100%'}
+                position="relative"
+            >
+                Today <br />
+            </Typography>
         </>
     );
 };

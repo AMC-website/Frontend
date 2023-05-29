@@ -32,14 +32,17 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
         },
     };
 
-const iconStyles={
-    "&:hover":{
-        scale:'1.2',
-    },
-    transition:"300ms ease",
-    fontSize: '40px',
-    color: (route.pathname==='/events'||route.pathname==='/about')? 'white':'black',
-};
+    const iconStyles = {
+        '&:hover': {
+            scale: '1.2',
+        },
+        transition: '300ms ease',
+        fontSize: '40px',
+        color:
+            route.pathname === '/events' || route.pathname === '/about'
+                ? 'white'
+                : 'black',
+    };
 
     return (
         <>
@@ -146,17 +149,6 @@ const iconStyles={
                             >
                                 <Typography variant="h4" fontSize="20px">
                                     Projects
-                                </Typography>
-                            </Link>
-
-                            <Link
-                                underline="none"
-                                fontSize="20px"
-                                href="/members"
-                                color={color}
-                            >
-                                <Typography variant="h4" fontSize="20px">
-                                    Members
                                 </Typography>
                             </Link>
 

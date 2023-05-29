@@ -70,6 +70,8 @@ export default function MovingText({
                             color: color ? color : 'white',
                             textAlign: 'justify',
                             whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                            WebkitTextStroke: `1.5px ${color}`,
                         }}
                     >
                         Engineer · Build · Fly · Engineer · Build · Fly ·
@@ -92,9 +94,11 @@ export default function MovingText({
                         sx={{
                             lineHeight: '103px',
                             fontSize: fontSize ? fontSize : '65px',
-                            color: color ? color : 'white',
+                            color: 'rgba(0,0,0,0)',
+                            fontWeight: 'thin',
                             whiteSpace: 'nowrap',
                             textAlign: 'justify',
+                            WebkitTextStroke: `1.5px ${color}`,
                         }}
                         variant="body1"
                     >
