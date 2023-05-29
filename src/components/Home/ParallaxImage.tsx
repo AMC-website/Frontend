@@ -52,7 +52,7 @@ export default function ParallaxImage() {
     return (
         <Box
             sx={{
-                height: '300vh',
+                height: '180vh',
                 backgroundColor: 'black',
                 boxSizing: 'border-box',
                 position: 'relative',
