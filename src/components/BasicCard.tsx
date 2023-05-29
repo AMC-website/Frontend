@@ -43,7 +43,7 @@ function BasicCard({ icon, title, titleColor, cardColor }: BasicCardProps) {
                 <Card
                     sx={{
                         width: 250,
-                        backgroundColor: cardColor || '#f0e4dc',
+                        backgroundColor: cardColor || 'rgba(255,255,255,0.5)',
                     }}
                 >
                     <CardContent sx={{ padding: '0' }}>

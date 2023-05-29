@@ -25,8 +25,8 @@ export default function Home() {
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
     const [cardColor, setCardColor] = useState('');
-    const startPercentage = breakPoint2 ? 0.55 : 0.6;
-    const endPercentage = breakPoint2 ? 0.58 : 0.68;
+    const startPercentage = breakPoint2 ? 0.54 : 0.6;
+    const endPercentage = breakPoint2 ? 0.575 : 0.68;
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -190,7 +190,7 @@ export default function Home() {
 
                 <Box
                     width="100%"
-                    height="100vh"
+                    height="auto"
                     position="relative"
                     textAlign="center"
                     display="flex"

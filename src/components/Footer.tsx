@@ -32,14 +32,17 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
         },
     };
 
-const iconStyles={
-    "&:hover":{
-        scale:'1.2',
-    },
-    transition:"300ms ease",
-    fontSize: '40px',
-    color: (route.pathname==='/events'||route.pathname==='/about')? 'white':'black',
-};
+    const iconStyles = {
+        '&:hover': {
+            scale: '1.2',
+        },
+        transition: '300ms ease',
+        fontSize: '40px',
+        color:
+            route.pathname === '/events' || route.pathname === '/about'
+                ? 'white'
+                : 'black',
+    };
 
     return (
         <>
