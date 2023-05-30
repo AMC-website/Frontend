@@ -1,14 +1,12 @@
-import { Box, Typography, Link } from '@mui/material';
+import { Box, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import CloseIcon from '@mui/icons-material/Close';
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import dynamic from 'next/dynamic';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import NavItem from './NavItem';
+import changeColorOnScroll from '../ChangeColorOnScroll';
 import { useRouter } from 'next/router';
-import { useInView } from 'react-intersection-observer';
-import { useAnimation } from 'framer-motion';
 
 function Path(props) {
     return (
@@ -22,16 +20,44 @@ function Path(props) {
     );
 }
 
-interface NavbarProps {
-    color: string;
-    backgroundColor: string;
-}
-
-function Navbar({ color, backgroundColor }: NavbarProps) {
+function Navbar() {
     const [sticky, setSticky] = useState(false);
     const navbarRef = useRef<HTMLElement | null>(null);
     const [navbarOffsetTop, setNavbarOffsetTop] = useState(0);
     const [navbarHeight, setNavbarHeight] = useState(0);
+    const breakPoint3 = useMediaQuery('(min-width:950px)');
+    const router = useRouter();
+    const isAbout = router.pathname === '/about';
+    const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
+    const [color, setColor] = useState('rgb(255, 255, 255)');
+    const startPercentage = isAbout ? 0.66 : breakPoint3 ? 0.42 : 0.6;
+    const endPercentage = isAbout ? 0.67 : breakPoint3 ? 0.44 : 0.62;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 154, g: 205, b: 50 },
+                { r: 0, g: 0, b: 0 },
+                setTitleColor
+            );
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 255, g: 255, b: 255 },
+
+                { r: 0, g: 0, b: 0 },
+                setColor
+            );
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         if (navbarRef.current) {
@@ -56,7 +82,6 @@ function Navbar({ color, backgroundColor }: NavbarProps) {
     }, [navbarOffsetTop]);
 
     const breakPoint = useMediaQuery('(min-width:900px)');
-    const breakPoint2 = useMediaQuery('(min-width:600px)');
     const boxVariants = {
         open: {
             height: 'auto',
@@ -136,7 +161,6 @@ function Navbar({ color, backgroundColor }: NavbarProps) {
                     transition:
                         'box-shadow 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                 }}
-                color={theme.palette.secondary.main}
             >
                 <div
                     style={{
@@ -172,7 +196,8 @@ function Navbar({ color, backgroundColor }: NavbarProps) {
                         justifyContent: breakPoint ? 'space-between' : '',
                         alignItems: breakPoint ? 'center' : '',
                         padding: '5px',
-                        backgroundColor: breakPoint ? '' : 'black',
+                        backgroundColor: breakPoint ? '' : 'rgba(0,0,0,0.02)',
+                        backdropFilter: breakPoint ? '' : 'blur(25px)',
                     }}
                     initial={false}
                     animate={isOpen ? 'open' : 'closed'}
@@ -192,8 +217,16 @@ function Navbar({ color, backgroundColor }: NavbarProps) {
                                         index !== hoveredIndex &&
                                         hoveredIndex !== -1
                                     }
-                                    color={color}
-                                    backgroundColor={backgroundColor}
+                                    color={
+                                        router.pathname === '/events'
+                                            ? 'white'
+                                            : color
+                                    }
+                                    backgroundColor={
+                                        router.pathname === '/events'
+                                            ? theme.palette.secondary.main
+                                            : titleColor
+                                    }
                                 />
                             </span>
                         );

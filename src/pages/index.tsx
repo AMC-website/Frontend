@@ -2,7 +2,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion, useMotionValue, useScroll } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import TextTemplate from '@/components/Home/TextTemplate';
 import Timeline from '../components/Home/Timeline/Timeline';
 import { useState, useEffect } from 'react';
 import React from 'react';
@@ -13,12 +12,50 @@ import WelcomeSection from '@/components/Home/WelcomeSection';
 import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
-import CustomTilt from '@/components/TiltComponent';
 import Tilt from 'react-parallax-tilt';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
+
+    const theme = useTheme();
+    const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
+    const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
+    const [color, setColor] = useState('rgb(255, 255, 255)');
+    const startPercentage = breakPoint2 ? 0.39 : 0.6;
+    const endPercentage = breakPoint2 ? 0.4 : 0.62;
+    useEffect(() => {
+        const handleScroll = () => {
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 0, g: 0, b: 0 },
+                { r: 240, g: 228, b: 220 },
+                setBackgroundColor
+            );
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 154, g: 205, b: 50 },
+                { r: 0, g: 0, b: 0 },
+                setTitleColor
+            );
+            changeColorOnScroll(
+                startPercentage,
+                endPercentage,
+                { r: 255, g: 255, b: 255 },
+
+                { r: 0, g: 0, b: 0 },
+                setColor
+            );
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     const imgContainer = {
         hidden: {
             opacity: 1,
@@ -44,62 +81,6 @@ export default function Home() {
             x: 0,
             opacity: 1,
         },
-    };
-
-    const theme = useTheme();
-    const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
-    const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
-    const [color, setColor] = useState('rgb(255, 255, 255)');
-    const [cardColor, setCardColor] = useState('');
-    const startPercentage = breakPoint2 ? 0.42 : 0.6;
-    const endPercentage = breakPoint2 ? 0.44 : 0.62;
-    useEffect(() => {
-        const handleScroll = () => {
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 0, g: 0, b: 0 },
-                { r: 240, g: 228, b: 220 },
-                setBackgroundColor
-            );
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 154, g: 205, b: 50 },
-                { r: 0, g: 0, b: 0 },
-                setTitleColor
-            );
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 255, g: 255, b: 255 },
-
-                { r: 0, g: 0, b: 0 },
-                setColor
-            );
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 255, g: 255, b: 255 },
-
-                { r: 0, g: 0, b: 0 },
-                setCardColor
-            );
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const options = {
-        scale: 1.1,
-        speed: 1000,
-        max: 10,
-        reverse: true,
-        glare: true,
     };
 
     return (
@@ -131,7 +112,7 @@ export default function Home() {
                     padding: '20px 0',
                 }}
             >
-                <Navbar color={color} backgroundColor={titleColor} />
+                <Navbar />
             </div>
             <AMCSection />
 
@@ -159,15 +140,6 @@ export default function Home() {
             </div>
 
             <div style={{ backgroundColor: '#f0e4dc' }}>
-                <TextTemplate
-                    name="Sponsors"
-                    title="Sponsors"
-                    breakPoint={breakPoint}
-                    bgcolor={backgroundColor}
-                    titleColor={titleColor}
-                    color={color}
-                />
-
                 <Box
                     height="auto"
                     position="relative"

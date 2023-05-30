@@ -1,6 +1,5 @@
 import { Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
-import { useTheme } from '@mui/material/styles';
 
 interface NavItemProps {
     isHovered: boolean;
@@ -17,7 +16,6 @@ function NavItem({
     color,
     backgroundColor,
 }: NavItemProps) {
-    const theme = useTheme();
     const linkStyles = {
         textDecoration: 'none',
         '&:hover': {

@@ -38,7 +38,7 @@ export default function MovingText({
                 justifyContent: 'center',
                 textAlign: 'center',
                 flexDirection: 'column',
-                zIndex: 50,
+                zIndex: 40,
                 background: bgColor,
             }}
         >

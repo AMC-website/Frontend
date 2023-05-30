@@ -1,13 +1,11 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion } from 'framer-motion';
 import Text from './Text';
-import { useTheme } from '@mui/material/styles';
 
 export default function AMCSection() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:950px)');
-
     const theme = useTheme();
 
     const container = {
@@ -45,14 +43,6 @@ export default function AMCSection() {
         },
         show: {
             y: 0,
-            opacity: 1,
-        },
-    };
-    const amcText3 = {
-        hidden: {
-            opacity: 0,
-        },
-        show: {
             opacity: 1,
         },
     };
@@ -128,7 +118,7 @@ export default function AMCSection() {
                         <Text word="club" />
                     </motion.div>
                     <motion.div
-                        style={{ marginTop: '24px' }}
+                        style={{ marginTop: '24px', marginBottom: '40px' }}
                         variants={bhuText}
                     >
                         <Typography
@@ -142,6 +132,40 @@ export default function AMCSection() {
                             IIT (BHU), Varanasi
                         </Typography>
                     </motion.div>
+
+                    <Link
+                        href="mailto:someone@yoursite.com"
+                        sx={{
+                            textDecoration: 'none',
+                            '&:hover': {
+                                cursor: 'pointer',
+                            },
+                        }}
+                    >
+                        <Typography
+                            variant="h3"
+                            fontSize="20px"
+                            borderRadius="500px"
+                            padding="12px"
+                            sx={{
+                                borderStyle: 'solid',
+                                borderColor: 'rgba(255,255,255,1)',
+                                borderWidth: '2px',
+                                color: 'rgba(255,255,255,1)',
+                                backgroundColor: 'transparent',
+                                '&:hover': {
+                                    color: 'black',
+                                    backgroundColor:
+                                        theme.palette.secondary.main,
+                                    borderColor: theme.palette.secondary.main,
+                                },
+                                transition:
+                                    '0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
+                            }}
+                        >
+                            Contact us
+                        </Typography>
+                    </Link>
                 </Typography>
             </motion.div>
         </motion.div>
