@@ -19,14 +19,40 @@ import Tilt from 'react-parallax-tilt';
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
+    const imgContainer = {
+        hidden: {
+            opacity: 1,
+        },
+        show: {
+            opacity: 1,
+            transition: {
+                delay: 2,
+                staggerChildren: 0.4,
+                staggerDirection: -1,
+                // Adjust the stagger delay as needed
+            },
+        },
+    };
+
+    const img = {
+        hidden: {
+            opacity: 0,
+
+            x: '-200%',
+        },
+        show: {
+            x: 0,
+            opacity: 1,
+        },
+    };
 
     const theme = useTheme();
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
     const [cardColor, setCardColor] = useState('');
-    const startPercentage = breakPoint2 ? 0.46 : 0.6;
-    const endPercentage = breakPoint2 ? 0.48 : 0.62;
+    const startPercentage = breakPoint2 ? 0.42 : 0.6;
+    const endPercentage = breakPoint2 ? 0.44 : 0.62;
     useEffect(() => {
         const handleScroll = () => {
             changeColorOnScroll(
@@ -102,11 +128,10 @@ export default function Home() {
             <div
                 style={{
                     backgroundColor: 'black',
-                    width: '100%',
                     padding: '20px 0',
                 }}
             >
-                <Navbar />
+                <Navbar color={color} backgroundColor={titleColor} />
             </div>
             <AMCSection />
 
@@ -144,69 +169,118 @@ export default function Home() {
                 />
 
                 <Box
-                    width="100%"
                     height="auto"
                     position="relative"
-                    textAlign="center"
+                    textAlign="left"
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
                 >
                     <Tilt
-                        className="parallax-effect-img"
-                        tiltMaxAngleX={20}
-                        tiltMaxAngleY={20}
-                        perspective={800}
-                        transitionSpeed={1500}
+                        tiltMaxAngleX={5}
+                        tiltMaxAngleY={5}
+                        perspective={1750}
+                        transitionSpeed={2500}
                         scale={1}
                         gyroscope={true}
                         style={{
-                            width: '50%',
                             padding: breakPoint ? '40px' : '20px',
                             borderRadius: '10px',
                             backdropFilter: 'blur(25px)',
                             position: 'relative',
                             background: 'rgba(255,255,255,0.3)',
+                            width: '90%',
                         }}
                     >
                         <motion.div
+                            variants={imgContainer}
+                            viewport={{ once: false, amount: 0.5 }}
                             initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: false, amount: 0.7 }}
-                            transition={{
-                                duration: 0.6,
-                            }}
-                            variants={{
-                                hidden: { opacity: 0 },
-                                visible: { opacity: 1 },
+                            whileInView="show"
+                            style={{
+                                display: 'flex',
+                                gap: '30px',
+                                justifyContent: 'space-between',
+                                flexDirection: breakPoint2 ? 'row' : 'column',
+                                width: '100%',
                             }}
                         >
-                            <Typography
-                                variant="h1"
-                                color={titleColor}
-                                fontSize={`${breakPoint ? '88px' : '48px'}`}
+                            <motion.div
+                                variants={{
+                                    hidden: { opacity: 0 },
+                                    show: {
+                                        opacity: 1,
+                                        transition: {
+                                            delay: 1,
+                                            duration: 0.6,
+                                        },
+                                    },
+                                }}
+                                style={{
+                                    width: breakPoint2 ? '60%' : 'auto',
+                                }}
                             >
-                                Why to choose us?
-                            </Typography>
+                                <Typography
+                                    variant="h1"
+                                    color={titleColor}
+                                    fontSize={`${breakPoint ? '88px' : '48px'}`}
+                                >
+                                    Why us?
+                                </Typography>
 
-                            <br />
-                            <Typography
-                                variant="h3"
-                                lineHeight="2"
-                                color={color}
-                                margin="0 auto"
-                                fontSize={`${breakPoint ? '28px' : '18px'}`}
+                                <br />
+                                <Typography
+                                    variant="h3"
+                                    lineHeight="2"
+                                    color={color}
+                                    margin="0 auto"
+                                    fontSize={`${breakPoint ? '28px' : '18px'}`}
+                                >
+                                    Sponsor AMC to fuel innovation and
+                                    creativity. Your support drives cutting-edge
+                                    aviation and engineering projects,
+                                    empowering talented students.
+                                    <br />
+                                    <br />
+                                    Invest in <b>education</b>, make an{' '}
+                                    <b>impact</b>, and <b>connect with</b>{' '}
+                                    future industry <b>leaders</b>.
+                                </Typography>
+                            </motion.div>
+                            <motion.div
+                                style={{
+                                    width: breakPoint2 ? '30%' : '100%',
+                                    display: 'flex',
+                                    flexDirection: breakPoint2
+                                        ? 'column'
+                                        : 'row',
+                                    justifyContent: 'space-between',
+                                }}
+                                variants={imgContainer}
                             >
-                                Sponsor AMC to fuel innovation and creativity.
-                                Your support drives cutting-edge aviation and
-                                engineering projects, empowering talented
-                                students.
-                                <br />
-                                <br />
-                                Invest in <b>education</b>, make an{' '}
-                                <b>impact</b>, and <b>connect with</b> future
-                                industry <b>leaders</b>.
-                            </Typography>
+                                <motion.img
+                                    src="flight1.jpg"
+                                    alt="drone image"
+                                    variants={img}
+                                    style={{
+                                        objectFit: 'cover',
+                                        height: breakPoint2 ? '48%' : '100%',
+                                        width: breakPoint2 ? '100%' : '48%',
+                                        borderRadius: '5px',
+                                    }}
+                                />
+                                <motion.img
+                                    src="flight2.jpg"
+                                    alt="drone image"
+                                    variants={img}
+                                    style={{
+                                        objectFit: 'cover',
+                                        height: breakPoint2 ? '48%' : '100%',
+                                        width: breakPoint2 ? '100%' : '48%',
+                                        borderRadius: '5px',
+                                    }}
+                                />
+                            </motion.div>
                         </motion.div>
                     </Tilt>
                 </Box>

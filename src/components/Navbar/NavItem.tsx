@@ -2,22 +2,29 @@ import { Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 
-const linkStyles = {
-    textDecoration: 'none',
-    '&:hover': {
-        cursor: 'pointer',
-    },
-    color: 'white',
-};
-
 interface NavItemProps {
     isHovered: boolean;
     title: string;
     onSomethingElse: boolean;
+    color?: string;
+    backgroundColor?: string;
 }
 
-function NavItem({ isHovered, title, onSomethingElse }: NavItemProps) {
+function NavItem({
+    isHovered,
+    title,
+    onSomethingElse,
+    color,
+    backgroundColor,
+}: NavItemProps) {
     const theme = useTheme();
+    const linkStyles = {
+        textDecoration: 'none',
+        '&:hover': {
+            cursor: 'pointer',
+        },
+        color: color,
+    };
 
     return (
         <span
@@ -36,7 +43,7 @@ function NavItem({ isHovered, title, onSomethingElse }: NavItemProps) {
                     left: 0,
                     bottom: 0,
                     height: 1,
-                    backgroundColor: theme.palette.secondary.main,
+                    backgroundColor: backgroundColor,
                 }}
             />{' '}
             <Link

@@ -84,7 +84,7 @@ export default function TimelineElement({
                         {title}
                     </Typography>
                     <br />
-                    <Typography variant="h4" textAlign="left" color={color}>
+                    <Typography variant="h4" textAlign="left" color="black">
                         {content}
                     </Typography>
                 </motion.div>

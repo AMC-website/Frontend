@@ -1,12 +1,14 @@
 import { Box, Typography, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState,useEffect,useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '@mui/material/styles';
 import dynamic from 'next/dynamic';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import NavItem from './NavItem';
 import { useRouter } from 'next/router';
+import { useInView } from 'react-intersection-observer';
+import { useAnimation } from 'framer-motion';
 
 function Path(props) {
     return (
@@ -20,26 +22,39 @@ function Path(props) {
     );
 }
 
-function Navbar() {
-    const route = useRouter()
-    const homeCondition = route.pathname==="/";
-    const [stickyClass, setStickyClass] = useState(false);
-    const ref = useRef(HTMLElement);
+interface NavbarProps {
+    color: string;
+    backgroundColor: string;
+}
 
-  useEffect(() => {
-    window.addEventListener('scroll', stickNavbar);
+function Navbar({ color, backgroundColor }: NavbarProps) {
+    const [sticky, setSticky] = useState(false);
+    const navbarRef = useRef<HTMLElement | null>(null);
+    const [navbarOffsetTop, setNavbarOffsetTop] = useState(0);
+    const [navbarHeight, setNavbarHeight] = useState(0);
 
-    return () => {
-      window.removeEventListener('scroll', stickNavbar);
+    useEffect(() => {
+        if (navbarRef.current) {
+            // get the initial offset of the navbar and its height
+            setNavbarOffsetTop(navbarRef.current.offsetTop);
+            setNavbarHeight(navbarRef.current.offsetHeight);
+        }
+    }, []);
+
+    const checkNavbarPosition = () => {
+        const scrollPosition = window.pageYOffset;
+        if (navbarOffsetTop <= scrollPosition) {
+            setSticky(true);
+        } else {
+            setSticky(false);
+        }
     };
-  }, []);
 
-  const stickNavbar = () => {
-    if (window !== undefined) {
-      let windowHeight = window.scrollY;
-      windowHeight > 740 ? setStickyClass(true) : setStickyClass(false);
-    }
-  };
+    useEffect(() => {
+        window.addEventListener('scroll', checkNavbarPosition);
+        return () => window.removeEventListener('scroll', checkNavbarPosition);
+    }, [navbarOffsetTop]);
+
     const breakPoint = useMediaQuery('(min-width:900px)');
     const breakPoint2 = useMediaQuery('(min-width:600px)');
     const boxVariants = {
@@ -90,45 +105,39 @@ function Navbar() {
 
     return (
         <>
+            {/* <div style={{ position: sticky ? 'fixed' : 'relative' }}> */}
+            {sticky && <div style={{ height: `${navbarHeight}px` }} />}
+
             <Box
-            ref={ref}
+                ref={navbarRef}
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
                 padding="10px 5%"
-                width={homeCondition?(breakPoint2 ? (stickyClass ?'90%':'70%') : (stickyClass ?'100%':'90%')):"90%"}
-                marginX="auto"
-                position=  { homeCondition? (stickyClass? "fixed":"relative"):"fixed" }
+                width="80%"
+                // marginLeft="auto"
+                // marginRight="auto"
+                position={sticky ? 'fixed' : 'relative'}
                 top={0}
-                
                 zIndex="50"
+                left="50%"
                 sx={{
-                    boxShadow: '0 2.5px 40px 0 rgba(255,255,255, 0.2 )',
+                    boxShadow: '0 2.5px 40px 0 rgba(255,255,255, 0.2)',
                     '&:hover': {
                         boxShadow: '0',
                     },
                     borderRadius: '10px',
+                    backdropFilter: 'blur(25px)',
+
+                    webkitBackdropFilter: 'blur( 4px )',
+                    background: 'rgba(255,255,255,0.075)',
+                    transform: 'translate(-50%,0)',
 
                     transition:
                         'box-shadow 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                 }}
                 color={theme.palette.secondary.main}
-                bgcolor={"black"}
             >
-                <Box
-                    sx={{
-                        backdropFilter: 'blur(25px)',
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: -1,
-                        borderRadius: '10px',
-                        webkitBackdropFilter: 'blur( 4px )',
-                        background: 'rgba(255,255,255,0.075)',
-                    }}
-                />
-
                 <div
                     style={{
                         height: '100%',
@@ -183,6 +192,8 @@ function Navbar() {
                                         index !== hoveredIndex &&
                                         hoveredIndex !== -1
                                     }
+                                    color={color}
+                                    backgroundColor={backgroundColor}
                                 />
                             </span>
                         );
@@ -218,6 +229,7 @@ function Navbar() {
                     </Box>
                 </Box>
             </Box>
+            {/* </div> */}
         </>
     );
 }
