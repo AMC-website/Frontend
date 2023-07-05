@@ -1,53 +1,30 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { motion, useMotionValue, useScroll } from 'framer-motion';
 import { Box, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import Timeline from '../components/Home/Timeline/Timeline';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import CardHolder from '@/components/Home/CardHolder';
-import changeColorOnScroll from '@/components/ChangeColorOnScroll';
-import Navbar from '@/components/Navbar/Navbar';
-import WelcomeSection from '@/components/Home/WelcomeSection';
+import {
+    returnBgColor,
+    returnColor,
+    returnTitleColor,
+} from '@/components/ChangeColorOnScroll';
 import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
-import Tilt from 'react-parallax-tilt';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
 
-    const theme = useTheme();
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
     const [color, setColor] = useState('rgb(255, 255, 255)');
-    const startPercentage = breakPoint2 ? 0.39 : 0.6;
-    const endPercentage = breakPoint2 ? 0.4 : 0.62;
+
     useEffect(() => {
         const handleScroll = () => {
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 0, g: 0, b: 0 },
-                { r: 240, g: 228, b: 220 },
-                setBackgroundColor
-            );
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 154, g: 205, b: 50 },
-                { r: 0, g: 0, b: 0 },
-                setTitleColor
-            );
-            changeColorOnScroll(
-                startPercentage,
-                endPercentage,
-                { r: 255, g: 255, b: 255 },
-
-                { r: 0, g: 0, b: 0 },
-                setColor
-            );
+            setBackgroundColor(returnBgColor);
+            setTitleColor(returnTitleColor);
+            setColor(returnColor);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -56,40 +33,12 @@ export default function Home() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-    const imgContainer = {
-        hidden: {
-            opacity: 1,
-        },
-        show: {
-            opacity: 1,
-            transition: {
-                delay: 2,
-                staggerChildren: 0.4,
-                staggerDirection: -1,
-                // Adjust the stagger delay as needed
-            },
-        },
-    };
-
-    const img = {
-        hidden: {
-            opacity: 0,
-
-            x: '-200%',
-        },
-        show: {
-            x: 0,
-            opacity: 1,
-        },
-    };
 
     return (
         <div>
-            <WelcomeSection />
-
-            <Box
+            {/* <Box
                 sx={{
-                    height: '100px' /* adjust based on your needs */,
+                    height: '100px',
                     background: 'linear-gradient(to bottom, #4bb6fe, #000000)',
                 }}
                 position="relative"
@@ -104,42 +53,42 @@ export default function Home() {
                     bottom="0"
                     left="0"
                 ></Box>
-            </Box>
-
-            <div
+            </Box> */}
+            <section
+                id="welcome"
                 style={{
-                    backgroundColor: 'black',
-                    padding: '20px 0',
+                    backgroundColor: backgroundColor,
+                    padding: '100px 7.5%',
                 }}
             >
-                <Navbar />
-            </div>
-            <AMCSection />
+                <AMCSection />
+            </section>
 
-            <ParallaxImage></ParallaxImage>
+            <section id="parallax">
+                <ParallaxImage />
+            </section>
 
-            <CardHolder
-                titleColor={titleColor}
-                backgroundColor={backgroundColor}
-                color={color}
-                // cardColor={cardColor}
-            />
-            <MovingText
-                color={titleColor}
-                bgColor={backgroundColor}
-                fontSize={breakPoint ? '48px' : '40px'}
-            ></MovingText>
-
-            <div
+            <section
+                id="cards"
                 style={{
-                    backgroundColor: `${backgroundColor}`,
-                    padding: '60px 0',
+                    backgroundColor: backgroundColor,
+                    padding: '100px 7.5%',
                 }}
             >
-                <Timeline titleColor={titleColor} color={color} />
-            </div>
+                <CardHolder
+                    titleColor={titleColor}
+                    backgroundColor={backgroundColor}
+                    color={color}
+                />
+            </section>
 
-            <div style={{ backgroundColor: '#f0e4dc' }}>
+            <section
+                id="why us"
+                style={{
+                    backgroundColor: backgroundColor,
+                    padding: '100px 7.5%',
+                }}
+            >
                 <Box
                     height="auto"
                     position="relative"
@@ -147,146 +96,83 @@ export default function Home() {
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
+                    marginLeft="auto"
+                    marginRight="auto"
                 >
-                    <Tilt
-                        tiltMaxAngleX={5}
-                        tiltMaxAngleY={5}
-                        perspective={1750}
-                        transitionSpeed={2500}
-                        scale={1}
-                        gyroscope={true}
+                    <div
                         style={{
-                            padding: breakPoint ? '40px' : '20px',
-                            borderRadius: '10px',
-                            backdropFilter: 'blur(25px)',
-                            position: 'relative',
-                            background: 'rgba(255,255,255,0.3)',
-                            width: '90%',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            flexDirection: breakPoint2 ? 'row' : 'column',
+                            width: '100%',
                         }}
                     >
-                        <motion.div
-                            variants={imgContainer}
-                            viewport={{ once: false, amount: 0.5 }}
-                            initial="hidden"
-                            whileInView="show"
+                        <div
                             style={{
-                                display: 'flex',
-                                gap: '30px',
-                                justifyContent: 'space-between',
-                                flexDirection: breakPoint2 ? 'row' : 'column',
-                                width: '100%',
+                                width: breakPoint2 ? '60%' : 'auto',
                             }}
                         >
-                            <motion.div
-                                variants={{
-                                    hidden: { opacity: 0 },
-                                    show: {
-                                        opacity: 1,
-                                        transition: {
-                                            delay: 1,
-                                            duration: 0.6,
-                                        },
-                                    },
-                                }}
-                                style={{
-                                    width: breakPoint2 ? '60%' : 'auto',
-                                }}
+                            <Typography
+                                variant="h1"
+                                color={titleColor}
+                                fontSize={`${breakPoint ? '48px' : '40px'}`}
                             >
-                                <Typography
-                                    variant="h1"
-                                    color={titleColor}
-                                    fontSize={`${breakPoint ? '88px' : '48px'}`}
-                                >
-                                    Why us?
-                                </Typography>
+                                Why us?
+                            </Typography>
 
+                            <br />
+                            <Typography
+                                variant="h3"
+                                lineHeight="2"
+                                color={color}
+                                margin="0 auto"
+                            >
+                                Sponsor AMC to fuel innovation and creativity.
+                                Your support drives cutting-edge aviation and
+                                engineering projects, empowering talented
+                                students.
                                 <br />
-                                <Typography
-                                    variant="h3"
-                                    lineHeight="2"
-                                    color={color}
-                                    margin="0 auto"
-                                    fontSize={`${breakPoint ? '28px' : '18px'}`}
-                                >
-                                    Sponsor AMC to fuel innovation and
-                                    creativity. Your support drives cutting-edge
-                                    aviation and engineering projects,
-                                    empowering talented students.
-                                    <br />
-                                    <br />
-                                    Invest in <b>education</b>, make an{' '}
-                                    <b>impact</b>, and <b>connect with</b>{' '}
-                                    future industry <b>leaders</b>.
-                                </Typography>
-                            </motion.div>
-                            <motion.div
-                                style={{
-                                    width: breakPoint2 ? '30%' : '100%',
-                                    display: 'flex',
-                                    flexDirection: breakPoint2
-                                        ? 'column'
-                                        : 'row',
-                                    justifyContent: 'space-between',
-                                }}
-                                variants={imgContainer}
-                            >
-                                <motion.img
-                                    src="flight1.jpg"
-                                    alt="drone image"
-                                    variants={img}
-                                    style={{
-                                        objectFit: 'cover',
-                                        height: breakPoint2 ? '48%' : '100%',
-                                        width: breakPoint2 ? '100%' : '48%',
-                                        borderRadius: '5px',
-                                    }}
-                                />
-                                <motion.img
-                                    src="flight2.jpg"
-                                    alt="drone image"
-                                    variants={img}
-                                    style={{
-                                        objectFit: 'cover',
-                                        height: breakPoint2 ? '48%' : '100%',
-                                        width: breakPoint2 ? '100%' : '48%',
-                                        borderRadius: '5px',
-                                    }}
-                                />
-                            </motion.div>
-                        </motion.div>
-                    </Tilt>
-                </Box>
-
-                <div
-                    style={{
-                        minHeight: '100vh',
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        position: 'relative',
-                    }}
-                >
-                    <Box
-                        display="flex"
-                        gap="30px"
-                        justifyContent="center"
-                        width="100%"
-                        alignItems="center"
-                        textAlign={breakPoint ? 'left' : 'center'}
-                    >
-                        <Typography
-                            variant="h1"
-                            width="70%"
-                            color={theme.palette.primary.main}
-                            fontSize={`${breakPoint ? '48px' : '40px'}`}
-                            textAlign="center"
+                                <br />
+                                By sponsoring AMC, you become a catalyst for
+                                transformative change in the aviation and
+                                engineering sectors, creating opportunities for
+                                breakthrough discoveries and groundbreaking
+                                advancements.
+                                <br />
+                                <br />
+                                Invest in <b>education</b>, make an{' '}
+                                <b>impact</b>, and <b>connect with</b> future
+                                industry <b>leaders</b>.
+                            </Typography>
+                        </div>
+                        <div
+                            style={{
+                                width: breakPoint2 ? '40%' : '100%',
+                                display: 'flex',
+                                flexDirection: breakPoint2 ? 'column' : 'row',
+                                justifyContent: 'space-between',
+                            }}
                         >
-                            Join us, unleash your potential in engineering,
-                            aviation, and teamwork.
-                        </Typography>
-                    </Box>
-                </div>
-            </div>
+                            <img
+                                src="flight2.jpg"
+                                alt="drone image"
+                                style={{
+                                    objectFit: 'cover',
+                                    height: breakPoint2 ? '100%' : '100%',
+                                    width: breakPoint2 ? '100%' : '100%',
+                                    borderRadius: '5px',
+                                }}
+                            />
+                        </div>
+                    </div>
+                </Box>
+            </section>
+
+            <MovingText
+                color={titleColor}
+                bgColor={backgroundColor}
+                fontSize={breakPoint ? '48px' : '40px'}
+            />
         </div>
     );
 }

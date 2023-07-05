@@ -8,9 +8,8 @@ const changeColorOnScroll = (
     startPercentage: number,
     endPercentage: number,
     startColor: RGBColor,
-    endColor: RGBColor,
-    setState: React.Dispatch<React.SetStateAction<string>>
-): void => {
+    endColor: RGBColor
+): string => {
     const scrollPosition =
         window.pageYOffset || document.documentElement.scrollTop;
     const scrollHeight =
@@ -42,7 +41,36 @@ const changeColorOnScroll = (
         backgroundColor = `rgb(${endColor.r}, ${endColor.g}, ${endColor.b})`; // End color after endPercentage scroll percentage
     }
 
-    setState(backgroundColor);
+    return backgroundColor;
 };
 
-export default changeColorOnScroll;
+const startPercentage = 0.6;
+const endPercentage = 0.65;
+
+export function returnBgColor() {
+    return changeColorOnScroll(
+        startPercentage,
+        endPercentage,
+        { r: 0, g: 0, b: 0 },
+        { r: 240, g: 228, b: 220 }
+    );
+}
+
+export function returnTitleColor() {
+    return changeColorOnScroll(
+        startPercentage,
+        endPercentage,
+        { r: 154, g: 205, b: 50 },
+        { r: 0, g: 0, b: 0 }
+    );
+}
+
+export function returnColor() {
+    return changeColorOnScroll(
+        startPercentage,
+        endPercentage,
+        { r: 255, g: 255, b: 255 },
+
+        { r: 0, g: 0, b: 0 }
+    );
+}

@@ -15,17 +15,14 @@ export default function App({ Component, pageProps }: AppProps) {
                 <></>
             </Cursor>
             <Box position="relative" overflow="hidden">
-                {router.pathname !== '/' && (
-                    <div
-                        style={{
-                            backgroundColor: 'black',
-                            width: '100%',
-                            padding: '20px 0',
-                        }}
-                    >
-                        <Navbar />
-                    </div>
-                )}
+                <div
+                    style={{
+                        backgroundColor: 'black',
+                        width: '100%',
+                    }}
+                >
+                    <Navbar />
+                </div>
 
                 <Component {...pageProps} />
 

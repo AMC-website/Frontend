@@ -30,7 +30,6 @@ export default function AMCSection() {
             transition: {
                 delay: 2,
                 staggerChildren: 0.4,
-                // Adjust the stagger delay as needed
             },
         },
     };
@@ -56,25 +55,16 @@ export default function AMCSection() {
         },
     };
 
-    const text = {
-        hidden: { opacity: 0 },
-        show: { opacity: 1 },
-    };
-
     return (
         <motion.div
             style={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                flexDirection: breakPoint2 ? 'row' : 'column',
-                gap: breakPoint2 ? '30px' : '50px',
-                padding: '75px 100px',
                 backgroundColor: 'rgba(0,0,0)',
                 position: 'relative',
-                height: '80vh',
             }}
-            viewport={{ once: false, amount: 0.7 }}
+            viewport={{ once: true, amount: 0.7 }}
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -93,7 +83,7 @@ export default function AMCSection() {
                     color="white"
                     variant="h1"
                     style={{
-                        fontSize: `${breakPoint ? '120px' : '60px'}`,
+                        fontSize: `${breakPoint ? '170px' : '60px'}`,
                         letterSpacing: 3,
                     }}
                     display="grid"
@@ -143,10 +133,10 @@ export default function AMCSection() {
                         }}
                     >
                         <Typography
-                            variant="h3"
+                            variant="h2"
                             fontSize="20px"
                             borderRadius="500px"
-                            padding="12px"
+                            padding="12px 36px"
                             sx={{
                                 borderStyle: 'solid',
                                 borderColor: 'rgba(255,255,255,1)',

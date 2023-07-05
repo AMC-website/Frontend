@@ -18,19 +18,12 @@ interface FooterProps {
 function Footer({ color, bgColor, titleColor }: FooterProps) {
     const route = useRouter();
 
-    const breakPoint = useMediaQuery('(min-width:600px)');
     const [isOpen, setIsOpen] = useState(false);
     const theme = useTheme();
 
     function handleClick() {
         setIsOpen(!isOpen);
     }
-    const linkStyles = {
-        textDecoration: 'none',
-        '&:hover': {
-            cursor: 'pointer',
-        },
-    };
 
     const iconStyles = {
         '&:hover': {
@@ -49,24 +42,12 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
             <Box
                 style={{
                     backgroundColor: bgColor,
-                    padding: '40px',
                     display: 'flex',
                     justifyContent: 'center',
                     flexDirection: 'column',
                     position: 'relative',
                 }}
             >
-                <Box
-                    style={{
-                        backgroundColor: color,
-                        width: '90%',
-                        height: '1px',
-                        position: 'absolute',
-                        top: '0',
-                        left: '5%',
-                    }}
-                ></Box>
-
                 <Box
                     sx={{
                         display: {
@@ -75,9 +56,13 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                         },
                         gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
                         flexDirection: 'column',
+                        borderStyle: 'solid',
+                        borderColor: 'black',
+                        borderWidth: '0.3px 0 0 0',
                         gap: '70px',
-                        width: '90%',
+                        width: '85%',
                         margin: '0 auto',
+                        padding: '40px 0',
                     }}
                 >
                     <Box>
@@ -87,6 +72,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 color: titleColor,
                                 paddingBottom: '20px',
                                 fontSize: '30px',
+                                fontWeight: 'bolder',
                             }}
                         >
                             AMC
@@ -129,6 +115,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 color: titleColor,
                                 paddingBottom: '20px',
                                 fontSize: '30px',
+                                fontWeight: 'bolder',
                             }}
                         >
                             Navigation
@@ -186,6 +173,7 @@ function Footer({ color, bgColor, titleColor }: FooterProps) {
                                 color: titleColor,
                                 paddingBottom: '20px',
                                 fontSize: '30px',
+                                fontWeight: 'bolder',
                             }}
                         >
                             Contact

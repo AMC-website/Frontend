@@ -33,7 +33,6 @@ export default function MovingText({
             sx={{
                 width: '100%',
                 overflow: 'hidden',
-                paddingTop: '150px',
                 display: 'flex',
                 justifyContent: 'center',
                 textAlign: 'center',
@@ -46,7 +45,7 @@ export default function MovingText({
                 sx={{
                     width: '200vw',
                     overflow: 'hidden',
-                    py: '150px',
+                    p: '150px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',

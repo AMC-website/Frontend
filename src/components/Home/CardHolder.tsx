@@ -8,7 +8,6 @@ import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import Grid from '@mui/material/Grid';
 import dynamic from 'next/dynamic';
 import { Box, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 
 const CustomGrid = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -18,7 +17,7 @@ const CustomGrid = ({ children }: { children: React.ReactNode }) => {
             sm={6}
             md={4}
             border="none"
-            padding={2}
+            padding="2rem"
             display="flex"
             justifyContent="center"
         >
@@ -44,115 +43,108 @@ function CardHolder({
             color="white"
             display="flex"
             flexDirection="column"
-            gap="90px"
+            gap="35px"
             textAlign="center"
             bgcolor={backgroundColor}
-            padding="80px 10px"
+            // padding="100px 10px"
         >
             <div>
-                <Typography variant="h1" color={titleColor}>
+                <Typography variant="h1" color={titleColor} textAlign="left">
                     What makes us special?
                 </Typography>
             </div>
-            <div>
-                <Grid
-                    container
-                    spacing={4}
-                    display="flex"
-                    justifyContent="normal"
-                >
-                    <CustomGrid>
-                        <BasicCard
-                            icon={
-                                <SwipeUpIcon
-                                    style={{
-                                        transform: 'scale(3)',
-                                    }}
-                                />
-                            }
-                            title="Hands-on learning"
-                            titleColor={titleColor}
-                            cardColor={cardColor}
-                            color={color}
-                        />
-                    </CustomGrid>
-                    <CustomGrid>
-                        <BasicCard
-                            icon={
-                                <HandymanIcon
-                                    style={{
-                                        transform: 'scale(3)',
-                                    }}
-                                />
-                            }
-                            title="Build-driven"
-                            titleColor={titleColor}
-                            cardColor={cardColor}
-                            color={color}
-                        />
-                    </CustomGrid>
-                    <CustomGrid>
-                        <BasicCard
-                            icon={
-                                <EmojiObjectsIcon
-                                    style={{
-                                        transform: 'scale(3)',
-                                    }}
-                                />
-                            }
-                            title="Innovative"
-                            titleColor={titleColor}
-                            cardColor={cardColor}
-                            color={color}
-                        />
-                    </CustomGrid>
-                    <CustomGrid>
-                        <BasicCard
-                            icon={
-                                <FlightIcon
-                                    style={{
-                                        transform: 'scale(3)',
-                                    }}
-                                />
-                            }
-                            title="Cutting-edge aviation"
-                            titleColor={titleColor}
-                            cardColor={cardColor}
-                            color={color}
-                        />
-                    </CustomGrid>
-                    <CustomGrid>
-                        <BasicCard
-                            icon={
-                                <ScienceIcon
-                                    style={{
-                                        transform: 'scale(3)',
-                                    }}
-                                />
-                            }
-                            title="Inter-disciplinary"
-                            titleColor={titleColor}
-                            cardColor={cardColor}
-                            color={color}
-                        />
-                    </CustomGrid>
-                    <CustomGrid>
-                        <BasicCard
-                            icon={
-                                <GroupsIcon
-                                    style={{
-                                        transform: 'scale(3)',
-                                    }}
-                                />
-                            }
-                            title="Collaborative"
-                            titleColor={titleColor}
-                            cardColor={cardColor}
-                            color={color}
-                        />
-                    </CustomGrid>
-                </Grid>
-            </div>
+            <Grid container display="flex">
+                <CustomGrid>
+                    <BasicCard
+                        icon={
+                            <SwipeUpIcon
+                                style={{
+                                    transform: 'scale(2.5)',
+                                }}
+                            />
+                        }
+                        title="Hands-on learning"
+                        titleColor={titleColor}
+                        cardColor={cardColor}
+                        color={color}
+                    />
+                </CustomGrid>
+                <CustomGrid>
+                    <BasicCard
+                        icon={
+                            <HandymanIcon
+                                style={{
+                                    transform: 'scale(2.5)',
+                                }}
+                            />
+                        }
+                        title="Build-driven"
+                        titleColor={titleColor}
+                        cardColor={cardColor}
+                        color={color}
+                    />
+                </CustomGrid>
+                <CustomGrid>
+                    <BasicCard
+                        icon={
+                            <EmojiObjectsIcon
+                                style={{
+                                    transform: 'scale(2.5)',
+                                }}
+                            />
+                        }
+                        title="Innovative"
+                        titleColor={titleColor}
+                        cardColor={cardColor}
+                        color={color}
+                    />
+                </CustomGrid>
+                <CustomGrid>
+                    <BasicCard
+                        icon={
+                            <FlightIcon
+                                style={{
+                                    transform: 'scale(2.5)',
+                                }}
+                            />
+                        }
+                        title="Cutting-edge aviation"
+                        titleColor={titleColor}
+                        cardColor={cardColor}
+                        color={color}
+                    />
+                </CustomGrid>
+                <CustomGrid>
+                    <BasicCard
+                        icon={
+                            <ScienceIcon
+                                style={{
+                                    transform: 'scale(2.5)',
+                                }}
+                            />
+                        }
+                        title="Inter-disciplinary"
+                        titleColor={titleColor}
+                        cardColor={cardColor}
+                        color={color}
+                    />
+                </CustomGrid>
+                <CustomGrid>
+                    <BasicCard
+                        icon={
+                            <GroupsIcon
+                                style={{
+                                    transform: 'scale(2.5)',
+                                }}
+                            />
+                        }
+                        title="Collaborative"
+                        titleColor={titleColor}
+                        cardColor={cardColor}
+                        color={color}
+                    />
+                </CustomGrid>
+            </Grid>
         </Box>
     );
 }
