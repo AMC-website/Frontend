@@ -12,6 +12,7 @@ import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
 import { h4, h4_, h5, h6, h6_ } from '@/constants';
+import ImageSlider from '@/components/Carousel';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -35,6 +36,20 @@ export default function Home() {
         };
     }, []);
 
+    const slides = [
+        { url: 'flight2.jpg', title: 'beach' },
+        { url: 'flight1.jpg', title: 'boat' },
+        { url: 'flight2.jpg', title: 'forest' },
+        { url: 'flight1.jpg', title: 'city' },
+        { url: 'flight2.jpg', title: 'italy' },
+    ];
+
+    const containerStyles = {
+        width: '500px',
+        height: '600px',
+        margin: '0 auto',
+        backgroundColor: backgroundColor,
+    };
     return (
         <div>
             {/* <Box
@@ -170,6 +185,12 @@ export default function Home() {
                     </div>
                 </Box>
             </section>
+
+            <div style={{ backgroundColor: backgroundColor, width: '100%' }}>
+                <div style={containerStyles}>
+                    <ImageSlider images={slides} />
+                </div>
+            </div>
 
             <MovingText
                 color={titleColor}
