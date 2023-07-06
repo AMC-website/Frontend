@@ -1,3 +1,5 @@
+import { End_Percentage, Start_Percentage } from '@/constants';
+
 type RGBColor = {
     r: number;
     g: number;
@@ -44,8 +46,8 @@ const changeColorOnScroll = (
     return backgroundColor;
 };
 
-const startPercentage = 0.6;
-const endPercentage = 0.65;
+const startPercentage = Start_Percentage;
+const endPercentage = End_Percentage;
 
 export function returnBgColor() {
     return changeColorOnScroll(

@@ -2,6 +2,7 @@ import { Box, Typography, useTheme, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion } from 'framer-motion';
 import Text from './Text';
+import { h2, h4, h6 } from '@/constants';
 
 export default function AMCSection() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -83,7 +84,7 @@ export default function AMCSection() {
                     color="white"
                     variant="h1"
                     style={{
-                        fontSize: `${breakPoint ? '170px' : '60px'}`,
+                        fontSize: `${breakPoint ? h2 : h4}`,
                         letterSpacing: 3,
                     }}
                     display="grid"
@@ -115,7 +116,7 @@ export default function AMCSection() {
                             color="white"
                             variant="h2"
                             style={{
-                                fontSize: '20px',
+                                fontSize: h6,
                             }}
                         >
                             {' '}
@@ -134,7 +135,7 @@ export default function AMCSection() {
                     >
                         <Typography
                             variant="h2"
-                            fontSize="20px"
+                            fontSize={h6}
                             borderRadius="500px"
                             padding="12px 36px"
                             sx={{

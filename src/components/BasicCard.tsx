@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import dynamic from 'next/dynamic';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { h5_, h6, h6_ } from '@/constants';
 interface BasicCardProps {
     icon: JSX.Element;
     title: string;
@@ -11,15 +12,6 @@ interface BasicCardProps {
     cardColor?: string;
     color?: string;
 }
-
-// const bull = (
-//     <Box
-//         component="span"
-//         sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-//     >
-//         •
-//     </Box>
-// );
 
 function BasicCard({
     icon,
@@ -57,7 +49,7 @@ function BasicCard({
                     <div>{icon}</div>
                     <Typography
                         variant="h2"
-                        fontSize={breakPoint ? '28px' : '18px'}
+                        fontSize={breakPoint ? h6 : h6_}
                         color={color}
                     >
                         {title}

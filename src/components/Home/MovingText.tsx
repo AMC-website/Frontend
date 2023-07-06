@@ -65,7 +65,7 @@ export default function MovingText({
                         variant="h1"
                         sx={{
                             lineHeight: '103px',
-                            fontSize: fontSize ? fontSize : '65px',
+                            fontSize: fontSize ? fontSize : '60px',
                             color: color ? color : 'white',
                             textAlign: 'justify',
                             whiteSpace: 'nowrap',

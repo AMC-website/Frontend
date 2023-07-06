@@ -11,6 +11,7 @@ import {
 import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
+import { h4, h4_, h5, h6, h6_ } from '@/constants';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -105,6 +106,7 @@ export default function Home() {
                             justifyContent: 'space-between',
                             flexDirection: breakPoint2 ? 'row' : 'column',
                             width: '100%',
+                            gap: '5px',
                         }}
                     >
                         <div
@@ -115,7 +117,7 @@ export default function Home() {
                             <Typography
                                 variant="h1"
                                 color={titleColor}
-                                fontSize={`${breakPoint ? '48px' : '40px'}`}
+                                fontSize={`${breakPoint ? h4_ : h5}`}
                             >
                                 Why us?
                             </Typography>
@@ -126,6 +128,7 @@ export default function Home() {
                                 lineHeight="2"
                                 color={color}
                                 margin="0 auto"
+                                fontSize={breakPoint ? h6 : h6_}
                             >
                                 Sponsor AMC to fuel innovation and creativity.
                                 Your support drives cutting-edge aviation and
@@ -141,7 +144,7 @@ export default function Home() {
                                 <br />
                                 <br />
                                 Invest in <b>education</b>, make an{' '}
-                                <b>impact</b>, and <b>connect with</b> future
+                                <b>impact</b>, and <b>connect</b> with future
                                 industry <b>leaders</b>.
                             </Typography>
                         </div>
@@ -171,7 +174,7 @@ export default function Home() {
             <MovingText
                 color={titleColor}
                 bgColor={backgroundColor}
-                fontSize={breakPoint ? '48px' : '40px'}
+                fontSize={breakPoint ? h4 : h5}
             />
         </div>
     );
