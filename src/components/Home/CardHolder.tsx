@@ -7,7 +7,8 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import Grid from '@mui/material/Grid';
 import dynamic from 'next/dynamic';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
+import { h4_, h5 } from '@/constants';
 
 const CustomGrid = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -38,6 +39,8 @@ function CardHolder({
     cardColor,
     color,
 }: CardHolderProps) {
+    const breakPoint = useMediaQuery('(min-width:600px)');
+    const breakPoint2 = useMediaQuery('(min-width:1000px)');
     return (
         <Box
             color="white"
@@ -49,7 +52,12 @@ function CardHolder({
             // padding="100px 10px"
         >
             <div>
-                <Typography variant="h1" color={titleColor} textAlign="left">
+                <Typography
+                    variant="h1"
+                    fontSize={breakPoint ? h4_ : h5}
+                    color={titleColor}
+                    textAlign="left"
+                >
                     What makes us special?
                 </Typography>
             </div>

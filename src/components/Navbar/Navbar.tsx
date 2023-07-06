@@ -114,7 +114,7 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ['Projects', 'Events', 'About'];
+    const pages = ['PROJECTS', 'EVENTS', 'ABOUT'];
 
     return (
         <>
@@ -122,6 +122,7 @@ function Navbar() {
 
             <Box
                 position={sticky ? 'fixed' : 'relative'}
+                ref={navbarRef}
                 top={0}
                 zIndex="50"
                 left="50%"
@@ -193,9 +194,7 @@ function Navbar() {
                                             hoveredIndex !== -1
                                         }
                                         color={color}
-                                        backgroundColor={
-                                            theme.palette.secondary.main
-                                        }
+                                        backgroundColor={titleColor}
                                     />
                                 </span>
                             );
