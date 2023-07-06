@@ -2,6 +2,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Box, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 import React from 'react';
+import ContactForm from '@/components/Contact/ContactForm';
 import CardHolder from '@/components/Home/CardHolder';
 import {
     returnBgColor,
@@ -197,6 +198,7 @@ export default function Home() {
                 bgColor={backgroundColor}
                 fontSize={breakPoint ? h4 : h5}
             />
+            <ContactForm bgColor="#F0E4DC"></ContactForm>
         </div>
     );
 }
