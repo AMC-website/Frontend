@@ -177,6 +177,7 @@ export default function Home() {
                 bgColor={backgroundColor}
                 fontSize={breakPoint ? h4 : h5}
             />
+            <ContactForm bgColor="#F0E4DC"></ContactForm>
         </div>
     );
 }
