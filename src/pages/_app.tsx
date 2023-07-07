@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Cursor>
                 <></>
             </Cursor>
+
             <Box position="relative" overflow="hidden">
                 <div
                     style={{
@@ -28,16 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
                 <Box width="100%">
                     <Footer
-                        color={
-                            'black'
-                        }
-                        titleColor={
-                            'black'
-                        }
-                        bgColor={
-                    
-                                '#f0e4dc'
-                        }
+                        color={'black'}
+                        titleColor={'black'}
+                        bgColor={'#f0e4dc'}
                     />
                 </Box>
             </Box>

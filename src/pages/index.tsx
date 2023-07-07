@@ -14,6 +14,7 @@ import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
 import { h4, h4_, h5, h6, h6_ } from '@/constants';
 import ImageSlider from '@/components/Carousel';
+import Projects from './projects';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -53,24 +54,6 @@ export default function Home() {
     };
     return (
         <div>
-            {/* <Box
-                sx={{
-                    height: '100px',
-                    background: 'linear-gradient(to bottom, #4bb6fe, #000000)',
-                }}
-                position="relative"
-            >
-                <Box
-                    width="100%"
-                    height="110px"
-                    sx={{
-                        backdropFilter: 'blur(10px)',
-                    }}
-                    position="absolute"
-                    bottom="0"
-                    left="0"
-                ></Box>
-            </Box> */}
             <section
                 id="welcome"
                 style={{
@@ -134,11 +117,11 @@ export default function Home() {
                                 variant="h1"
                                 color={titleColor}
                                 fontSize={`${breakPoint ? h4_ : h5}`}
+                                mb="35px"
                             >
                                 Why us?
                             </Typography>
 
-                            <br />
                             <Typography
                                 variant="h3"
                                 lineHeight="2"
@@ -187,18 +170,38 @@ export default function Home() {
                 </Box>
             </section>
 
-            <div style={{ backgroundColor: backgroundColor, width: '100%' }}>
+            {/* <div style={{ backgroundColor: backgroundColor, width: '100%' }}>
                 <div style={containerStyles}>
                     <ImageSlider images={slides} />
                 </div>
-            </div>
+            </div> */}
 
             <MovingText
                 color={titleColor}
                 bgColor={backgroundColor}
                 fontSize={breakPoint ? h4 : h5}
             />
-            <ContactForm bgColor="#F0E4DC"></ContactForm>
+
+            <section
+                id="projects"
+                style={{
+                    backgroundColor: backgroundColor,
+                    width: '100%',
+                    padding: '100px 0',
+                }}
+            >
+                <Projects
+                    color={color}
+                    backgroundColor={backgroundColor}
+                    titleColor={titleColor}
+                />
+            </section>
+
+            <section
+                style={{ backgroundColor: backgroundColor, padding: '100px 0' }}
+            >
+                <ContactForm color={color} />
+            </section>
         </div>
     );
 }
