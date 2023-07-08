@@ -1,11 +1,5 @@
-import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
-import {
-    motion,
-    useScroll,
-    useTransform,
-    useViewportScroll,
-} from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { Typography, useMediaQuery } from '@mui/material';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function WelcomeSection() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -30,19 +24,7 @@ export default function WelcomeSection() {
             },
         },
     };
-    // const [scrollY, setScrollY] = useState(0);
 
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         setScrollY(window.scrollY);
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, []);
     const { scrollY } = useScroll();
 
     const y2 = useTransform(scrollY, [0, 300], [0, -100]);

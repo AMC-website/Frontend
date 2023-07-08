@@ -10,9 +10,7 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import { h2, h2_, h4, h5, h5_, h6, h6_ } from '@/constants';
-import { url } from 'inspector';
-import { Key } from '@mui/icons-material';
+import { h2_, h4, h5, h5_, h6, h6_ } from '@/constants';
 
 interface CardProps {
     projectName: string;

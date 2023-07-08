@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useState, useEffect, useRef } from 'react';
-import { useTheme } from '@mui/material/styles';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import NavItem from './NavItem';
@@ -10,7 +9,6 @@ import {
     returnColor,
     returnTitleColor,
 } from '@/components/ChangeColorOnScroll';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 function Path(props) {
@@ -26,11 +24,9 @@ function Path(props) {
 }
 
 function Navbar() {
-    const theme = useTheme();
     const [sticky, setSticky] = useState(false);
     const navbarRef = useRef<HTMLElement | null>(null);
     const [navbarOffsetTop, setNavbarOffsetTop] = useState(0);
-    const [navbarHeight, setNavbarHeight] = useState(0);
 
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
     const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
@@ -54,15 +50,8 @@ function Navbar() {
         };
     }, [breakPoint]);
 
-    useEffect(() => {
-        if (navbarRef.current) {
-            setNavbarOffsetTop(navbarRef.current.offsetTop);
-            setNavbarHeight(navbarRef.current.offsetHeight);
-        }
-    }, []);
-
     const checkNavbarPosition = () => {
-        const scrollPosition = window.pageYOffset;
+        const scrollPosition = window.screenY;
         if (navbarOffsetTop <= scrollPosition) {
             setSticky(true);
         } else {
@@ -114,17 +103,18 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ['PROJECTS', 'EVENTS', 'ABOUT'];
+    const pages = ['PROJECTS', 'MEMBERS', 'CONTACT'];
 
     return (
         <>
-            {sticky && <div style={{ height: `${navbarHeight}px` }} />}
+            {sticky && <div style={{ height: `13vh` }} />}
 
             <Box
                 position={sticky ? 'fixed' : 'relative'}
                 ref={navbarRef}
                 top={0}
                 zIndex="50"
+                height="13vh"
                 left="50%"
                 width="100%"
                 display="flex"
@@ -140,6 +130,7 @@ function Navbar() {
                     justifyContent="space-between"
                     alignItems="center"
                     width="85%"
+                    height="100%"
                     padding="0 10px"
                     sx={{
                         borderStyle: 'solid',

@@ -1,4 +1,4 @@
-import { h6, h6_ } from '@/constants';
+import { h6_ } from '@/constants';
 import { Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
 
@@ -45,7 +45,7 @@ function NavItem({
                     backgroundColor: backgroundColor,
                 }}
             />{' '}
-            <Link sx={linkStyles} href={title.toLowerCase()}>
+            <Link sx={linkStyles} href={`#${title.toLowerCase()}`}>
                 <Typography variant="h4" fontSize={h6_} padding="10px">
                     {title}
                 </Typography>

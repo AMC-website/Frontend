@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import dynamic from 'next/dynamic';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { h5_, h6, h6_ } from '@/constants';
+import { h6, h6_ } from '@/constants';
 interface BasicCardProps {
     icon: JSX.Element;
     title: string;
@@ -26,7 +26,7 @@ function BasicCard({
         <>
             <Card
                 sx={{
-                    width: 350,
+                    width: 'auto',
                     backgroundColor: cardColor || 'transparent',
                     borderStyle: 'solid',
                     borderColor: color,
@@ -34,6 +34,7 @@ function BasicCard({
                     display: 'flex',
                     alignITems: 'center',
                     justifyContent: 'center',
+                    marginBottom: '35px',
                 }}
             >
                 <CardContent

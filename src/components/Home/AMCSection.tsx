@@ -1,164 +1,62 @@
 import { Box, Typography, useTheme, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion } from 'framer-motion';
-import Text from './Text';
-import { h2, h4, h6 } from '@/constants';
+import { h2, h4, h6, h6_ } from '@/constants';
 
-export default function AMCSection() {
-    const breakPoint = useMediaQuery('(min-width:600px)');
-    const breakPoint2 = useMediaQuery('(min-width:950px)');
+interface AMCSectionProps {
+    color: string;
+}
+
+export default function AMCSection({ color }: AMCSectionProps) {
     const theme = useTheme();
 
-    const container = {
-        hidden: {
-            opacity: 1,
-        },
-        show: {
-            opacity: 1,
-            transition: {
-                delay: 1,
-                staggerChildren: 1.7, // Adjust the stagger delay as needed
-            },
-        },
-    };
-
-    const textContainer = {
-        hidden: {
-            opacity: 1,
-        },
-        show: {
-            opacity: 1,
-            transition: {
-                delay: 2,
-                staggerChildren: 0.4,
-            },
-        },
-    };
-
-    const amcText2 = {
-        hidden: {
-            opacity: 0,
-
-            y: '-100%',
-        },
-        show: {
-            y: 0,
-            opacity: 1,
-        },
-    };
-
-    const bhuText = {
-        hidden: {
-            opacity: 0,
-        },
-        show: {
-            opacity: 1,
-        },
-    };
-
     return (
-        <motion.div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'rgba(0,0,0)',
-                position: 'relative',
-            }}
-            viewport={{ once: true, amount: 0.7 }}
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-        >
-            <motion.div
-                style={{
-                    width: 'auto',
-                    textAlign: 'center',
-                }}
-                variants={textContainer}
-                transition={{
-                    duration: 0.6,
+        <Box color={color} textAlign="center">
+            <Typography variant="h1" fontSize="13vw">
+                Aero
+            </Typography>
+            <Typography variant="h1" fontSize="13vw">
+                Modelling
+            </Typography>
+            <Typography variant="h1" fontSize="13vw" mb="24px">
+                Club
+            </Typography>
+            <Typography fontSize="2vw" mb="4vw">
+                IIT (BHU) Varanasi
+            </Typography>
+            <Link
+                href="mailto:someone@yoursite.com"
+                sx={{
+                    textDecoration: 'none',
+                    '&:hover': {
+                        cursor: 'pointer',
+                    },
                 }}
             >
                 <Typography
-                    color="white"
-                    variant="h1"
-                    style={{
-                        fontSize: `${breakPoint ? h2 : h4}`,
-                        letterSpacing: 3,
+                    variant="h2"
+                    fontSize={h6_}
+                    borderRadius="1.3em"
+                    padding="0.93em 3.33em"
+                    display="inline-block"
+                    sx={{
+                        borderStyle: 'solid',
+                        borderColor: 'rgba(255,255,255,1)',
+                        borderWidth: '2px',
+                        color: 'rgba(255,255,255,1)',
+                        backgroundColor: 'transparent',
+                        '&:hover': {
+                            color: 'black',
+                            backgroundColor: theme.palette.secondary.main,
+                            borderColor: theme.palette.secondary.main,
+                        },
+                        transition:
+                            '0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                     }}
-                    display="grid"
-                    justifyItems="center"
                 >
-                    <motion.div
-                        style={{ width: '100%', zIndex: 2 }}
-                        variants={amcText2}
-                    >
-                        <Text word="Aero" />
-                    </motion.div>
-                    <motion.div
-                        style={{ width: '100%', zIndex: 3 }}
-                        variants={amcText2}
-                    >
-                        <Text word="Modelling" />
-                    </motion.div>
-                    <motion.div
-                        style={{ width: '100%', zIndex: 4 }}
-                        variants={amcText2}
-                    >
-                        <Text word="club" />
-                    </motion.div>
-                    <motion.div
-                        style={{ marginTop: '24px', marginBottom: '40px' }}
-                        variants={bhuText}
-                    >
-                        <Typography
-                            color="white"
-                            variant="h2"
-                            style={{
-                                fontSize: h6,
-                            }}
-                        >
-                            {' '}
-                            IIT (BHU), Varanasi
-                        </Typography>
-                    </motion.div>
-
-                    <Link
-                        href="mailto:someone@yoursite.com"
-                        sx={{
-                            textDecoration: 'none',
-                            '&:hover': {
-                                cursor: 'pointer',
-                            },
-                        }}
-                    >
-                        <Typography
-                            variant="h2"
-                            fontSize={h6}
-                            borderRadius="500px"
-                            padding="12px 36px"
-                            sx={{
-                                borderStyle: 'solid',
-                                borderColor: 'rgba(255,255,255,1)',
-                                borderWidth: '2px',
-                                color: 'rgba(255,255,255,1)',
-                                backgroundColor: 'transparent',
-                                '&:hover': {
-                                    color: 'black',
-                                    backgroundColor:
-                                        theme.palette.secondary.main,
-                                    borderColor: theme.palette.secondary.main,
-                                },
-                                transition:
-                                    '0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
-                            }}
-                        >
-                            Contact us
-                        </Typography>
-                    </Link>
+                    Contact us
                 </Typography>
-            </motion.div>
-        </motion.div>
+            </Link>
+        </Box>
     );
 }

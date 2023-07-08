@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import styles from '@/styles/home.module.css';
 import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 

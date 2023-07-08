@@ -62,7 +62,7 @@ export function returnTitleColor() {
     return changeColorOnScroll(
         startPercentage,
         endPercentage,
-        { r: 154, g: 205, b: 50 },
+        { r: 211, g: 253, b: 80 },
         { r: 0, g: 0, b: 0 }
     );
 }
@@ -71,7 +71,7 @@ export function returnColor() {
     return changeColorOnScroll(
         startPercentage,
         endPercentage,
-        { r: 255, g: 255, b: 255 },
+        { r: 232, g: 226, b: 218 },
 
         { r: 0, g: 0, b: 0 }
     );
