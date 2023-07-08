@@ -11,19 +11,26 @@ export default function AMCSection({ color }: AMCSectionProps) {
     const theme = useTheme();
 
     return (
-        <Box color={color} textAlign="center">
-            <Typography variant="h1" fontSize="13vw">
+        <Box
+            color={color}
+            textAlign="center"
+            height="87vh"
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+        >
+            <Typography variant="h1" fontSize="11vw">
                 Aero
             </Typography>
-            <Typography variant="h1" fontSize="13vw">
-                Modelling
+            <Typography variant="h1" fontSize="11vw" mb="36px">
+                Modelling Club
             </Typography>
-            <Typography variant="h1" fontSize="13vw" mb="24px">
+            {/* <Typography variant="h1" fontSize="13vw" mb="24px">
                 Club
-            </Typography>
-            <Typography fontSize="2vw" mb="4vw">
+            </Typography> */}
+            {/* <Typography fontSize="2vw" mb="4vw">
                 IIT (BHU) Varanasi
-            </Typography>
+            </Typography> */}
             <Link
                 href="mailto:someone@yoursite.com"
                 sx={{

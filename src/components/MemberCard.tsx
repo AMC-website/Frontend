@@ -35,7 +35,7 @@ const MemberCard = ({
         <>
             <Box
                 display="flex"
-                width="350px"
+                width="auto"
                 minHeight="91px"
                 sx={{
                     borderStyle: 'solid',

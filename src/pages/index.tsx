@@ -59,7 +59,7 @@ export default function Home() {
                 id="welcome"
                 style={{
                     backgroundColor: backgroundColor,
-                    padding: '100px 7.5%',
+                    padding: '0 7.5%',
                 }}
             >
                 <AMCSection color={color} />

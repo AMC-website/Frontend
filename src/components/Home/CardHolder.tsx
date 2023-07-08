@@ -28,7 +28,6 @@ function CardHolder({
             color="white"
             display="flex"
             flexDirection="column"
-            gap="35px"
             textAlign="center"
             bgcolor={backgroundColor}
         >
@@ -38,6 +37,7 @@ function CardHolder({
                     fontSize={breakPoint ? h4_ : h5}
                     color={titleColor}
                     textAlign="left"
+                    mb="35px"
                 >
                     What makes us special?
                 </Typography>
