@@ -1,5 +1,5 @@
 export const Start_Percentage = 0.6;
-export const End_Percentage = 0.65;
+export const End_Percentage = 0.64;
 
 export const h1 = '120px';
 export const h1_ = '110px';

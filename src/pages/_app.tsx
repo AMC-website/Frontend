@@ -5,10 +5,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../theme.js';
 import Footer from '@/components/Footer';
 import '@/styles/global.css';
-import { useRouter } from 'next/router.js';
 import Cursor from '@/components/Cursor';
 export default function App({ Component, pageProps }: AppProps) {
-    const router = useRouter();
     return (
         <ThemeProvider theme={theme}>
             <Cursor>

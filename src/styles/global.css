@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+html {
+    font-size: '100%';
+}
+
 * {
     margin: 0;
 }

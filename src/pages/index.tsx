@@ -15,14 +15,15 @@ import MovingText from '@/components/Home/MovingText';
 import { h4, h4_, h5, h6, h6_ } from '@/constants';
 import ImageSlider from '@/components/Carousel';
 import Projects from './projects';
+import Members from './members';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
 
     const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
-    const [titleColor, setTitleColor] = useState('rgb(0, 0, 0)');
-    const [color, setColor] = useState('rgb(255, 255, 255)');
+    const [titleColor, setTitleColor] = useState('rgb(211, 253, 80)');
+    const [color, setColor] = useState('rgb(232, 226, 218)');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -61,7 +62,7 @@ export default function Home() {
                     padding: '100px 7.5%',
                 }}
             >
-                <AMCSection />
+                <AMCSection color={color} />
             </section>
 
             <section id="parallax">
@@ -83,7 +84,7 @@ export default function Home() {
             </section>
 
             <section
-                id="why us"
+                id="about"
                 style={{
                     backgroundColor: backgroundColor,
                     padding: '100px 7.5%',
@@ -116,7 +117,7 @@ export default function Home() {
                             <Typography
                                 variant="h1"
                                 color={titleColor}
-                                fontSize={`${breakPoint ? h4_ : h5}`}
+                                fontSize={h4_}
                                 mb="35px"
                             >
                                 Why us?
@@ -127,7 +128,7 @@ export default function Home() {
                                 lineHeight="2"
                                 color={color}
                                 margin="0 auto"
-                                fontSize={breakPoint ? h6 : h6_}
+                                fontSize={h6}
                             >
                                 Sponsor AMC to fuel innovation and creativity.
                                 Your support drives cutting-edge aviation and
@@ -170,12 +171,6 @@ export default function Home() {
                 </Box>
             </section>
 
-            {/* <div style={{ backgroundColor: backgroundColor, width: '100%' }}>
-                <div style={containerStyles}>
-                    <ImageSlider images={slides} />
-                </div>
-            </div> */}
-
             <MovingText
                 color={titleColor}
                 bgColor={backgroundColor}
@@ -198,6 +193,17 @@ export default function Home() {
             </section>
 
             <section
+                id="members"
+                style={{
+                    backgroundColor: backgroundColor,
+                    padding: '100px 0',
+                }}
+            >
+                <Members titleColor={titleColor} />
+            </section>
+
+            <section
+                id="contact"
                 style={{ backgroundColor: backgroundColor, padding: '100px 0' }}
             >
                 <ContactForm color={color} />
