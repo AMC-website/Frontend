@@ -21,6 +21,7 @@ export default function ContactForm(color: ContactFormProps) {
                 pb: '100px',
                 display: 'flex',
                 flexDirection: 'column',
+                gap: '50px',
                 '@media (min-width: 600px)': {
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
@@ -50,6 +51,7 @@ export default function ContactForm(color: ContactFormProps) {
                     variant="h1"
                     sx={{
                         fontSize: breakPoint ? h4_ : h5,
+                        fontWeight: 'bold',
                     }}
                 >
                     Get in Touch
@@ -90,10 +92,16 @@ export default function ContactForm(color: ContactFormProps) {
                         px: '20px',
                         py: '5px',
                         outline: 'solid',
+                        maxWidth: breakPoint ? 'max-content' : '100%',
                         outlineColor: 'black',
                         outlineWidth: '1px',
-                        maxWidth: 'max-content',
                         borderRadius: '10px',
+                        '&:hover': {
+                            backgroundColor: 'lightcoral',
+                        },
+                        sm: {
+                            maxWidth: 'max-content',
+                        },
                         fontSize: h6,
                     }}
                     type="submit"
@@ -105,8 +113,9 @@ export default function ContactForm(color: ContactFormProps) {
             <Box
                 sx={{
                     display: 'flex',
-                    justifyContent: 'end',
+                    justifyContent: 'center',
                     alignItems: 'center',
+                    margin: '20px',
                 }}
             >
                 <Image

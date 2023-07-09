@@ -1,18 +1,15 @@
-.card_img{
-  width: 100%;
-  margin-bottom: auto;
+.card_img {
+    width: 100%;
+    margin-bottom: auto;
 }
 
-
-  @media screen and (min-width:800px) {
-    .card_img{
-      position: absolute;
-      top: 30px;
-      bottom: 30px;
-      right: 30px;  
-      width: 50%;
-      height: 90%;
+@media screen and (min-width: 800px) {
+    .card_img {
+        position: absolute;
+        top: 30px;
+        bottom: 30px;
+        right: 30px;
+        width: 50%;
+        height: 90%;
     }
-    
-
-  }
+}

@@ -1,13 +1,14 @@
-
 {
-  "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["prettier"],
-  "rules": {
-    "no-unused-vars":"warn",
-    "prettier/prettier": ["warn",{
-      "endOfLine": "auto",
-      "singleQuote": true
+    "extends": ["next/core-web-vitals", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+        "no-unused-vars": "warn",
+        "prettier/prettier": [
+            "warn",
+            {
+                "endOfLine": "auto",
+                "singleQuote": true
+            }
+        ]
     }
-    ]
-  }
 }
