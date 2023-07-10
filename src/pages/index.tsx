@@ -10,7 +10,7 @@ import {
     returnTitleColor,
 } from '@/components/ChangeColorOnScroll';
 import AMCSection from '@/components/Home/AMCSection';
-import ParallaxImage from '@/components/Home/ParallaxImage';
+import Parallax from '@/components/Home/Parallax';
 import MovingText from '@/components/Home/MovingText';
 import { h4, h4_, h5, h6, h6_ } from '@/constants';
 import Projects from './projects';
@@ -65,7 +65,7 @@ export default function Home() {
                 <AMCSection color={color} />
             </section>
             <section id="parallax">
-                <ParallaxImage />
+                <Parallax />
             </section>
             <section id="about">
                 <section
