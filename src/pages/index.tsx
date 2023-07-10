@@ -13,9 +13,9 @@ import AMCSection from '@/components/Home/AMCSection';
 import ParallaxImage from '@/components/Home/ParallaxImage';
 import MovingText from '@/components/Home/MovingText';
 import { h4, h4_, h5, h6, h6_ } from '@/constants';
-import ImageSlider from '@/components/Carousel';
 import Projects from './projects';
 import Members from './members';
+import CustomCarousel from '@/components/Carousel';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -64,119 +64,131 @@ export default function Home() {
             >
                 <AMCSection color={color} />
             </section>
-
             <section id="parallax">
                 <ParallaxImage />
             </section>
-
-            <section
-                id="cards"
-                style={{
-                    backgroundColor: backgroundColor,
-                    padding: '100px 7.5%',
-                }}
-            >
-                <CardHolder
-                    titleColor={titleColor}
-                    backgroundColor={backgroundColor}
-                    color={color}
-                />
-            </section>
-
-            <section
-                id="about"
-                style={{
-                    backgroundColor: backgroundColor,
-                    padding: '100px 7.5%',
-                }}
-            >
-                <Box
-                    height="auto"
-                    position="relative"
-                    textAlign="left"
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    marginLeft="auto"
-                    marginRight="auto"
+            <section id="about">
+                <section
+                    id="cards"
+                    style={{
+                        backgroundColor: backgroundColor,
+                        padding: '100px 7.5%',
+                    }}
                 >
-                    <div
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            flexDirection: breakPoint2 ? 'row' : 'column',
-                            width: '100%',
-                            gap: '5px',
-                        }}
+                    <CardHolder
+                        titleColor={titleColor}
+                        backgroundColor={backgroundColor}
+                        color={color}
+                    />
+                </section>
+                <section
+                    id="about"
+                    style={{
+                        backgroundColor: backgroundColor,
+                        padding: '100px 7.5%',
+                    }}
+                >
+                    <Box
+                        height="auto"
+                        position="relative"
+                        textAlign="left"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                        marginLeft="auto"
+                        marginRight="auto"
                     >
                         <div
                             style={{
-                                width: breakPoint2 ? '60%' : 'auto',
-                            }}
-                        >
-                            <Typography
-                                variant="h1"
-                                color={titleColor}
-                                fontSize={h4_}
-                                mb="35px"
-                            >
-                                Why us?
-                            </Typography>
-
-                            <Typography
-                                variant="h3"
-                                lineHeight="2"
-                                color={color}
-                                margin="0 auto"
-                                fontSize={h6}
-                            >
-                                Sponsor AMC to fuel innovation and creativity.
-                                Your support drives cutting-edge aviation and
-                                engineering projects, empowering talented
-                                students.
-                                <br />
-                                <br />
-                                By sponsoring AMC, you become a catalyst for
-                                transformative change in the aviation and
-                                engineering sectors, creating opportunities for
-                                breakthrough discoveries and groundbreaking
-                                advancements.
-                                <br />
-                                <br />
-                                Invest in <b>education</b>, make an{' '}
-                                <b>impact</b>, and <b>connect</b> with future
-                                industry <b>leaders</b>.
-                            </Typography>
-                        </div>
-                        <div
-                            style={{
-                                width: breakPoint2 ? '40%' : '100%',
                                 display: 'flex',
-                                flexDirection: breakPoint2 ? 'column' : 'row',
                                 justifyContent: 'space-between',
+                                flexDirection: breakPoint2 ? 'row' : 'column',
+                                width: '100%',
+                                gap: '5px',
                             }}
                         >
-                            <img
-                                src="flight2.jpg"
-                                alt="drone image"
+                            <div
                                 style={{
-                                    objectFit: 'cover',
-                                    height: breakPoint2 ? '100%' : '100%',
-                                    width: breakPoint2 ? '100%' : '100%',
-                                    borderRadius: '5px',
+                                    width: breakPoint2 ? '60%' : 'auto',
                                 }}
-                            />
-                        </div>
-                    </div>
-                </Box>
-            </section>
+                            >
+                                <Typography
+                                    variant="h1"
+                                    color={titleColor}
+                                    fontSize={h4_}
+                                    mb="35px"
+                                >
+                                    Why us?
+                                </Typography>
 
+                                <Typography
+                                    variant="h3"
+                                    lineHeight="2"
+                                    color={color}
+                                    margin="0 auto"
+                                    fontSize={h6}
+                                >
+                                    Sponsor AMC to fuel innovation and
+                                    creativity. Your support drives cutting-edge
+                                    aviation and engineering projects,
+                                    empowering talented students.
+                                    <br />
+                                    <br />
+                                    By sponsoring AMC, you become a catalyst for
+                                    transformative change in the aviation and
+                                    engineering sectors, creating opportunities
+                                    for breakthrough discoveries and
+                                    groundbreaking advancements.
+                                    <br />
+                                    <br />
+                                    Invest in <b>education</b>, make an{' '}
+                                    <b>impact</b>, and <b>connect</b> with
+                                    future industry <b>leaders</b>.
+                                </Typography>
+                            </div>
+                            <div
+                                style={{
+                                    width: breakPoint2 ? '40%' : '100%',
+                                    display: 'flex',
+                                    flexDirection: breakPoint2
+                                        ? 'column'
+                                        : 'row',
+                                    justifyContent: 'space-between',
+                                }}
+                            >
+                                <img
+                                    src="flight2.jpg"
+                                    alt="drone image"
+                                    style={{
+                                        objectFit: 'cover',
+                                        height: breakPoint2 ? '100%' : '100%',
+                                        width: breakPoint2 ? '100%' : '100%',
+                                        borderRadius: '5px',
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </Box>
+                </section>
+            </section>
+            <section
+                id="gallery"
+                style={{
+                    backgroundColor: backgroundColor,
+                    padding: '100px 0',
+                }}
+            >
+                <CustomCarousel
+                    backgroundColor={backgroundColor}
+                    color={color}
+                    titleColor={titleColor}
+                />
+            </section>
             <MovingText
                 color={titleColor}
                 bgColor={backgroundColor}
                 fontSize={breakPoint ? h4 : h5}
             />
-
             <section
                 id="projects"
                 style={{
@@ -191,7 +203,6 @@ export default function Home() {
                     titleColor={titleColor}
                 />
             </section>
-
             <section
                 id="members"
                 style={{

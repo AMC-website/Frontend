@@ -4,12 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import NavItem from './NavItem';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
+
 import {
     returnBgColor,
     returnColor,
     returnTitleColor,
 } from '@/components/ChangeColorOnScroll';
-import Link from 'next/link';
 
 function Path(props) {
     return (
@@ -33,6 +34,15 @@ function Navbar() {
     const [color, setColor] = useState('rgb(255, 255, 255)');
 
     const breakPoint = useMediaQuery('(min-width:900px)');
+
+    const CustomLink = ({ page, children }) => {
+        const lowerCasePage = page.toLowerCase();
+        return (
+            <AnchorLink style={{ width: '13%' }} href={`#${lowerCasePage}`}>
+                {children}
+            </AnchorLink>
+        );
+    };
 
     useEffect(() => {
         setIsOpen(false);
@@ -103,7 +113,7 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ['PROJECTS', 'MEMBERS', 'CONTACT'];
+    const pages = ['PROJECTS', 'MEMBERS', 'CONTACT', 'GALLERY', 'ABOUT'];
 
     return (
         <>
@@ -131,14 +141,14 @@ function Navbar() {
                     alignItems="center"
                     width="85%"
                     height="100%"
-                    padding="0 10px"
                     sx={{
                         borderStyle: 'solid',
                         borderColor: color,
                         borderWidth: '0 0 0.3px 0',
                     }}
+                    boxSizing="border-box"
                 >
-                    <Link href="/" style={{ width: '13%' }}>
+                    <CustomLink page="welcome">
                         <img
                             src="logo.png"
                             alt="drone image"
@@ -148,7 +158,7 @@ function Navbar() {
                                 width: '100%',
                             }}
                         />
-                    </Link>
+                    </CustomLink>
                     <motion.div
                         style={{
                             display: breakPoint
@@ -160,11 +170,9 @@ function Navbar() {
                             position: breakPoint ? 'static' : 'absolute',
                             top: '100%',
                             left: '0',
-                            width: breakPoint ? '30%' : '100%',
                             minHeight: '100%',
                             justifyContent: breakPoint ? 'space-between' : '',
                             alignItems: breakPoint ? 'center' : '',
-                            padding: '5px',
                         }}
                         initial={false}
                         animate={isOpen ? 'open' : 'closed'}
