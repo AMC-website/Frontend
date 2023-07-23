@@ -4,40 +4,40 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import ContactForm from '@/components/Contact/ContactForm';
 import CardHolder from '@/components/Home/CardHolder';
-import {
-    returnBgColor,
-    returnColor,
-    returnTitleColor,
-} from '@/components/ChangeColorOnScroll';
+// import {
+//     returnBgColor,
+//     returnColor,
+//     returnTitleColor,
+// } from '@/components/ChangeColorOnScroll';
 import AMCSection from '@/components/Home/AMCSection';
 import Parallax from '@/components/Home/Parallax';
-import MovingText from '@/components/Home/MovingText';
-import { h4, h4_, h5, h6, h6_ } from '@/constants';
-import Projects from './projects';
-import Members from './members';
+import MovingText from '@/components/MovingText';
+import { bgColor, color, h4, h4_, h5, h6, h6_, titleColor } from '@/constants';
+import Projects from '../components/Projects/projects';
 import CustomCarousel from '@/components/Carousel';
+import Members from '@/components/Member/members';
 
 export default function Home() {
     const breakPoint = useMediaQuery("(min-width:600px)");
     const breakPoint2 = useMediaQuery("(min-width:1000px)");
 
-    const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
-    const [titleColor, setTitleColor] = useState('rgb(211, 253, 80)');
-    const [color, setColor] = useState('rgb(232, 226, 218)');
+    // const [backgroundColor, setBackgroundColor] = useState('rgb(0, 0, 0)');
+    // const [titleColor, setTitleColor] = useState('rgb(211, 253, 80)');
+    // const [color, setColor] = useState('rgb(232, 226, 218)');
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setBackgroundColor(returnBgColor);
-            setTitleColor(returnTitleColor);
-            setColor(returnColor);
-        };
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         setBackgroundColor(returnBgColor);
+    //         setTitleColor(returnTitleColor);
+    //         setColor(returnColor);
+    //     };
 
-        window.addEventListener('scroll', handleScroll);
+    //     window.addEventListener('scroll', handleScroll);
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
 
     const slides = [
         { url: 'flight2.jpg', title: 'beach' },
@@ -51,15 +51,15 @@ export default function Home() {
         width: '500px',
         height: '600px',
         margin: '0 auto',
-        backgroundColor: backgroundColor,
+        backgroundColor: bgColor,
     };
     return (
         <div>
             <section
                 id="welcome"
                 style={{
-                    backgroundColor: backgroundColor,
-                    padding: '0 7.5%',
+                    backgroundColor: bgColor,
+                    padding: '0 7.5% 100px',
                 }}
             >
                 <AMCSection />
@@ -71,7 +71,7 @@ export default function Home() {
                 <section
                     id="amenities"
                     style={{
-                        backgroundColor: backgroundColor,
+                        backgroundColor: bgColor,
                         padding: '100px 7.5%',
                     }}
                 >
@@ -84,7 +84,7 @@ export default function Home() {
                 <section
                     id="about"
                     style={{
-                        backgroundColor: backgroundColor,
+                        backgroundColor: bgColor,
                         padding: '100px 7.5%',
                     }}
                 >
@@ -169,7 +169,7 @@ export default function Home() {
             <section
                 id="gallery"
                 style={{
-                    backgroundColor: backgroundColor,
+                    backgroundColor: bgColor,
                     padding: '100px 0',
                 }}
             >
@@ -179,7 +179,7 @@ export default function Home() {
             <section
                 id="projects"
                 style={{
-                    backgroundColor: backgroundColor,
+                    backgroundColor: bgColor,
                     width: '100%',
                     padding: '100px 0',
                 }}
@@ -189,7 +189,7 @@ export default function Home() {
             <section
                 id="members"
                 style={{
-                    backgroundColor: backgroundColor,
+                    backgroundColor: bgColor,
                     padding: '100px 0',
                 }}
             >
@@ -198,7 +198,7 @@ export default function Home() {
 
             <section
                 id="contact"
-                style={{ backgroundColor: backgroundColor, padding: '100px 0' }}
+                style={{ backgroundColor: bgColor, padding: '100px 0' }}
             >
                 <ContactForm />
             </section>
