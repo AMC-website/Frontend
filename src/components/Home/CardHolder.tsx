@@ -1,4 +1,4 @@
-import BasicCard from '@/components/BasicCard';
+import BasicCard from '@/components/About/BasicCard';
 import SwipeUpIcon from '@mui/icons-material/SwipeUp';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ScienceIcon from '@mui/icons-material/Science';
@@ -7,7 +7,7 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import dynamic from 'next/dynamic';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import { h4_, h5 } from '@/constants';
+import { h4, h4_, h5 } from '@/constants';
 
 interface CardHolderProps {
     titleColor: string;
@@ -34,12 +34,12 @@ function CardHolder({
             <div>
                 <Typography
                     variant="h1"
-                    fontSize={breakPoint ? h4_ : h5}
-                    color={titleColor}
+                    fontSize={breakPoint ? h4 : h5}
+                    color={color}
                     textAlign="left"
                     mb="35px"
                 >
-                    What makes us special?
+                    Amenities{' '}
                 </Typography>
             </div>
             <Box

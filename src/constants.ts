@@ -18,3 +18,7 @@ export const h5_ = '30px';
 
 export const h6 = '20px';
 export const h6_ = '17px';
+
+export const bgColor = 'rgb(0,0,0)';
+export const titleColor = 'rgb(189,28,28)';
+export const color = 'rgb(232,226,218)';

@@ -1,18 +1,12 @@
 import { Box, Typography, Link } from '@mui/material';
 import { useRouter } from 'next/router';
-import { h5_, h6, h6_ } from '@/constants';
+import { bgColor, color, h5_, h6, h6_, titleColor } from '@/constants';
 import dynamic from 'next/dynamic';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Email } from '@mui/icons-material';
 
-interface FooterProps {
-    bgColor?: string;
-    color?: string;
-    titleColor?: string;
-}
-
-const Footer = ({ color, bgColor, titleColor }: FooterProps) => {
+const Footer = () => {
     const route = useRouter();
 
     const sections = ['Events', 'Projects', 'About'];
@@ -21,15 +15,14 @@ const Footer = ({ color, bgColor, titleColor }: FooterProps) => {
         'info@nunospace.com',
         'Call us',
     ];
-    color: 'black';
-    bgColor = '#F0E4DC';
+
     const iconStyles = {
         '&:hover': {
             scale: '1.2',
         },
         transition: '300ms ease',
         fontSize: h5_,
-        color: 'black',
+        color: color,
     };
 
     const NavigationChildren = () => (
@@ -145,7 +138,7 @@ const Footer = ({ color, bgColor, titleColor }: FooterProps) => {
                     gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
                     flexDirection: 'column',
                     borderStyle: 'solid',
-                    borderColor: 'black',
+                    borderColor: color,
                     borderWidth: '0.3px 0 0 0',
                     gap: '70px',
                     width: '85%',

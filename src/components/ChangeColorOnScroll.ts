@@ -1,4 +1,10 @@
-import { End_Percentage, Start_Percentage } from '@/constants';
+import {
+    End_Percentage,
+    Start_Percentage,
+    bgColor,
+    color,
+    titleColor,
+} from '@/constants';
 
 type RGBColor = {
     r: number;
@@ -50,29 +56,31 @@ const startPercentage = Start_Percentage;
 const endPercentage = End_Percentage;
 
 export function returnBgColor() {
-    return changeColorOnScroll(
-        startPercentage,
-        endPercentage,
-        { r: 0, g: 0, b: 0 },
-        { r: 240, g: 228, b: 220 }
-    );
+    // return changeColorOnScroll(
+    //     startPercentage,
+    //     endPercentage,
+    //     { r: 0, g: 0, b: 0 },
+    //     { r: 240, g: 228, b: 220 }
+    // );
+    return bgColor;
 }
 
 export function returnTitleColor() {
-    return changeColorOnScroll(
-        startPercentage,
-        endPercentage,
-        { r: 211, g: 253, b: 80 },
-        { r: 0, g: 0, b: 0 }
-    );
+    // return changeColorOnScroll(
+    //     startPercentage,
+    //     endPercentage,
+    //     { r: 211, g: 253, b: 80 },
+    //     { r: 0, g: 0, b: 0 }
+    // );
+    return titleColor;
 }
 
 export function returnColor() {
-    return changeColorOnScroll(
-        startPercentage,
-        endPercentage,
-        { r: 232, g: 226, b: 218 },
-
-        { r: 0, g: 0, b: 0 }
-    );
+    // return changeColorOnScroll(
+    //     startPercentage,
+    //     endPercentage,
+    //     { r: 232, g: 226, b: 218 },
+    //     { r: 0, g: 0, b: 0 }
+    // );
+    return color;
 }

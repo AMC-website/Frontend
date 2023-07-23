@@ -1,12 +1,8 @@
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React from 'react';
-import MemberCard from '@/components/MemberCard';
-import { h4_ } from '@/constants';
-
-interface MemberProps {
-    titleColor: string;
-}
+import MemberCard from '@/components/Member/MemberCard';
+import { color, h4, h4_, h5 } from '@/constants';
 
 const membersData = [
     {
@@ -35,14 +31,19 @@ const membersData = [
     },
 ];
 
-export default function Members({ titleColor }: MemberProps) {
+export default function Members() {
     const theme = useTheme();
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:750px)');
 
     return (
         <Box width="85%" marginX="auto">
-            <Typography variant="h2" fontSize={h4_} mb="35px">
+            <Typography
+                variant="h2"
+                fontSize={breakPoint ? h4 : h5}
+                mb="35px"
+                color={color}
+            >
                 Members
             </Typography>
             <Box
@@ -54,7 +55,6 @@ export default function Members({ titleColor }: MemberProps) {
                 justifyContent={breakPoint ? 'space-between' : 'center'}
             >
                 <MemberCard
-                    color={titleColor}
                     memberName="Viswa"
                     memberRole="thalaivar"
                     memberThumbnail="flight1.jpg"
@@ -62,7 +62,6 @@ export default function Members({ titleColor }: MemberProps) {
                 />
 
                 <MemberCard
-                    color={titleColor}
                     memberName="Viswa"
                     memberRole="thalaivar"
                     memberThumbnail="flight1.jpg"
@@ -70,7 +69,6 @@ export default function Members({ titleColor }: MemberProps) {
                 />
 
                 <MemberCard
-                    color={titleColor}
                     memberName="Viswa"
                     memberRole="thalaivar"
                     memberThumbnail="flight1.jpg"
@@ -78,7 +76,6 @@ export default function Members({ titleColor }: MemberProps) {
                 />
 
                 <MemberCard
-                    color={titleColor}
                     memberName="Viswa"
                     memberRole="thalaivar"
                     memberThumbnail="flight1.jpg"
@@ -86,7 +83,6 @@ export default function Members({ titleColor }: MemberProps) {
                 />
 
                 <MemberCard
-                    color={titleColor}
                     memberName="Viswa"
                     memberRole="thalaivar"
                     memberThumbnail="flight1.jpg"
@@ -94,7 +90,6 @@ export default function Members({ titleColor }: MemberProps) {
                 />
 
                 <MemberCard
-                    color={titleColor}
                     memberName="Viswa"
                     memberRole="thalaivar"
                     memberThumbnail="flight1.jpg"

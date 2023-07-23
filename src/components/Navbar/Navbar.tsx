@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Backdrop, Box } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
@@ -6,11 +6,11 @@ import { motion } from 'framer-motion';
 import NavItem from './NavItem';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-import {
-    returnBgColor,
-    returnColor,
-    returnTitleColor,
-} from '@/components/ChangeColorOnScroll';
+// import {
+//     returnBgColor,
+//     returnColor,
+//     returnTitleColor,
+// } from '@/components/ChangeColorOnScroll';
 
 function Path(props) {
     return (
@@ -34,31 +34,37 @@ function Navbar() {
     const [color, setColor] = useState('rgb(255, 255, 255)');
 
     const breakPoint = useMediaQuery('(min-width:900px)');
+    const breakPoint2 = useMediaQuery('(min-width:650px)');
 
     const CustomLink = ({ page, children }) => {
         const lowerCasePage = page.toLowerCase();
         return (
-            <AnchorLink style={{ width: '13%' }} href={`#${lowerCasePage}`}>
+            <AnchorLink
+                style={{
+                    width: breakPoint ? '13%' : breakPoint2 ? '20%' : '30%',
+                }}
+                href={`#${lowerCasePage}`}
+            >
                 {children}
             </AnchorLink>
         );
     };
 
-    useEffect(() => {
-        setIsOpen(false);
+    // useEffect(() => {
+    //     setIsOpen(false);
 
-        const handleScroll = () => {
-            setBackgroundColor(returnBgColor);
-            setTitleColor(returnTitleColor);
-            setColor(returnColor);
-        };
+    //     const handleScroll = () => {
+    //         setBackgroundColor(returnBgColor);
+    //         setTitleColor(returnTitleColor);
+    //         setColor(returnColor);
+    //     };
 
-        window.addEventListener('scroll', handleScroll);
+    //     window.addEventListener('scroll', handleScroll);
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [breakPoint]);
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, [breakPoint]);
 
     const checkNavbarPosition = () => {
         const scrollPosition = window.screenY;
@@ -74,10 +80,29 @@ function Navbar() {
         return () => window.removeEventListener('scroll', checkNavbarPosition);
     }, [navbarOffsetTop]);
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClick() {
+        setIsOpen(!isOpen);
+    }
+
+    const [hoveredIndex, setHoveredIndex] = useState(-1);
+
+    function handleMouseEnter(index) {
+        setHoveredIndex(index);
+    }
+
+    function handleMouseLeave() {
+        setHoveredIndex(-1);
+    }
+
+    const pages = ['ABOUT', 'GALLERY', 'PROJECTS', 'MEMBERS', 'CONTACT'];
+
     const boxVariants = {
         open: {
             height: 'auto',
             opacity: 1,
+
             transition: {
                 type: 'spring',
                 damping: 20,
@@ -97,39 +122,22 @@ function Navbar() {
         },
     };
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    function handleClick() {
-        setIsOpen(!isOpen);
-    }
-
-    const [hoveredIndex, setHoveredIndex] = useState(-1);
-
-    function handleMouseEnter(index) {
-        setHoveredIndex(index);
-    }
-
-    function handleMouseLeave() {
-        setHoveredIndex(-1);
-    }
-
-    const pages = ['PROJECTS', 'MEMBERS', 'CONTACT', 'GALLERY', 'ABOUT'];
-
     return (
         <>
-            {sticky && <div style={{ height: `13vh` }} />}
+            {sticky && <div style={{ height: `16vh` }} />}
 
             <Box
                 position={sticky ? 'fixed' : 'relative'}
                 ref={navbarRef}
                 top={0}
                 zIndex="50"
-                height="13vh"
+                height="16vh"
                 left="50%"
                 width="100%"
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
+                boxSizing="border-box"
                 sx={{
                     transform: 'translate(-50%,0)',
                 }}
@@ -150,7 +158,7 @@ function Navbar() {
                 >
                     <CustomLink page="welcome">
                         <img
-                            src="logo.png"
+                            src="logo new.png"
                             alt="drone image"
                             style={{
                                 objectFit: 'cover',
@@ -164,15 +172,23 @@ function Navbar() {
                             display: breakPoint
                                 ? 'flex'
                                 : isOpen
-                                ? 'grid'
+                                ? 'flex'
                                 : 'none',
-                            gap: '4px',
+                            gap: breakPoint ? '4px' : '35px',
+                            flexDirection: breakPoint ? 'row' : 'column',
                             position: breakPoint ? 'static' : 'absolute',
-                            top: '100%',
+                            top: '0',
                             left: '0',
-                            minHeight: '100%',
-                            justifyContent: breakPoint ? 'space-between' : '',
-                            alignItems: breakPoint ? 'center' : '',
+                            minHeight: breakPoint ? '100%' : '100vh',
+                            width: breakPoint ? '' : '100vw',
+                            justifyContent: breakPoint
+                                ? 'space-between'
+                                : 'center',
+                            alignItems: breakPoint ? 'center' : 'end',
+                            backgroundColor: 'black',
+                            paddingRight: '35px',
+                            paddingTop: breakPoint ? '' : '13vh',
+                            boxSizing: 'border-box',
                         }}
                         initial={false}
                         animate={isOpen ? 'open' : 'closed'}
@@ -192,14 +208,16 @@ function Navbar() {
                                             index !== hoveredIndex &&
                                             hoveredIndex !== -1
                                         }
-                                        color={color}
-                                        backgroundColor={titleColor}
+                                        breakPoint={breakPoint}
                                     />
                                 </span>
                             );
                         })}
                     </motion.div>
-                    <Box display={`${breakPoint ? `none` : `block`}`}>
+                    <Box
+                        display={`${breakPoint ? `none` : `block`}`}
+                        zIndex="50"
+                    >
                         <Box sx={{ cursor: 'pointer' }} onClick={handleClick}>
                             <svg width="23" height="23" viewBox="0 0 23 23">
                                 <Path

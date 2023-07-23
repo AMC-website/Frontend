@@ -4,13 +4,9 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Button, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
-import { h4_, h5, h6 } from '@/constants';
+import { color, h4, h4_, h5, h6 } from '@/constants';
 
-interface ContactFormProps {
-    color: string;
-}
-
-export default function ContactForm(color: ContactFormProps) {
+export default function ContactForm() {
     const breakPoint = useMediaQuery('(min-width:600px)');
 
     return (
@@ -50,8 +46,7 @@ export default function ContactForm(color: ContactFormProps) {
                 <Typography
                     variant="h1"
                     sx={{
-                        fontSize: breakPoint ? h4_ : h5,
-                        fontWeight: 'bold',
+                        fontSize: breakPoint ? h4 : h5,
                     }}
                 >
                     Get in Touch
@@ -117,12 +112,10 @@ export default function ContactForm(color: ContactFormProps) {
                     alignItems: 'center',
                 }}
             >
-                <Image
-                    width={600}
+                <img
                     style={{
-                        margin: '20px',
+                        width: '100%',
                     }}
-                    height={500}
                     src={'/map.png'}
                     alt="googlemaps"
                 />

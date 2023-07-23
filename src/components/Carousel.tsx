@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { h5_, h6 } from '@/constants';
-
-interface CarouselProps {
-    backgroundColor: string;
-    color: string;
-    titleColor: string;
-}
+import { bgColor, color, h4, h5, h5_, h6, titleColor } from '@/constants';
 
 // Our images list
 const images = [
@@ -26,48 +20,50 @@ const images = [
     // add as many images as you want.
 ];
 
-const ImageComponent = ({
-    image,
-    current,
-    backgroundColor,
-    titleColor,
-    color,
-    isPrev,
-}) => {
+const ImageComponent = ({ images, current, isPrev }) => {
     const breakPoint = useMediaQuery('(min-width:600px)');
 
     return (
-        <motion.div
-            key={current}
-            initial={{ opacity: 0, x: isPrev ? -100 : 100 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            style={{ width: '100%' }}
-        >
-            <Box
-                display="flex"
-                flexDirection={breakPoint ? 'row' : 'column'}
-                alignItems="center"
-                justifyContent="center"
+        <Box width="100%">
+            <Typography
+                variant="h2"
+                fontSize={breakPoint ? h4 : h5}
+                mb="35px"
+                color={color}
             >
-                <img
-                    src={image.src}
-                    alt={image.caption}
-                    style={{
-                        objectFit: 'cover',
-                        height: breakPoint ? '475px' : '250px',
-                        width: breakPoint ? '50%' : '100%',
-                    }}
-                />
+                Gallery
+            </Typography>
+            <motion.div
+                key={current}
+                initial={{ opacity: 0, x: isPrev ? -100 : 100 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                transition={{ duration: 1 }}
+                style={{ width: '100%' }}
+            >
                 <Box
-                    height={breakPoint ? '475px' : '250px'}
+                    display="flex"
+                    flexDirection={breakPoint ? 'row' : 'column'}
+                    alignItems="center"
+                    justifyContent="space-between"
+                >
+                    <img
+                        src={images[0].src}
+                        alt={images[0].caption}
+                        style={{
+                            objectFit: 'cover',
+                            height: breakPoint ? '435px' : '215px',
+                            width: breakPoint ? '47%' : '100%',
+                        }}
+                    />
+                    {/* <Box
+                    height={breakPoint ? '435px' : '215px'}
                     width={breakPoint ? '50%' : '100%'}
                     padding="35px 10px"
                     boxSizing="border-box"
                     display="flex"
                     justifyContent="start"
                     alignItems="start"
-                    bgcolor={backgroundColor}
+                    bgcolor={bgColor}
                     border="0.5px solid"
                     borderLeft={breakPoint ? 'none' : '0.5px solid'}
                     borderTop={breakPoint ? '0.5px solid' : 'none'}
@@ -76,19 +72,30 @@ const ImageComponent = ({
                     <Typography variant="h4" fontSize={h6} color={titleColor}>
                         {image.caption}
                     </Typography>
+                </Box> */}
+
+                    <img
+                        src={images[1].src}
+                        alt={images[1].caption}
+                        style={{
+                            objectFit: 'cover',
+                            height: breakPoint ? '435px' : '0',
+                            width: breakPoint ? '47%' : '0',
+                        }}
+                    />
                 </Box>
-            </Box>
-        </motion.div>
+            </motion.div>
+        </Box>
     );
 };
 
 const Image = React.memo(ImageComponent);
 
-const Carousel = ({ backgroundColor, color, titleColor }: CarouselProps) => {
+const Carousel = () => {
     const length = images.length;
-
     const [current, setCurrent] = useState(0); // state for current image index
     const [prev, setPrev] = useState(false);
+    const next = current + 1 <= length - 1 ? current + 1 : 1;
 
     // function to handle next button click
     const nextSlide = () => {
@@ -116,11 +123,8 @@ const Carousel = ({ backgroundColor, color, titleColor }: CarouselProps) => {
             >
                 <AnimatePresence mode="wait">
                     <Image
-                        image={images[current]}
+                        images={[images[current], images[next]]}
                         current={current}
-                        backgroundColor={backgroundColor}
-                        titleColor={titleColor}
-                        color={color}
                         isPrev={prev}
                     />
                 </AnimatePresence>
@@ -138,7 +142,7 @@ const Carousel = ({ backgroundColor, color, titleColor }: CarouselProps) => {
                     mr="14px"
                     onClick={() => prevSlide()}
                 >
-                    ←
+                    <p style={{ marginTop: 'auto', marginBottom: 'auto' }}>←</p>
                 </Box>
                 <Box
                     sx={{ cursor: 'pointer' }}
@@ -150,7 +154,7 @@ const Carousel = ({ backgroundColor, color, titleColor }: CarouselProps) => {
                     borderRadius="500px"
                     onClick={() => nextSlide()}
                 >
-                    →
+                    <p style={{ marginTop: 'auto', marginBottom: 'auto' }}>→</p>
                 </Box>
             </Box>
         </>

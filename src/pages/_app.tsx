@@ -5,23 +5,18 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../theme.js';
 import Footer from '@/components/Footer';
 import '@/styles/global.css';
-import Cursor from '@/components/Cursor';
+// import Cursor from '@/components/Cursor';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <ThemeProvider theme={theme}>
-            <Cursor>
+            {/* <Cursor>
                 <></>
-            </Cursor>
+            </Cursor> */}
 
             <Box position="relative" overflow="hidden">
-                <div
-                    style={{
-                        backgroundColor: 'black',
-                        width: '100%',
-                    }}
-                >
+                <Box bgcolor="black">
                     <Navbar />
-                </div>
+                </Box>
 
                 <Component {...pageProps} />
 
