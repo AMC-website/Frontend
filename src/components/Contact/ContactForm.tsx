@@ -13,6 +13,8 @@ interface ContactFormProps {
 export default function ContactForm(color: ContactFormProps) {
 	const breakPoint = useMediaQuery("(min-width:600px)");
 
+	const inputs = ["First Name", "Last Name", "Email", "Message"];
+
 	return (
 		<Box
 			component="form"
@@ -57,43 +59,57 @@ export default function ContactForm(color: ContactFormProps) {
 					Get in Touch
 				</Typography>
 
-				<div>
-					<TextField
-						sx={{
-							minWidth: "100%",
-						}}
-						id="outlined-error"
-						label="First Name"
-						variant="standard"
-					/>
-				</div>
-				<div>
-					<TextField
-						id="outlined-error"
-						label="Last Name"
-						variant="standard"
-						sx={{
-							minWidth: "100%",
-						}}
-					/>
-				</div>
-				<div>
-					<TextField
-						sx={{
-							minWidth: "100%",
-						}}
-						id="outlined-error"
-						label="Email"
-						variant="standard"
-					/>
-				</div>
+				{inputs.map((i) => (
+					<div>
+						<TextField
+							id="outlined-error"
+							label="Last Name"
+							variant="standard"
+							sx={{
+								minWidth: "100%",
+								color: color,
+							}}
+						/>
+					</div>
+				))}
+				{/* <div> */}
+				{/* 	<TextField */}
+				{/* 		sx={{ */}
+				{/* 			minWidth: "100%", */}
+				{/* 			color: color, */}
+				{/* 		}} */}
+				{/* 		id="outlined-error" */}
+				{/* 		label="First Name" */}
+				{/* 		variant="standard" */}
+				{/* 	/> */}
+				{/* </div> */}
+				{/* <div> */}
+				{/* 	<TextField */}
+				{/* 		id="outlined-error" */}
+				{/* 		label="Last Name" */}
+				{/* 		variant="standard" */}
+				{/* 		sx={{ */}
+				{/* 			minWidth: "100%", */}
+				{/* 		}} */}
+				{/* 	/> */}
+				{/* </div> */}
+				{/* <div> */}
+				{/* 	<TextField */}
+				{/* 		sx={{ */}
+				{/* 			minWidth: "100%", */}
+				{/* 		}} */}
+				{/* 		id="outlined-error" */}
+				{/* 		label="Email" */}
+				{/* 		variant="standard" */}
+				{/* 	/> */}
+				{/* </div> */}
 				<Button
 					sx={{
 						px: "20px",
 						py: "5px",
 						outline: "solid",
 						maxWidth: breakPoint ? "max-content" : "100%",
-						outlineColor: "black",
+						outlineColor: color,
 						outlineWidth: "1px",
 						borderRadius: "10px",
 						"&:hover": {
@@ -115,6 +131,7 @@ export default function ContactForm(color: ContactFormProps) {
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",
+					marginX: "20px",
 				}}
 			>
 				<Image
