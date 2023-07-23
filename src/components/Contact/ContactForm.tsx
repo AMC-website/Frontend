@@ -3,12 +3,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Button, useMediaQuery } from '@mui/material';
-import { h4, h5, h6 } from '@/constants';
+import Image from 'next/image';
+import { h4, h4_, h5, h6 } from '@/constants';
 import { color } from '@/constants';
 
 export default function ContactForm() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const inputs = ['First Name', 'Last Name', 'Email'];
+
     return (
         <Box
             component="form"

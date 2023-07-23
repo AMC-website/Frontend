@@ -58,7 +58,7 @@ export const colors = {
     },
 };
 
-export const theme = createTheme({
+export default createTheme({
     palette: {
         primary: {
             main: colors.primary[800],

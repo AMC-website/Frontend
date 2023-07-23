@@ -87,13 +87,13 @@ const Footer = () => {
                 }}
             >
                 <Link href="https://www.facebook.com/amc.iitbhu/">
-                    <FacebookIcon sx={iconStyles}></FacebookIcon>
+                    <FacebookIcon sx={iconStyles} />
                 </Link>
                 <Link href="/">
-                    <InstagramIcon sx={iconStyles}></InstagramIcon>
+                    <InstagramIcon sx={iconStyles} />
                 </Link>
                 <Link href="/">
-                    <Email sx={iconStyles}></Email>
+                    <Email sx={iconStyles} />
                 </Link>
             </Box>
         </>
