@@ -180,7 +180,6 @@ function Navbar() {
                             justifyContent: breakPoint ? "space-between" : "center",
                             alignItems: breakPoint ? "center" : "end",
                             backgroundColor: "black",
-                            paddingRight: "35px",
                             paddingTop: breakPoint ? "" : "13vh",
                             boxSizing: "border-box",
                         }}
