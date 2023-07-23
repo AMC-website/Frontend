@@ -1,5 +1,5 @@
-import { color, h2, h3, h3_, h4, h6_, titleColor } from '@/constants';
-import { Typography, Link } from '@mui/material';
+import { color, h4, h6_, titleColor } from '@/constants';
+import { Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
@@ -50,13 +50,15 @@ function NavItem({
                     bottom: 0,
                     height: 1,
                     backgroundColor: titleColor,
+                    display: breakPoint ? 'block' : 'none',
                 }}
             />{' '}
             <Link page={title}>
                 <Typography
                     variant="h4"
                     fontSize={breakPoint ? h6_ : h4}
-                    padding="10px"
+                    padding="10px 0 10px 10px"
+                    textAlign="right"
                 >
                     {title}
                 </Typography>

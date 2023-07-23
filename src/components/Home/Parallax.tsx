@@ -1,13 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Box } from '@mui/material';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Props = {};
-
-const Parallax = (props: Props) => {
+const Parallax = () => {
     const triggerRef = useRef<HTMLDivElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
 

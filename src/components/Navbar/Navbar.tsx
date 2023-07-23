@@ -1,11 +1,10 @@
-import { Backdrop, Box } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState, useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
-import NavItem from "./NavItem";
-import AnchorLink from "react-anchor-link-smooth-scroll";
-import Link from "next/link";
+import { Box } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import NavItem from './NavItem';
+import { bgColor, color } from '@/constants';
 // import {
 //     returnBgColor,
 //     returnColor,
@@ -27,58 +26,26 @@ function Path(props) {
 function Navbar() {
     const [sticky, setSticky] = useState(false);
     const navbarRef = useRef<HTMLElement | null>(null);
-    const [navbarOffsetTop, setNavbarOffsetTop] = useState(0);
 
-    const [backgroundColor, setBackgroundColor] = useState("rgb(0, 0, 0)");
-    const [titleColor, setTitleColor] = useState("rgb(0, 0, 0)");
-    const [color, setColor] = useState("rgb(255, 255, 255)");
-
-    const breakPoint = useMediaQuery("(min-width:900px)");
-    const breakPoint2 = useMediaQuery("(min-width:650px)");
-
-    const CustomLink = ({ page, children }) => {
-        const lowerCasePage = page.toLowerCase();
-        return (
-            <AnchorLink
-                style={{
-                    width: breakPoint ? "13%" : breakPoint2 ? "20%" : "30%",
-                }}
-                href={`#${lowerCasePage}`}
-            >
-                {children}
-            </AnchorLink>
-        );
-    };
-
-    // useEffect(() => {
-    //     setIsOpen(false);
-
-    //     const handleScroll = () => {
-    //         setBackgroundColor(returnBgColor);
-    //         setTitleColor(returnTitleColor);
-    //         setColor(returnColor);
-    //     };
-
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     };
-    // }, [breakPoint]);
+    const breakPoint = useMediaQuery('(min-width:900px)');
 
     const checkNavbarPosition = () => {
-        const scrollPosition = window.screenY;
-        if (navbarOffsetTop <= scrollPosition) {
-            setSticky(true);
-        } else {
-            setSticky(false);
+        if (navbarRef.current) {
+            const navbarRect = navbarRef.current.getBoundingClientRect();
+            if (navbarRect.top <= 0) {
+                // Check if the navbar is at or above the top of the viewport
+                setSticky(true);
+            } else {
+                setSticky(false);
+            }
         }
     };
 
     useEffect(() => {
-        window.addEventListener("scroll", checkNavbarPosition);
-        return () => window.removeEventListener("scroll", checkNavbarPosition);
-    }, [navbarOffsetTop]);
+        checkNavbarPosition();
+        window.addEventListener('scroll', checkNavbarPosition);
+        return () => window.removeEventListener('scroll', checkNavbarPosition);
+    }, []);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -96,15 +63,15 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ["ABOUT", "GALLERY", "PROJECTS", "MEMBERS", "CONTACT"];
+    const pages = ['ABOUT', 'GALLERY', 'PROJECTS', 'MEMBERS', 'CONTACT'];
 
     const boxVariants = {
         open: {
-            height: "auto",
+            height: 'auto',
             opacity: 1,
 
             transition: {
-                type: "spring",
+                type: 'spring',
                 damping: 20,
                 stiffness: 100,
                 duration: 0.3,
@@ -114,7 +81,7 @@ function Navbar() {
             height: 0,
             opacity: breakPoint ? 1 : 0,
             transition: {
-                type: "spring",
+                type: 'spring',
                 damping: 20,
                 stiffness: 100,
                 duration: 0.3,
@@ -127,7 +94,7 @@ function Navbar() {
             {sticky && <div style={{ height: `16vh` }} />}
 
             <Box
-                position={sticky ? "fixed" : "relative"}
+                position={sticky ? 'fixed' : 'relative'}
                 ref={navbarRef}
                 top={0}
                 zIndex="50"
@@ -139,9 +106,9 @@ function Navbar() {
                 alignItems="center"
                 boxSizing="border-box"
                 sx={{
-                    transform: "translate(-50%,0)",
+                    transform: 'translate(-50%,0)',
                 }}
-                bgcolor={backgroundColor}
+                bgcolor={bgColor}
             >
                 <Box
                     display="flex"
@@ -149,42 +116,47 @@ function Navbar() {
                     alignItems="center"
                     width="85%"
                     height="100%"
-                    padding="0 10px"
                     sx={{
-                        borderStyle: "solid",
+                        borderStyle: 'solid',
                         borderColor: color,
-                        borderWidth: "0 0 0.3px 0",
+                        borderWidth: '0 0 0.3px 0',
+                        boxSizing: 'border-box',
                     }}
                 >
-                    <Link href="/" style={{ width: "13%" }}>
+                    <Link href="/" style={{ width: '13%' }}>
                         <img
                             src="logo new.png"
                             alt="drone image"
                             style={{
-                                objectFit: "cover",
-                                height: "70%",
-                                width: "100%",
+                                objectFit: 'cover',
+                                height: '70%',
+                                width: '100%',
                             }}
                         />
                     </Link>
                     <motion.div
                         style={{
-                            display: breakPoint ? "flex" : isOpen ? "flex" : "none",
-                            gap: breakPoint ? "4px" : "35px",
-                            flexDirection: breakPoint ? "row" : "column",
-                            position: breakPoint ? "static" : "absolute",
-                            top: "0",
-                            left: "0",
-                            minHeight: breakPoint ? "100%" : "100vh",
-                            width: breakPoint ? "" : "100vw",
-                            justifyContent: breakPoint ? "space-between" : "center",
-                            alignItems: breakPoint ? "center" : "end",
-                            backgroundColor: "black",
-                            paddingTop: breakPoint ? "" : "13vh",
-                            boxSizing: "border-box",
+                            display: 'flex',
+                            gap: breakPoint ? '4px' : '35px',
+                            flexDirection: breakPoint ? 'row' : 'column',
+                            position: breakPoint ? 'static' : 'absolute',
+                            top: '0',
+                            left: '-35px',
+                            minHeight: breakPoint ? '100%' : '100vh',
+                            width: breakPoint ? '' : '100vw',
+                            justifyContent: breakPoint
+                                ? 'space-between'
+                                : 'center',
+                            alignItems: breakPoint ? 'center' : 'end',
+                            backgroundColor: 'black',
+                            paddingTop: breakPoint ? '' : '13vh',
+                            boxSizing: 'border-box',
+                            zIndex: breakPoint ? 10 : isOpen ? 10 : -999,
+                            pointerEvents:
+                                !breakPoint && !isOpen ? 'none' : 'auto',
                         }}
                         initial={false}
-                        animate={isOpen ? "open" : "closed"}
+                        animate={isOpen ? 'open' : 'closed'}
                         variants={boxVariants}
                     >
                         {pages.map((title, index) => {
@@ -198,7 +170,8 @@ function Navbar() {
                                         title={title}
                                         isHovered={index === hoveredIndex}
                                         onSomethingElse={
-                                            index !== hoveredIndex && hoveredIndex !== -1
+                                            index !== hoveredIndex &&
+                                            hoveredIndex !== -1
                                         }
                                         breakPoint={breakPoint}
                                     />
@@ -206,15 +179,18 @@ function Navbar() {
                             );
                         })}
                     </motion.div>
-                    <Box display={`${breakPoint ? `none` : `block`}`} zIndex="50">
-                        <Box sx={{ cursor: "pointer" }} onClick={handleClick}>
+                    <Box
+                        display={`${breakPoint ? `none` : `block`}`}
+                        zIndex="50"
+                    >
+                        <Box sx={{ cursor: 'pointer' }} onClick={handleClick}>
                             <svg width="23" height="23" viewBox="0 0 23 23">
                                 <Path
                                     variants={{
-                                        closed: { d: "M 2 2.5 L 20 2.5" },
-                                        open: { d: "M 3 16.5 L 17 2.5" },
+                                        closed: { d: 'M 2 2.5 L 20 2.5' },
+                                        open: { d: 'M 3 16.5 L 17 2.5' },
                                     }}
-                                    animate={isOpen ? "open" : "closed"}
+                                    animate={isOpen ? 'open' : 'closed'}
                                 />
                                 <Path
                                     d="M 2 9.423 L 20 9.423"
@@ -222,15 +198,15 @@ function Navbar() {
                                         closed: { opacity: 1 },
                                         open: { opacity: 0 },
                                     }}
-                                    animate={isOpen ? "open" : "closed"}
+                                    animate={isOpen ? 'open' : 'closed'}
                                     transition={{ duration: 0.1 }}
                                 />
                                 <Path
                                     variants={{
-                                        closed: { d: "M 2 16.346 L 20 16.346" },
-                                        open: { d: "M 3 2.5 L 17 16.346" },
+                                        closed: { d: 'M 2 16.346 L 20 16.346' },
+                                        open: { d: 'M 3 2.5 L 17 16.346' },
                                     }}
-                                    animate={isOpen ? "open" : "closed"}
+                                    animate={isOpen ? 'open' : 'closed'}
                                 />
                             </svg>
                         </Box>
@@ -242,4 +218,4 @@ function Navbar() {
     );
 }
 
-export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
+export default Navbar;

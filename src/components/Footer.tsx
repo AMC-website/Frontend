@@ -1,5 +1,4 @@
 import { Box, Typography, Link } from '@mui/material';
-import { useRouter } from 'next/router';
 import { bgColor, color, h5_, h6, h6_, titleColor } from '@/constants';
 import dynamic from 'next/dynamic';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -7,8 +6,6 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import { Email } from '@mui/icons-material';
 
 const Footer = () => {
-    const route = useRouter();
-
     const sections = ['Events', 'Projects', 'About'];
     const contactInfo = [
         'Largos, Largo Santos 9, 1200-656 Lisboa',
@@ -25,99 +22,99 @@ const Footer = () => {
         color: color,
     };
 
-	const NavigationChildren = () => (
-		<Box
-			style={{
-				display: "flex",
-				flexDirection: "column",
-				gap: h6,
-			}}
-		>
-			{sections.map((sectionName, index) => {
-				return (
-					<Link
-						key={index}
-						underline="none"
-						href={`/${sectionName.toLowerCase()}`}
-						color={color}
-					>
-						<Typography variant="h1" fontSize={h6_}>
-							{sectionName}
-						</Typography>
-					</Link>
-				);
-			})}
-		</Box>
-	);
+    const NavigationChildren = () => (
+        <Box
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: h6,
+            }}
+        >
+            {sections.map((sectionName, index) => {
+                return (
+                    <Link
+                        key={index}
+                        underline="none"
+                        href={`/${sectionName.toLowerCase()}`}
+                        color={color}
+                    >
+                        <Typography variant="h1" fontSize={h6_}>
+                            {sectionName}
+                        </Typography>
+                    </Link>
+                );
+            })}
+        </Box>
+    );
 
-	const ContactChildren = () => (
-		<>
-			<Box
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					flexDirection: "column",
-					color: color,
-					gap: h6,
-				}}
-			>
-				{contactInfo.map((contactInfoLine, index) => {
-					return (
-						<Typography
-							key={index}
-							variant="h1"
-							style={{
-								fontSize: h6_,
-							}}
-						>
-							{contactInfoLine}
-						</Typography>
-					);
-				})}
-			</Box>
-		</>
-	);
+    const ContactChildren = () => (
+        <>
+            <Box
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    color: color,
+                    gap: h6,
+                }}
+            >
+                {contactInfo.map((contactInfoLine, index) => {
+                    return (
+                        <Typography
+                            key={index}
+                            variant="h1"
+                            style={{
+                                fontSize: h6_,
+                            }}
+                        >
+                            {contactInfoLine}
+                        </Typography>
+                    );
+                })}
+            </Box>
+        </>
+    );
 
-	const AMC_Children = () => (
-		<>
-			<Box
-				style={{
-					display: "flex",
-					gap: "6px",
-					justifyContent: "space-between",
-					maxWidth: "40%",
-					color: color,
-				}}
-			>
-				<Link href="https://www.facebook.com/amc.iitbhu/">
-					<FacebookIcon sx={iconStyles}></FacebookIcon>
-				</Link>
-				<Link href="/">
-					<InstagramIcon sx={iconStyles}></InstagramIcon>
-				</Link>
-				<Link href="/">
-					<Email sx={iconStyles}></Email>
-				</Link>
-			</Box>
-		</>
-	);
+    const AMC_Children = () => (
+        <>
+            <Box
+                style={{
+                    display: 'flex',
+                    gap: '6px',
+                    justifyContent: 'space-between',
+                    maxWidth: '40%',
+                    color: color,
+                }}
+            >
+                <Link href="https://www.facebook.com/amc.iitbhu/">
+                    <FacebookIcon sx={iconStyles}></FacebookIcon>
+                </Link>
+                <Link href="/">
+                    <InstagramIcon sx={iconStyles}></InstagramIcon>
+                </Link>
+                <Link href="/">
+                    <Email sx={iconStyles}></Email>
+                </Link>
+            </Box>
+        </>
+    );
 
-	const Section = ({ title, children }) => (
-		<Box>
-			<Typography
-				variant="h1"
-				style={{
-					color: titleColor,
-					marginBottom: "30px",
-					fontSize: h5_,
-					fontWeight: "bolder",
-				}}
-			>
-				{title}
-			</Typography>
-			{children}
-		</Box>
-	);
+    const Section = ({ title, children }) => (
+        <Box>
+            <Typography
+                variant="h1"
+                style={{
+                    color: titleColor,
+                    marginBottom: '30px',
+                    fontSize: h5_,
+                    fontWeight: 'bolder',
+                }}
+            >
+                {title}
+            </Typography>
+            {children}
+        </Box>
+    );
 
     return (
         <Box
@@ -150,16 +147,16 @@ const Footer = () => {
                     <AMC_Children />
                 </Section>
 
-				<Section title="Navigation">
-					<NavigationChildren />
-				</Section>
+                <Section title="Navigation">
+                    <NavigationChildren />
+                </Section>
 
-				<Section title="Contact">
-					<ContactChildren />{" "}
-				</Section>
-			</Box>
-		</Box>
-	);
+                <Section title="Contact">
+                    <ContactChildren />{' '}
+                </Section>
+            </Box>
+        </Box>
+    );
 };
 
 export default dynamic(() => Promise.resolve(Footer), { ssr: false });

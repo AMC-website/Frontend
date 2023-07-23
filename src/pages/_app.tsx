@@ -18,12 +18,16 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Navbar />
                 </Box>
 
-				<Component {...pageProps} />
+                <Component {...pageProps} />
 
-				<Box width="100%">
-					<Footer color={"white"} titleColor={"white"} bgColor={"#000000"} />
-				</Box>
-			</Box>
-		</ThemeProvider>
-	);
+                <Box width="100%">
+                    <Footer
+                        color={'white'}
+                        titleColor={'white'}
+                        bgColor={'#000000'}
+                    />
+                </Box>
+            </Box>
+        </ThemeProvider>
+    );
 }

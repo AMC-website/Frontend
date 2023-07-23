@@ -3,11 +3,7 @@ import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import { bgColor, color } from '@/constants';
 
-type textProperties = {
-    fontSize?: string;
-};
-
-export default function MovingText({ fontSize }: textProperties) {
+export default function MovingText() {
     const [scrollY, setScrollY] = useState(0);
     const [hovered, setHovered] = useState(true);
 
