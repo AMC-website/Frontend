@@ -1,18 +1,18 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import { Button, useMediaQuery } from '@mui/material';
-import Image from 'next/image';
-import { h4_, h5, h6 } from '@/constants';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { Button, useMediaQuery } from "@mui/material";
+import Image from "next/image";
+import { h4_, h5, h6 } from "@/constants";
 
 interface ContactFormProps {
-    color: string;
+	color: string;
 }
 
-export default function ContactForm(color: ContactFormProps) {
-    const breakPoint = useMediaQuery('(min-width:600px)');
-
+export default function ContactForm({ color }: ContactFormProps) {
+	const breakPoint = useMediaQuery("(min-width:600px)");
+	const inputs = ["First Name", "Last Name", "Email"];
 	return (
 		<Box
 			component="form"
@@ -38,11 +38,14 @@ export default function ContactForm(color: ContactFormProps) {
 					justifyContent: "space-between",
 					flexDirection: "column",
 					gap: "20px",
-					"& .MuiInputBase-input": { fontSize: "1.1rem" }, // Increase input text font size
+					"& .MuiInputBase-input": { fontSize: "1.1rem", color: "white" },
 					"& .MuiButton-root": {
 						fontSize: "1.2rem",
 						padding: "10px 24px",
-					}, // Increase submit button font size and padding
+					},
+					"& .MuiInputBase-input::placeholder": {
+						color: "white",
+					},
 					"& .MuiInputLabel-root": { fontSize: "20px" },
 					fontSize: "large",
 				}}
@@ -57,45 +60,58 @@ export default function ContactForm(color: ContactFormProps) {
 					Get in Touch
 				</Typography>
 
-				<div>
-					<TextField
-						sx={{
-							minWidth: "100%",
-						}}
-						id="outlined-error"
-						label="First Name"
-						variant="standard"
-					/>
-				</div>
-				<div>
-					<TextField
-						id="outlined-error"
-						label="Last Name"
-						variant="standard"
-						sx={{
-							minWidth: "100%",
-						}}
-					/>
-				</div>
-				<div>
-					<TextField
-						sx={{
-							minWidth: "100%",
-						}}
-						id="outlined-error"
-						label="Email"
-						variant="standard"
-					/>
-				</div>
+				{inputs.map((input) => (
+					<div>
+						<TextField
+							sx={{
+								minWidth: "100%",
+								color: color,
+								outlineColor: color,
+								"& .MuiInputBase-input": { color: "white" },
+								"& .MuiInputBase-input::placeholder": {
+									color: "white",
+								},
+								borderColor: color,
+							}}
+							id="outlined-error"
+							color="error"
+							label={input}
+							variant="standard"
+							InputLabelProps={{
+								sx: {
+									color: color,
+								},
+							}}
+							InputProps={{
+								sx: {
+									color: color,
+								},
+							}}
+							inputProps={{
+								sx: {
+									"&:focus-within fieldset, &:focus-visible fieldset": {
+										border: "4px solid red!important",
+									},
+									"&:hover fieldset": {
+										border: "2px solid blue!important",
+										borderRadius: 0,
+									},
+								},
+							}}
+						/>
+					</div>
+				))}
+
 				<Button
 					sx={{
 						px: "20px",
 						py: "5px",
 						outline: "solid",
 						maxWidth: breakPoint ? "max-content" : "100%",
-						outlineColor: "black",
+						outlineColor: "white",
 						outlineWidth: "1px",
 						borderRadius: "10px",
+						color: "white",
 						"&:hover": {
 							backgroundColor: "lightcoral",
 						},
@@ -105,7 +121,7 @@ export default function ContactForm(color: ContactFormProps) {
 						fontSize: h6,
 					}}
 					type="submit"
-					onClick={() => {}}
+					onClick={() => { }}
 				>
 					Send
 				</Button>
