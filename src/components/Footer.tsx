@@ -1,35 +1,29 @@
-import { Box, Typography, Link } from "@mui/material";
-import { useRouter } from "next/router";
-import { h5_, h6, h6_ } from "@/constants";
-import dynamic from "next/dynamic";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import { Email } from "@mui/icons-material";
+import { Box, Typography, Link } from '@mui/material';
+import { useRouter } from 'next/router';
+import { bgColor, color, h5_, h6, h6_, titleColor } from '@/constants';
+import dynamic from 'next/dynamic';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import { Email } from '@mui/icons-material';
 
-interface FooterProps {
-	bgColor?: string;
-	color?: string;
-	titleColor?: string;
-}
+const Footer = () => {
+    const route = useRouter();
 
-const Footer = ({ color, bgColor, titleColor }: FooterProps) => {
-	const route = useRouter();
+    const sections = ['Events', 'Projects', 'About'];
+    const contactInfo = [
+        'Largos, Largo Santos 9, 1200-656 Lisboa',
+        'info@nunospace.com',
+        'Call us',
+    ];
 
-	const sections = ["Events", "Projects", "About"];
-	const contactInfo = [
-		"Largos, Largo Santos 9, 1200-656 Lisboa",
-		"info@nunospace.com",
-		"Call us",
-	];
-	bgColor = "#000000";
-	const iconStyles = {
-		"&:hover": {
-			scale: "1.2",
-		},
-		transition: "300ms ease",
-		fontSize: h5_,
-		color: color,
-	};
+    const iconStyles = {
+        '&:hover': {
+            scale: '1.2',
+        },
+        transition: '300ms ease',
+        fontSize: h5_,
+        color: color,
+    };
 
 	const NavigationChildren = () => (
 		<Box
@@ -125,36 +119,36 @@ const Footer = ({ color, bgColor, titleColor }: FooterProps) => {
 		</Box>
 	);
 
-	return (
-		<Box
-			style={{
-				backgroundColor: bgColor,
-				display: "flex",
-				justifyContent: "center",
-				flexDirection: "column",
-				position: "relative",
-			}}
-		>
-			<Box
-				sx={{
-					display: {
-						xs: "flex",
-						md: "grid",
-					},
-					gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-					flexDirection: "column",
-					borderStyle: "solid",
-					borderColor: "black",
-					borderWidth: "0.3px 0 0 0",
-					gap: "70px",
-					width: "85%",
-					margin: "0 auto",
-					padding: "40px 0",
-				}}
-			>
-				<Section title="AMC">
-					<AMC_Children />
-				</Section>
+    return (
+        <Box
+            style={{
+                backgroundColor: bgColor,
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                position: 'relative',
+            }}
+        >
+            <Box
+                sx={{
+                    display: {
+                        xs: 'flex',
+                        md: 'grid',
+                    },
+                    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                    flexDirection: 'column',
+                    borderStyle: 'solid',
+                    borderColor: color,
+                    borderWidth: '0.3px 0 0 0',
+                    gap: '70px',
+                    width: '85%',
+                    margin: '0 auto',
+                    padding: '40px 0',
+                }}
+            >
+                <Section title="AMC">
+                    <AMC_Children />
+                </Section>
 
 				<Section title="Navigation">
 					<NavigationChildren />

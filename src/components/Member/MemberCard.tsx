@@ -1,4 +1,4 @@
-import { h2_, h4, h6, h6_ } from '@/constants';
+import { color, h2_, h4, h6, h6_, titleColor } from '@/constants';
 import {
     Backdrop,
     Box,
@@ -9,7 +9,6 @@ import {
 import { useState } from 'react';
 
 interface MemberCardProps {
-    color: string;
     memberName: string;
     memberRole: string;
     memberThumbnail: string;
@@ -17,7 +16,6 @@ interface MemberCardProps {
 }
 
 const MemberCard = ({
-    color,
     memberName,
     memberRole,
     memberThumbnail,
@@ -74,7 +72,7 @@ const MemberCard = ({
                                 variant="h1"
                                 fontSize={breakPoint ? h2_ : h4}
                                 fontWeight="bolder"
-                                color={theme.palette.secondary.main}
+                                color={titleColor}
                                 mb="25px"
                             >
                                 {memberName}
@@ -85,6 +83,7 @@ const MemberCard = ({
                                 fontSize={breakPoint ? h6 : h6_}
                                 mb="25px"
                                 fontStyle="italic"
+                                color={color}
                             >
                                 {memberRole}
                             </Typography>
@@ -93,6 +92,7 @@ const MemberCard = ({
                                 variant="h3"
                                 fontSize={breakPoint ? h6 : h6_}
                                 lineHeight={1.5}
+                                color={color}
                                 mb="25px"
                             >
                                 {memberDescription}
@@ -115,13 +115,14 @@ const MemberCard = ({
                         />
                     </Box>
                 </Backdrop>
-                <Typography fontSize={breakPoint ? h6 : h6_}>
+                <Typography fontSize={breakPoint ? h6 : h6_} color={color}>
                     {memberName}
                 </Typography>
                 <Typography
                     variant="h4"
                     fontSize={breakPoint ? h6 : h6_}
                     fontStyle="italic"
+                    color={titleColor}
                 >
                     {memberRole}
                 </Typography>

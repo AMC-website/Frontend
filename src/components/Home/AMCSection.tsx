@@ -1,13 +1,9 @@
 import { Box, Typography, useTheme, Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion } from 'framer-motion';
-import { h2, h4, h6, h6_ } from '@/constants';
+import { bgColor, color, h2, h4, h6, h6_, titleColor } from '@/constants';
 
-interface AMCSectionProps {
-    color: string;
-}
-
-export default function AMCSection({ color }: AMCSectionProps) {
+export default function AMCSection() {
     const theme = useTheme();
 
     return (
@@ -53,9 +49,9 @@ export default function AMCSection({ color }: AMCSectionProps) {
                         color: 'rgba(255,255,255,1)',
                         backgroundColor: 'transparent',
                         '&:hover': {
-                            color: 'black',
-                            backgroundColor: theme.palette.secondary.main,
-                            borderColor: theme.palette.secondary.main,
+                            color: color,
+                            backgroundColor: titleColor,
+                            borderColor: titleColor,
                         },
                         transition:
                             '0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',

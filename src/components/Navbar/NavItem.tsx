@@ -1,4 +1,4 @@
-import { h6_ } from '@/constants';
+import { color, h2, h3, h3_, h4, h6_, titleColor } from '@/constants';
 import { Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
@@ -7,16 +7,14 @@ interface NavItemProps {
     isHovered: boolean;
     title: string;
     onSomethingElse: boolean;
-    color?: string;
-    backgroundColor?: string;
+    breakPoint: boolean;
 }
 
 function NavItem({
     isHovered,
     title,
     onSomethingElse,
-    color,
-    backgroundColor,
+    breakPoint,
 }: NavItemProps) {
     const linkStyles = {
         textDecoration: 'none',
@@ -51,11 +49,15 @@ function NavItem({
                     left: 0,
                     bottom: 0,
                     height: 1,
-                    backgroundColor: backgroundColor,
+                    backgroundColor: titleColor,
                 }}
             />{' '}
             <Link page={title}>
-                <Typography variant="h4" fontSize={h6_} padding="10px">
+                <Typography
+                    variant="h4"
+                    fontSize={breakPoint ? h6_ : h4}
+                    padding="10px"
+                >
                     {title}
                 </Typography>
             </Link>

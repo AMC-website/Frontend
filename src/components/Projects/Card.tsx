@@ -10,19 +10,17 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import { h2_, h4, h5, h5_, h6, h6_ } from '@/constants';
+import { h2_, h4, h5, h5_, h6, h6_, titleColor } from '@/constants';
 
 interface CardProps {
     projectName: string;
     projectContent: string;
     projectThumbnail: string;
-    color: string;
 }
 export default function Card({
     projectName,
     projectContent,
     projectThumbnail,
-    color,
 }: CardProps) {
     const theme = useTheme();
     const [isClicked, setIsClicked] = useState(false);
@@ -38,7 +36,7 @@ export default function Card({
         <div
             style={{
                 position: 'relative',
-                color: color,
+                color: titleColor,
                 marginBottom: '35px',
                 height: '350px',
                 cursor: 'pointer',
@@ -137,7 +135,7 @@ export default function Card({
                             bottom: -5,
                             left: 0,
                             height: '1.5px',
-                            backgroundColor: theme.palette.secondary.main,
+                            backgroundColor: titleColor,
                             zIndex: -1,
                         }}
                         initial={{ width: '0%' }}

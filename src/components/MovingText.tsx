@@ -1,19 +1,15 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
+import { bgColor, color } from '@/constants';
 
 type textProperties = {
-    color?: string;
     fontSize?: string;
-    bgColor: string;
 };
 
-export default function MovingText({
-    color,
-    fontSize,
-    bgColor,
-}: textProperties) {
+export default function MovingText({ fontSize }: textProperties) {
     const [scrollY, setScrollY] = useState(0);
+    const [hovered, setHovered] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,6 +31,7 @@ export default function MovingText({
                 display: 'flex',
                 justifyContent: 'center',
                 textAlign: 'center',
+                py: '150px',
                 flexDirection: 'column',
                 zIndex: 40,
                 background: bgColor,
@@ -44,13 +41,14 @@ export default function MovingText({
                 sx={{
                     width: '200vw',
                     overflow: 'hidden',
-                    p: '150px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center',
                     flexDirection: 'column',
                 }}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
             >
                 <motion.div
                     whileInView={{
@@ -64,12 +62,14 @@ export default function MovingText({
                         variant="h1"
                         sx={{
                             lineHeight: '103px',
-                            fontSize: fontSize ? fontSize : '60px',
-                            color: color ? color : 'white',
+                            fontSize: '85px',
                             textAlign: 'justify',
                             whiteSpace: 'nowrap',
-                            fontWeight: 'bold',
-                            WebkitTextStroke: `1.5px ${color}`,
+                            fontWeight: 'thin',
+                            WebkitTextStroke: `0.8px ${color}`,
+                            transition:
+                                'color 0.3s cubic-bezier(.165, .84, .44, 1)', // Adding transition for smooth effect
+                            color: hovered ? color : 'rgba(0,0,0,0)',
                         }}
                     >
                         Engineer · Build · Fly · Engineer · Build · Fly ·
@@ -91,14 +91,16 @@ export default function MovingText({
                     <Typography
                         sx={{
                             lineHeight: '103px',
-                            fontSize: fontSize ? fontSize : '65px',
-                            color: 'rgba(0,0,0,0)',
+                            fontSize: '85px',
                             fontWeight: 'thin',
                             whiteSpace: 'nowrap',
                             textAlign: 'justify',
-                            WebkitTextStroke: `1.5px ${color}`,
+                            WebkitTextStroke: `0.8px ${color}`,
+                            transition:
+                                'color 0.3s cubic-bezier(.165, .84, .44, 1)', // Adding transition for smooth effect
+                            color: hovered ? color : 'rgba(0,0,0,0)',
                         }}
-                        variant="body1"
+                        variant="h1"
                     >
                         Aerial Dominion · Conquer the Skies · Aerial Dominion ·
                         Conquer the Skies· Aerial Dominion · Conquer the Skies ·
