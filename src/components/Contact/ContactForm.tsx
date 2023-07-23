@@ -1,5 +1,4 @@
 import * as React from "react";
-import { white } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -8,13 +7,10 @@ import Image from "next/image";
 import { h4_, h5, h6 } from "@/constants";
 import { color } from "@/constants";
 
-interface ContactFormProps {
-    color: string;
-}
-
 export default function ContactForm() {
     const breakPoint = useMediaQuery("(min-width:600px)");
     const inputs = ["First Name", "Last Name", "Email"];
+
     return (
         <Box
             component="form"
