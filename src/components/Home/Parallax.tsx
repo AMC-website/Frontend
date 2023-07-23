@@ -60,7 +60,7 @@ const Parallax = (props: Props) => {
                     position: 'fixed',
                     top: 0,
                     overflow: 'hidden',
-                    paddingTop: '6em',
+                    paddingTop: '3em',
                     justifyContent: 'center',
                     alignItems: 'center',
                     display: 'flex',

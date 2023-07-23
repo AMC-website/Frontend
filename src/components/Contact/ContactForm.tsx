@@ -1,19 +1,17 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import { Button, useMediaQuery } from "@mui/material";
-import Image from "next/image";
-import { h4_, h5, h6 } from "@/constants";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { Button, useMediaQuery } from '@mui/material';
+import Image from 'next/image';
+import { h4_, h5, h6 } from '@/constants';
 
 interface ContactFormProps {
-	color: string;
+    color: string;
 }
 
 export default function ContactForm(color: ContactFormProps) {
-	const breakPoint = useMediaQuery("(min-width:600px)");
-
-	const inputs = ["First Name", "Last Name", "Email", "Message"];
+    const breakPoint = useMediaQuery('(min-width:600px)');
 
 	return (
 		<Box
@@ -59,57 +57,43 @@ export default function ContactForm(color: ContactFormProps) {
 					Get in Touch
 				</Typography>
 
-				{inputs.map((i) => (
-					<div>
-						<TextField
-							id="outlined-error"
-							label="Last Name"
-							variant="standard"
-							sx={{
-								minWidth: "100%",
-								color: color,
-							}}
-						/>
-					</div>
-				))}
-				{/* <div> */}
-				{/* 	<TextField */}
-				{/* 		sx={{ */}
-				{/* 			minWidth: "100%", */}
-				{/* 			color: color, */}
-				{/* 		}} */}
-				{/* 		id="outlined-error" */}
-				{/* 		label="First Name" */}
-				{/* 		variant="standard" */}
-				{/* 	/> */}
-				{/* </div> */}
-				{/* <div> */}
-				{/* 	<TextField */}
-				{/* 		id="outlined-error" */}
-				{/* 		label="Last Name" */}
-				{/* 		variant="standard" */}
-				{/* 		sx={{ */}
-				{/* 			minWidth: "100%", */}
-				{/* 		}} */}
-				{/* 	/> */}
-				{/* </div> */}
-				{/* <div> */}
-				{/* 	<TextField */}
-				{/* 		sx={{ */}
-				{/* 			minWidth: "100%", */}
-				{/* 		}} */}
-				{/* 		id="outlined-error" */}
-				{/* 		label="Email" */}
-				{/* 		variant="standard" */}
-				{/* 	/> */}
-				{/* </div> */}
+				<div>
+					<TextField
+						sx={{
+							minWidth: "100%",
+						}}
+						id="outlined-error"
+						label="First Name"
+						variant="standard"
+					/>
+				</div>
+				<div>
+					<TextField
+						id="outlined-error"
+						label="Last Name"
+						variant="standard"
+						sx={{
+							minWidth: "100%",
+						}}
+					/>
+				</div>
+				<div>
+					<TextField
+						sx={{
+							minWidth: "100%",
+						}}
+						id="outlined-error"
+						label="Email"
+						variant="standard"
+					/>
+				</div>
 				<Button
 					sx={{
 						px: "20px",
 						py: "5px",
 						outline: "solid",
 						maxWidth: breakPoint ? "max-content" : "100%",
-						outlineColor: color,
+						outlineColor: "black",
 						outlineWidth: "1px",
 						borderRadius: "10px",
 						"&:hover": {
@@ -131,7 +115,6 @@ export default function ContactForm(color: ContactFormProps) {
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",
-					marginX: "20px",
 				}}
 			>
 				<Image

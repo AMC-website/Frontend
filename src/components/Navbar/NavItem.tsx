@@ -1,6 +1,7 @@
 import { h6_ } from '@/constants';
 import { Typography, Link } from '@mui/material';
 import { motion } from 'framer-motion';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 interface NavItemProps {
     isHovered: boolean;
@@ -25,6 +26,14 @@ function NavItem({
         color: color,
     };
 
+    const Link = ({ page, children }) => {
+        const lowerCasePage = page.toLowerCase();
+        return (
+            <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>
+                {children}
+            </AnchorLink>
+        );
+    };
     return (
         <span
             style={{
@@ -45,7 +54,7 @@ function NavItem({
                     backgroundColor: backgroundColor,
                 }}
             />{' '}
-            <Link sx={linkStyles} href={`#${title.toLowerCase()}`}>
+            <Link page={title}>
                 <Typography variant="h4" fontSize={h6_} padding="10px">
                     {title}
                 </Typography>
