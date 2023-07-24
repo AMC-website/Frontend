@@ -34,10 +34,10 @@ const MemberCard = ({
                     borderWidth: '0.5px',
                     borderRadius: '4px',
                     cursor: 'pointer',
-                    ':hover': {
-                        scale: '1.05',
-                    },
-                    transition: 'scale 0.3s',
+                    // ':hover': {
+                    //     scale: '1.05',
+                    // },
+                    // transition: 'scale 0.3s',
                 }}
                 alignItems="center"
                 justifyContent="space-evenly"
