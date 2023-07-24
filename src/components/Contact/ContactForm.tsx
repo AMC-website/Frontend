@@ -65,7 +65,7 @@ export default function ContactForm() {
                             flexDirection: 'column',
                             gap: '10px',
                         }}
-                        key={index}
+                        key={index + 1}
                     >
                         <label htmlFor={`${index}input`}>
                             <Typography variant="h4">{input}</Typography>
