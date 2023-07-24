@@ -1,7 +1,7 @@
 .contactinput {
-    width: 100%;
     color: #000; /* Text color */
     border: 1px solid #ccc; /* Border color */
+    max-width: 100%; /* Max width of the input */
     padding: 10px; /* Padding around the input */
     border-radius: 4px; /* Border radius */
     outline: none; /* Remove default focus outline */
