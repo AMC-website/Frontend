@@ -1,11 +1,5 @@
 import { color, h2_, h4, h6, h6_, titleColor } from '@/constants';
-import {
-    Backdrop,
-    Box,
-    Typography,
-    useMediaQuery,
-    useTheme,
-} from '@mui/material';
+import { Backdrop, Box, Typography, useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 
 interface MemberCardProps {
@@ -22,7 +16,6 @@ const MemberCard = ({
     memberDescription,
 }: MemberCardProps) => {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    const theme = useTheme();
     const [isClicked, setIsClicked] = useState(false);
 
     function handleClick() {
@@ -41,6 +34,10 @@ const MemberCard = ({
                     borderWidth: '0.5px',
                     borderRadius: '4px',
                     cursor: 'pointer',
+                    ':hover': {
+                        scale: '1.05',
+                    },
+                    transition: 'scale 0.3s',
                 }}
                 alignItems="center"
                 justifyContent="space-evenly"

@@ -1,11 +1,8 @@
 import { Box, Typography, useTheme, Link } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { motion } from 'framer-motion';
-import { bgColor, color, h2, h4, h6, h6_, titleColor } from '@/constants';
+
+import { color, h6_, titleColor } from '@/constants';
 
 export default function AMCSection() {
-    const theme = useTheme();
-
     return (
         <Box
             color={color}

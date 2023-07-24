@@ -1,38 +1,8 @@
-import { Box, Typography, useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import React from 'react';
 import MemberCard from '@/components/Member/MemberCard';
-import { color, h4, h4_, h5 } from '@/constants';
-
-const membersData = [
-    {
-        id: 1,
-        name: 'John Doe',
-        profileImage: 'johnDoe.jpg',
-        role: 'Designer',
-    },
-    {
-        id: 2,
-        name: 'Jane Smith',
-        profileImage: 'janeSmith.jpg',
-        role: 'Developer',
-    },
-    {
-        id: 3,
-        name: 'John Doe',
-        profileImage: 'johnDoe.jpg',
-        role: 'Designer',
-    },
-    {
-        id: 4,
-        name: 'Jane Smith',
-        profileImage: 'janeSmith.jpg',
-        role: 'Developer',
-    },
-];
+import { color, h4, h5 } from '@/constants';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 
 export default function Members() {
-    const theme = useTheme();
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:750px)');
 

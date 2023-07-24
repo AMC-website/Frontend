@@ -7,7 +7,7 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import dynamic from 'next/dynamic';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import { h4, h4_, h5 } from '@/constants';
+import { h4, h5 } from '@/constants';
 
 interface CardHolderProps {
     titleColor: string;

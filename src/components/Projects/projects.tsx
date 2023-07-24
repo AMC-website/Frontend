@@ -1,16 +1,8 @@
-import Card from '@/components/Projects/Card';
-import { bgColor, color, h4, h4_, h5, titleColor } from '@/constants';
-import { Box, Grid, Typography, useMediaQuery } from '@mui/material';
-import { motion, useMotionValue } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import Card from '@/components/Projects/ProjectCard';
+import { bgColor, color, h4, h5 } from '@/constants';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 
 export default function Projects() {
-    const options = {
-        scale: 1.2,
-        speed: 1000,
-        max: 10,
-        reverse: true,
-    };
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:750px)');
 

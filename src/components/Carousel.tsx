@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
-import { bgColor, color, h4, h5, h5_, h6, titleColor } from '@/constants';
-
+import { color, h4, h5, h5_ } from '@/constants';
 // Our images list
 const images = [
     {
@@ -51,35 +50,17 @@ const ImageComponent = ({ images, current, isPrev }) => {
                         alt={images[0].caption}
                         style={{
                             objectFit: 'cover',
-                            height: breakPoint ? '435px' : '215px',
+                            height: breakPoint ? '335px' : '215px',
                             width: breakPoint ? '47%' : '100%',
                         }}
                     />
-                    {/* <Box
-                    height={breakPoint ? '435px' : '215px'}
-                    width={breakPoint ? '50%' : '100%'}
-                    padding="35px 10px"
-                    boxSizing="border-box"
-                    display="flex"
-                    justifyContent="start"
-                    alignItems="start"
-                    bgcolor={bgColor}
-                    border="0.5px solid"
-                    borderLeft={breakPoint ? 'none' : '0.5px solid'}
-                    borderTop={breakPoint ? '0.5px solid' : 'none'}
-                    borderColor={color}
-                >
-                    <Typography variant="h4" fontSize={h6} color={titleColor}>
-                        {image.caption}
-                    </Typography>
-                </Box> */}
 
                     <img
                         src={images[1].src}
                         alt={images[1].caption}
                         style={{
                             objectFit: 'cover',
-                            height: breakPoint ? '435px' : '0',
+                            height: breakPoint ? '335px' : '0',
                             width: breakPoint ? '47%' : '0',
                         }}
                     />
@@ -95,7 +76,7 @@ const Carousel = () => {
     const length = images.length;
     const [current, setCurrent] = useState(0); // state for current image index
     const [prev, setPrev] = useState(false);
-    const next = current + 1 <= length - 1 ? current + 1 : 1;
+    const next = current + 1 <= length - 1 ? current + 1 : 0;
 
     // function to handle next button click
     const nextSlide = () => {

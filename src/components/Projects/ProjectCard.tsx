@@ -1,16 +1,9 @@
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import CloseIcon from '@mui/icons-material/Close';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-import {
-    Backdrop,
-    Box,
-    Typography,
-    useMediaQuery,
-    useTheme,
-} from '@mui/material';
-import { h2_, h4, h5, h5_, h6, h6_, titleColor } from '@/constants';
+import { color, h2_, h4, h5, h5_, h6, h6_, titleColor } from '@/constants';
+import { Backdrop, Box, Typography, useMediaQuery } from '@mui/material';
 
 interface CardProps {
     projectName: string;
@@ -22,7 +15,6 @@ export default function Card({
     projectContent,
     projectThumbnail,
 }: CardProps) {
-    const theme = useTheme();
     const [isClicked, setIsClicked] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
 
@@ -71,7 +63,7 @@ export default function Card({
                             variant="h1"
                             fontSize={breakPoint ? h2_ : h4}
                             fontWeight="bolder"
-                            color={theme.palette.secondary.main}
+                            color={titleColor}
                             mb="25px"
                         >
                             {projectName}
@@ -127,6 +119,7 @@ export default function Card({
                     display="inline-block"
                     position="relative"
                     zIndex={2}
+                    color={color}
                 >
                     {projectName}
                     <motion.div
