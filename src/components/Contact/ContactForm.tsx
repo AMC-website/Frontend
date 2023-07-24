@@ -109,12 +109,12 @@ export default function ContactForm() {
                     alignItems: 'center',
                 }}
             >
-                <Image
-                    width={600}
+                <img
+                    width="100%"
                     style={{
                         margin: '20px',
                     }}
-                    height={500}
+                    height="100%"
                     src={'/map.png'}
                     alt="googlemaps"
                 />
