@@ -2,22 +2,25 @@ import { Box, Typography, useTheme, Link } from '@mui/material';
 
 import { color, h6_, titleColor } from '@/constants';
 
+import Logo from './Logo';
+
 export default function AMCSection() {
     return (
         <Box
             color={color}
-            textAlign="center"
-            height="87vh"
+            alignItems="center"
+            height="80vh"
             display="flex"
             flexDirection="column"
             justifyContent="center"
         >
-            <Typography variant="h1" fontSize="11vw">
+            <Logo></Logo>
+            {/* <Typography variant="h1" fontSize="11vw">
                 Aero
             </Typography>
             <Typography variant="h1" fontSize="11vw" mb="36px">
                 Modelling Club
-            </Typography>
+            </Typography> */}
             {/* <Typography variant="h1" fontSize="13vw" mb="24px">
                 Club
             </Typography> */}

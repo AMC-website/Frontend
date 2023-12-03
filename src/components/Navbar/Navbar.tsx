@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import NavItem from './NavItem';
 import { bgColor, color } from '@/constants';
+import Logo from './Logo';
 // import {
 //     returnBgColor,
 //     returnColor,
@@ -124,15 +125,7 @@ function Navbar() {
                     }}
                 >
                     <Link href="/" style={{ width: '13%' }}>
-                        <img
-                            src="logo new.png"
-                            alt="drone image"
-                            style={{
-                                objectFit: 'cover',
-                                height: '70%',
-                                width: '100%',
-                            }}
-                        />
+                        <Logo />
                     </Link>
                     <motion.div
                         style={{
