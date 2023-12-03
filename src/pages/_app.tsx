@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </Box>
 
                 <Component {...pageProps} />
-                <Component {...pageProps} />
+                {/* <Component {...pageProps} /> */}
 
                 <Box width="100%">
                     <Footer />

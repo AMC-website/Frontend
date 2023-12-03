@@ -55,6 +55,7 @@ export default function Logo() {
                 marginBottom: 'auto',
                 marginTop: 'auto',
                 zIndex: (isAtTop ? 0 : 50),
+                userSelect: 'none',
             }}
         />
     )

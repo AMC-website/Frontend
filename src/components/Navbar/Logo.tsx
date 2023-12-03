@@ -55,7 +55,8 @@ export default function Logo() {
                 transition: 'transform 0.05s',
                 display:(isAtTop ? '' : 'none'),
                 transform: (true? ('translate('+logoLeft+'vw,0)'):('translate(36vw, 0)')),
-                
+                userSelect: 'none',
+
             }}
         />
     )
