@@ -57,6 +57,7 @@ export default function ContactForm() {
 
 				{inputs.map((input, index) => (
 					<Box
+					key = {index}
 						sx={{
 							display: "flex",
 							flexDirection: "column",

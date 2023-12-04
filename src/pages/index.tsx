@@ -10,6 +10,7 @@ import Members from '@/components/Member/members';
 import MovingText from '@/components/MovingText';
 import { bgColor, color, h4, h5, h6, titleColor } from '@/constants';
 import Projects from '../components/Projects/projects';
+import Image from 'next/image';
 
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -118,9 +119,11 @@ export default function Home() {
                                     justifyContent: 'space-between',
                                 }}
                             >
-                                <img
-                                    src="flight2.jpg"
+                                <Image
+                                    src="/flight2.jpg"
                                     alt="drone"
+                                    width={3936}
+                                    height={2624}
                                     style={{
                                         objectFit: 'cover',
                                         height: breakPoint2 ? '100%' : '100%',
