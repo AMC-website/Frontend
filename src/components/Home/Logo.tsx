@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react';
 
-import Image from 'next/image';
-
 function map(value: number, start1: number, stop1: number, start2: number, stop2: number){
     let len1 = stop1 - start1;
     let len2 = stop2 - start2;
@@ -46,7 +44,7 @@ export default function Logo() {
     }, [setlogoHeight, setlogoWidth, setIsAtTop]);
     
     return (
-        <Image
+        <img
             src="/logo new.png"
             alt="drone image"
             id="logo"
