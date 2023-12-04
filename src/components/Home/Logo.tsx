@@ -45,9 +45,11 @@ export default function Logo() {
     
     return (
         <img
-            src="logo new.png"
+            src="/logo new.png"
             alt="drone image"
             id="logo"
+            width={1080}
+            height={1080}
             style={{
                 objectFit: 'cover',
                 height: ((true) ? logoHeight : logoHeight) + "%",
@@ -55,6 +57,7 @@ export default function Logo() {
                 marginBottom: 'auto',
                 marginTop: 'auto',
                 zIndex: (isAtTop ? 0 : 50),
+                userSelect: 'none',
             }}
         />
     )

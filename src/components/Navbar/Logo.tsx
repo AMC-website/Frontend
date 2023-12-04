@@ -43,9 +43,11 @@ export default function Logo() {
     
     return (
         <img
-            src="logo new.png"
+            src="/logo new.png"
             alt="drone image"
             id="logo"
+            width={1080}
+            height={1080}
             style={{
                 objectFit: 'cover',
                 height: '70%',
@@ -55,7 +57,8 @@ export default function Logo() {
                 transition: 'transform 0.05s',
                 display:(isAtTop ? '' : 'none'),
                 transform: (true? ('translate('+logoLeft+'vw,0)'):('translate(36vw, 0)')),
-                
+                userSelect: 'none',
+
             }}
         />
     )
