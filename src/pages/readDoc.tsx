@@ -9,7 +9,7 @@ interface MarkdownPageProps {
 
 const MarkdownPage: React.FC<MarkdownPageProps> = ({ markdownHtml }) => {
   return (
-    <div>
+    <div className='MarkDownPage_container'>
       <h1>Markdown Content</h1>
       <div dangerouslySetInnerHTML={{ __html: markdownHtml }} />
     </div>
