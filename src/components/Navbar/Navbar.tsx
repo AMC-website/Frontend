@@ -64,7 +64,7 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ['ABOUT', 'GALLERY', 'PROJECTS', 'MEMBERS', 'CONTACT'];
+    const pages = ['ABOUT', 'GALLERY', 'PROJECTS', 'MEMBERS', 'CONTACT', 'BLOGS'];
 
     const boxVariants = {
         open: {
