@@ -9,15 +9,16 @@ export default function index({ allPostsData }) {
 
             {/* Add this <section> tag below the existing <section> tag */}
             <section>
-                <h2>Blog</h2>
+                <h2>List of all Blogs</h2>
                 <ul>
-                    {allPostsData.map(({id,  date, title }) => (
-                        <h1 key={title}>
-                            <Link href={`/blogs/${id}`}>{title}</Link>
-                            <br />
-                            {date}
-                            <br />
-                        </h1>
+                    {allPostsData.map(({ id, date, title, subtitle }) => (
+                        <div>
+                            <Link href={`/blogs/${id}`}>
+                                <h2>{title}</h2>
+                            </Link>
+                            <p>{date}</p>
+                            <p>{subtitle}</p>
+                        </div>
                     ))}
                 </ul>
             </section>

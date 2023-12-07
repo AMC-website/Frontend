@@ -1,6 +1,8 @@
 import { color, h4, h6_, titleColor } from '@/constants';
 import { Typography } from '@mui/material';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useState } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 interface NavItemProps {
@@ -16,6 +18,7 @@ function NavItem({
     onSomethingElse,
     breakPoint,
 }: NavItemProps) {
+    console.log(title);
     const linkStyles = {
         textDecoration: 'none',
         '&:hover': {
@@ -24,13 +27,17 @@ function NavItem({
         color: color,
     };
 
-    const Link = ({ page, children }) => {
+    const NavbarLink = ({ page, children }) => {
         const lowerCasePage = page.toLowerCase();
-        return (
-            <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>
-                {children}
-            </AnchorLink>
-        );
+        if (page === 'BLOGS') {
+            return (
+                <Link style={linkStyles} href={'blogs'}>
+                    {children}
+                </Link>
+            );
+        } else {
+            return <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>{children}</AnchorLink>;
+        }
     };
     return (
         <span
@@ -53,7 +60,7 @@ function NavItem({
                     display: breakPoint ? 'block' : 'none',
                 }}
             />{' '}
-            <Link page={title}>
+            <NavbarLink page={title}>
                 <Typography
                     variant="h4"
                     fontSize={breakPoint ? h6_ : h4}
@@ -62,7 +69,7 @@ function NavItem({
                 >
                     {title}
                 </Typography>
-            </Link>
+            </NavbarLink>
         </span>
     );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { getAllPostIds, getPostData } from '../../../lib/getPosts';
+import Markdown from 'react-markdown';
 
 export async function getStaticProps({ params }) {
     // Add the "await" keyword like this:
@@ -23,11 +24,9 @@ export async function getStaticPaths() {
 export default function Post({ postData }) {
     return (
         <div>
-            {postData.title}
-            <br />
-            {postData.id}
-            <br />
-            {postData.date}
+            <h1>{postData.title}</h1>
+
+            <p>{postData.date}</p>
             <br />
             <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
