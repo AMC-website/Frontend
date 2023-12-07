@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 import NavItem from './NavItem';
 import { bgColor, color, h4, h6_ } from '@/constants';
 import Logo from './Logo';
-import checkIsBlog from 'lib/checkIsBlog';
 // import {
 //     returnBgColor,
 //     returnColor,
