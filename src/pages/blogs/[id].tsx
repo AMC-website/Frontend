@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { getAllPostIds, getPostData } from 'lib/getPosts';
+import Markdown from "markdown-to-jsx"
 
 export async function getStaticProps({ params }) {
-    // Add the "await" keyword like this:
     const postData = await getPostData(params.id);
 
     return {
@@ -26,8 +26,10 @@ export default function Post({ postData }) {
             <h1>{postData.title}</h1>
 
             <p>{postData.date}</p>
-            <br />
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+
+            <div >
+                <Markdown children={postData.contentHtml} />
+            </div>
         </div>
     );
 }
