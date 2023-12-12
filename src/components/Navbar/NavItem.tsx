@@ -36,7 +36,11 @@ function NavItem({
                 </Link>
             );
         } else {
-            return <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>{children}</AnchorLink>;
+            return (
+                <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>
+                    {children}
+                </AnchorLink>
+            );
         }
     };
     return (

@@ -1,16 +1,13 @@
-.contactinput{
-  
- width: 100%;
-  color: #000; /* Text color */
-  border: 1px solid #ccc; /* Border color */
-  padding: 10px; /* Padding around the input */
-  border-radius: 4px; /* Border radius */
-  outline: none; /* Remove default focus outline */
-    
+.contactinput {
+    width: 100%;
+    color: #000; /* Text color */
+    border: 1px solid #ccc; /* Border color */
+    padding: 10px; /* Padding around the input */
+    border-radius: 4px; /* Border radius */
+    outline: none; /* Remove default focus outline */
 }
 
-.contactinput:focus{
-    
- border-color: #007bff; /* Border color when focused */
-  box-shadow: 0 0 0 2px #007bff40; /* Box shadow when focused */
+.contactinput:focus {
+    border-color: #007bff; /* Border color when focused */
+    box-shadow: 0 0 0 2px #007bff40; /* Box shadow when focused */
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getAllPostIds, getPostData } from 'lib/getPosts';
-import Markdown from "markdown-to-jsx"
+import Markdown from 'markdown-to-jsx';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
@@ -27,7 +27,7 @@ export default function Post({ postData }) {
 
             <p>{postData.date}</p>
 
-            <div >
+            <div>
                 <Markdown children={postData.contentHtml} />
             </div>
         </div>

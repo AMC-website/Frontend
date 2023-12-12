@@ -1,7 +1,7 @@
 ---
-title: "Using AI to generate poetry"
-subtitle: "I used GPT-3 to generate poetry and other creative content."
-date: "2021-08-27"
+title: 'Using AI to generate poetry'
+subtitle: 'I used GPT-3 to generate poetry and other creative content.'
+date: '2021-08-27'
 ---
 
 I was recently granted access to the [OpenAI GPT-3 Beta](https://beta.openai.com/), a very powerful language model that can be used to do all sorts of magic like chat bot generation, article summary, and a [lot more cool stuff](https://beta.openai.com/examples).
@@ -65,9 +65,9 @@ It's up to us to experiment with it and see how it can be useful for any particu
 
 Today, I want to see if this AI is able to understand and generate poetry. Why poetry? Because I think it's a relatively simple example, and has three distinct dimensions that we can easily assess it on:
 
-- Tone
-- Content
-- Structure
+-   Tone
+-   Content
+-   Structure
 
 OpenAI lets customers interact with GPT-3 via an API, so that's how I'll be using it as well.
 
@@ -235,9 +235,9 @@ and together save the land from hell.
 
 So many things I love about this response.
 
-- It introduces a _heroine_ to the story (+1 for gender diversity!)
-- It writes a sensible continuation of the prompt.
-- It even manages rhyming (between 'one/sun', and 'spell/hell').
+-   It introduces a _heroine_ to the story (+1 for gender diversity!)
+-   It writes a sensible continuation of the prompt.
+-   It even manages rhyming (between 'one/sun', and 'spell/hell').
 
 A lot of the other samples were also quite interesting (check them out [here](https://github.com/pixegami/gpt-3-poetry-results)) and full of creative ideas.
 

@@ -171,9 +171,7 @@ export default function Home() {
                 style={{ backgroundColor: bgColor, padding: '100px 0' }}
             >
                 <ContactForm />
-                
             </section>
-           
         </div>
     );
 }

@@ -7,28 +7,27 @@ import Footer from '@/components/Footer';
 import '@/styles/global.css';
 import { useRouter } from 'next/router';
 export default function App({ Component, pageProps }: AppProps) {
-    let router=useRouter();
+    let router = useRouter();
     console.log(router.asPath);
     return (
         <ThemeProvider theme={theme}>
             <Box position="relative" overflow="hidden">
                 {/* Checking for pathName used so that in readDoc Feature so that there no nav bar  and footeris shown */}
-                {
-                    router.asPath==='/'?<Box bgcolor="black">
-                    <Navbar />
-                </Box>:null
-                }
+                {router.asPath === '/' ? (
+                    <Box bgcolor="black">
+                        <Navbar />
+                    </Box>
+                ) : null}
 
                 <Component {...pageProps} />
                 {/* <Component {...pageProps} /> */}
                 {/* Checking for pathName used so that in readDoc Feature so that there no nav bar  and footeris shown */}
 
-                {
-                    router.asPath==='/'?<Box width="100%">
-                    <Footer />
-                </Box>:null
-                }
-                
+                {router.asPath === '/' ? (
+                    <Box width="100%">
+                        <Footer />
+                    </Box>
+                ) : null}
             </Box>
         </ThemeProvider>
     );

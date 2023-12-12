@@ -11,15 +11,17 @@ export default function BlogPosts({ allPostsData }) {
             <section>
                 <h2>List of all Blogs</h2>
                 <ul>
-                    {allPostsData.map(({ id, date, title, subtitle }, index: Key) => (
-                        <div key={index}>
-                            <Link href={`/blogs/${id}`}>
-                                <h2>{title}</h2>
-                            </Link>
-                            <p>{date}</p>
-                            <p>{subtitle}</p>
-                        </div>
-                    ))}
+                    {allPostsData.map(
+                        ({ id, date, title, subtitle }, index: Key) => (
+                            <div key={index}>
+                                <Link href={`/blogs/${id}`}>
+                                    <h2>{title}</h2>
+                                </Link>
+                                <p>{date}</p>
+                                <p>{subtitle}</p>
+                            </div>
+                        )
+                    )}
                 </ul>
             </section>
         </div>
