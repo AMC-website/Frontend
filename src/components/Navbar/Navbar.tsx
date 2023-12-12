@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import NavItem from './NavItem';
-import { bgColor, color } from '@/constants';
+import { bgColor, color, h4, h6_ } from '@/constants';
 import Logo from './Logo';
 // import {
 //     returnBgColor,
@@ -64,7 +64,14 @@ function Navbar() {
         setHoveredIndex(-1);
     }
 
-    const pages = ['ABOUT', 'GALLERY', 'PROJECTS', 'MEMBERS', 'CONTACT'];
+    const pages = [
+        'ABOUT',
+        'GALLERY',
+        'PROJECTS',
+        'MEMBERS',
+        'CONTACT',
+        'BLOGS',
+    ];
 
     const boxVariants = {
         open: {

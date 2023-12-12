@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Box position="relative" overflow="hidden">
                 {/* Checking for pathName used so that in readDoc Feature so that there no nav bar  and footeris shown */}
                 {
-                    router.asPath!=='/readDoc'?<Box bgcolor="black">
+                    router.asPath==='/'?<Box bgcolor="black">
                     <Navbar />
                 </Box>:null
                 }
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 {/* Checking for pathName used so that in readDoc Feature so that there no nav bar  and footeris shown */}
 
                 {
-                    router.asPath!=='/readDoc'?<Box width="100%">
+                    router.asPath==='/'?<Box width="100%">
                     <Footer />
                 </Box>:null
                 }
