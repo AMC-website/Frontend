@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { getAllPostIds, getPostData } from '../../../lib/getPosts';
-import Markdown from 'react-markdown';
+import { getAllPostIds, getPostData } from 'lib/getPosts';
 
 export async function getStaticProps({ params }) {
     // Add the "await" keyword like this:
