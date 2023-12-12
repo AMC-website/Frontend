@@ -2,7 +2,6 @@ import { color, h4, h6_, titleColor } from '@/constants';
 import { Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useState } from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 interface NavItemProps {
