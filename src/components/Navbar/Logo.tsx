@@ -20,7 +20,7 @@ export default function Logo() {
 
     useEffect(() => {
         // Define a function that is called when the scroll event fires
-        const handleScroll = (e) => {
+        const handleScroll = () => {
             let windowHeight = window.innerHeight;
             const triggerHeight = windowHeight * 0.45;
             let y = window.scrollY;

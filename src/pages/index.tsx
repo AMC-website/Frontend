@@ -11,7 +11,6 @@ import MovingText from '@/components/MovingText';
 import { bgColor, color, h4, h5, h6, titleColor } from '@/constants';
 import Projects from '../components/Projects/projects';
 import Image from 'next/image';
-import Link from 'next/link';
 export default function Home() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:1000px)');
