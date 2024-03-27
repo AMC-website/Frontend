@@ -28,7 +28,7 @@ export default function AMCSection() {
                 IIT (BHU) Varanasi
             </Typography> */}
             <Link
-                href="mailto:someone@yoursite.com"
+                href="mailto:aero.iitbhu@gmail.com"
                 sx={{
                     textDecoration: 'none',
                     '&:hover': {
