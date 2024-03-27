@@ -17,7 +17,6 @@ function NavItem({
     onSomethingElse,
     breakPoint,
 }: NavItemProps) {
-    console.log(title);
     const linkStyles = {
         textDecoration: 'none',
         '&:hover': {

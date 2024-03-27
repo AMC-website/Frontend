@@ -8,7 +8,6 @@ import '@/styles/global.css';
 import { useRouter } from 'next/router';
 export default function App({ Component, pageProps }: AppProps) {
     let router = useRouter();
-    console.log(router.asPath);
     return (
         <ThemeProvider theme={theme}>
             <Box position="relative" overflow="hidden">

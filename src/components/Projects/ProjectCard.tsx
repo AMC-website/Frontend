@@ -6,6 +6,7 @@ import { color, h2_, h4, h5, h5_, h6, h6_, titleColor } from '@/constants';
 import { Backdrop, Box, Typography, useMediaQuery } from '@mui/material';
 
 interface CardProps {
+    key: number;
     projectName: string;
     projectContent: string;
     projectThumbnail: string;
