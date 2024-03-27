@@ -2,6 +2,46 @@ import MemberCard from '@/components/Member/MemberCard';
 import { color, h4, h5 } from '@/constants';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 
+interface MemberData {
+    memberName: string;
+    memberRole: string;
+    memberQuote: string;
+}
+
+//TODO: Decouple code and data
+const MemberData: MemberData[] = [
+    {
+        memberName: 'Devyan Mishra',
+        memberRole: 'Secretary',
+        memberQuote: 'Leading with integrity.',
+    },
+    {
+        memberName: 'Aryan Kumar',
+        memberRole: 'Joint Secretary',
+        memberQuote: 'Bringing innovation to the table.',
+    },
+    {
+        memberName: 'Harsh Kumar Panchal',
+        memberRole: 'Joint Secretary',
+        memberQuote: 'Teamwork makes the dream work.',
+    },
+    {
+        memberName: 'Varad Kharade',
+        memberRole: 'Design & Creative Head',
+        memberQuote: 'Inspiration in every pixel.',
+    },
+    {
+        memberName: 'M Viswanath Sai',
+        memberRole: 'Tech Head',
+        memberQuote: 'Coding with passion.',
+    },
+    {
+        memberName: 'Hari Sudarshan',
+        memberRole: 'Tech Head',
+        memberQuote: 'Empowering through technology.',
+    },
+];
+
 export default function Members() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:750px)');
@@ -24,47 +64,15 @@ export default function Members() {
                 }
                 justifyContent={breakPoint ? 'space-between' : 'center'}
             >
-                <MemberCard
-                    memberName="Viswa"
-                    memberRole="thalaivar"
-                    memberThumbnail="flight1.jpg"
-                    memberDescription="lorem ipsum"
-                />
-
-                <MemberCard
-                    memberName="Viswa"
-                    memberRole="thalaivar"
-                    memberThumbnail="flight1.jpg"
-                    memberDescription="lorem ipsum"
-                />
-
-                <MemberCard
-                    memberName="Viswa"
-                    memberRole="thalaivar"
-                    memberThumbnail="flight1.jpg"
-                    memberDescription="lorem ipsum"
-                />
-
-                <MemberCard
-                    memberName="Viswa"
-                    memberRole="thalaivar"
-                    memberThumbnail="flight1.jpg"
-                    memberDescription="lorem ipsum"
-                />
-
-                <MemberCard
-                    memberName="Viswa"
-                    memberRole="thalaivar"
-                    memberThumbnail="flight1.jpg"
-                    memberDescription="lorem ipsum"
-                />
-
-                <MemberCard
-                    memberName="Viswa"
-                    memberRole="thalaivar"
-                    memberThumbnail="flight1.jpg"
-                    memberDescription="lorem ipsum"
-                />
+                {MemberData.map((member, index) => (
+                    <MemberCard
+                        key={index}
+                        memberName={member.memberName}
+                        memberRole={member.memberRole}
+                        memberDescription={member.memberQuote}
+                        memberThumbnail="flight1.jpg"
+                    />
+                ))}
             </Box>
         </Box>
     );

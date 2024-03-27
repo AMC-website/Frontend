@@ -7,6 +7,7 @@ interface MemberCardProps {
     memberRole: string;
     memberThumbnail: string;
     memberDescription: string;
+    key: number;
 }
 
 const MemberCard = ({
@@ -17,6 +18,7 @@ const MemberCard = ({
 }: MemberCardProps) => {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const [isClicked, setIsClicked] = useState(false);
+    const [mouseOver, setMouseOver] = useState(false);
 
     function handleClick() {
         setIsClicked(!isClicked);
@@ -30,23 +32,22 @@ const MemberCard = ({
                 minHeight="91px"
                 sx={{
                     borderStyle: 'solid',
-                    borderColor: color,
+                    borderColor: mouseOver ? titleColor : color,
                     borderWidth: '0.5px',
                     borderRadius: '4px',
                     cursor: 'pointer',
-                    ':hover': {
-                        scale: '1.05',
-                    },
-                    transition: 'scale 0.3s',
+                    transition: 'border-color 0.3s',
                 }}
                 alignItems="center"
                 justifyContent="space-evenly"
                 onClick={handleClick}
+                onMouseEnter={() => setMouseOver(true)}
+                onMouseLeave={() => setMouseOver(false)}
             >
                 <Backdrop
                     sx={{
                         color: '#fff',
-                        zIndex: (theme) => theme.zIndex.drawer + 1,
+                        zIndex: (theme) => theme.zIndex.drawer + 2,
                         backgroundColor: 'black',
                         display: 'flex',
                         fontSize: '30px',
@@ -71,6 +72,7 @@ const MemberCard = ({
                                 fontWeight="bolder"
                                 color={titleColor}
                                 mb="25px"
+                                position="relative"
                             >
                                 {memberName}
                             </Typography>
