@@ -10,7 +10,7 @@
     "export": "next build && next export",
     "eslint": "eslint src --ext .tsx",
     "eslint:fix": "eslint --ext .tsx --fix src/components",
-    "prepare": "husky install"
+    "prepare": "husky install | chmod ug+x .husky/*"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
