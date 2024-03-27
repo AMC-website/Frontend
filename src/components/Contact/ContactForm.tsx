@@ -4,8 +4,8 @@ import Typography from '@mui/material/Typography';
 import { Button, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import { h4_, h5, h6 } from '@/constants';
-import { color } from '@/constants';
 import styles from '@/styles/contact.module.css';
+import { color, titleColor } from '@/constants';
 
 export default function ContactForm() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -84,17 +84,23 @@ export default function ContactForm() {
                         py: '5px',
                         outline: 'solid',
                         maxWidth: breakPoint ? 'max-content' : '100%',
-                        outlineColor: 'white',
                         outlineWidth: '1px',
                         borderRadius: '10px',
-                        color: 'white',
-                        '&:hover': {
-                            backgroundColor: 'lightcoral',
-                        },
                         sm: {
                             maxWidth: 'max-content',
                         },
                         fontSize: h6,
+                        borderStyle: 'solid',
+                        color: 'rgba(255,255,255,1)',
+                        borderColor: 'white',
+                        backgroundColor: 'transparent',
+                        '&:hover': {
+                            color: color,
+                            backgroundColor: titleColor,
+                            borderColor: titleColor,
+                        },
+                        transition:
+                            '0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
                     }}
                     type="submit"
                     onClick={() => {}}
