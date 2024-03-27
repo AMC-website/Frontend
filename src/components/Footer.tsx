@@ -8,9 +8,9 @@ import { Email } from '@mui/icons-material';
 const Footer = () => {
     const sections = ['Events', 'Projects', 'About'];
     const contactInfo = [
-        'Largos, Largo Santos 9, 1200-656 Lisboa',
-        'info@nunospace.com',
-        'Call us',
+        'Vivekananda Common Room, Vivekananda Hostel, IIT (BHU), Varanasi - 221005',
+        'aero.iitbhu@gmail.com',
+        'devyan.mishra.mec21@iitbhu.ac.in',
     ];
 
     const iconStyles = {
