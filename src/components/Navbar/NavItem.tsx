@@ -33,6 +33,13 @@ function NavItem({
                     {children}
                 </Link>
             );
+        }
+        if (page === 'GALLERY') {
+            return (
+                <Link style={linkStyles} href={'gallery'}>
+                    {children}
+                </Link>
+            );
         } else {
             return (
                 <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>

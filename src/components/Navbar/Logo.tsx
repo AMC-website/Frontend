@@ -69,3 +69,23 @@ export default function Logo() {
         />
     );
 }
+
+export function LogoStatic() {
+    return (
+        <img
+            src="/logo new.png"
+            alt="drone image"
+            id="logo"
+            width={1080}
+            height={1080}
+            style={{
+                objectFit: 'cover',
+                height: '70%',
+                width: '100%',
+                marginBottom: 'auto',
+                marginTop: 'auto',
+                userSelect: 'none',
+            }}
+        />
+    );
+}

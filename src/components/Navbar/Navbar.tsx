@@ -1,11 +1,12 @@
-import { Box, } from '@mui/material';
+import { Box } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import NavItem from './NavItem';
-import { bgColor, color, } from '@/constants';
-import Logo from './Logo';
+import { bgColor, color } from '@/constants';
+import Logo, { LogoStatic } from './Logo';
+import { pages } from './data/pages';
 // import {
 //     returnBgColor,
 //     returnColor,
@@ -24,7 +25,12 @@ function Path(props) {
     );
 }
 
-function Navbar() {
+type NavProps = {
+    sticky: boolean;
+    staticLogo: boolean;
+};
+
+function Navbar(props: NavProps) {
     const [sticky, setSticky] = useState(false);
     const navbarRef = useRef<HTMLElement | null>(null);
 
@@ -33,6 +39,7 @@ function Navbar() {
     const checkNavbarPosition = () => {
         if (navbarRef.current) {
             const navbarRect = navbarRef.current.getBoundingClientRect();
+
             if (navbarRect.top <= 0) {
                 // Check if the navbar is at or above the top of the viewport
                 setSticky(true);
@@ -41,7 +48,6 @@ function Navbar() {
             }
         }
     };
-
     useEffect(() => {
         checkNavbarPosition();
         window.addEventListener('scroll', checkNavbarPosition);
@@ -63,15 +69,6 @@ function Navbar() {
     function handleMouseLeave() {
         setHoveredIndex(-1);
     }
-
-    const pages = [
-        'ABOUT',
-        'GALLERY',
-        'PROJECTS',
-        'MEMBERS',
-        'CONTACT',
-        'BLOGS',
-    ];
 
     const boxVariants = {
         open: {
@@ -99,10 +96,10 @@ function Navbar() {
 
     return (
         <>
-            {sticky && <div style={{ height: `16vh` }} />}
+            {sticky && props.sticky && <div style={{ height: `16vh` }} />}
 
             <Box
-                position={sticky ? 'fixed' : 'relative'}
+                position={sticky && props.sticky ? 'fixed' : 'relative'}
                 ref={navbarRef}
                 top={0}
                 zIndex="50"
@@ -132,7 +129,7 @@ function Navbar() {
                     }}
                 >
                     <Link href="/" style={{ width: '13%' }}>
-                        <Logo />
+                        {props.staticLogo ? <LogoStatic /> : <Logo />}
                     </Link>
                     <motion.div
                         style={{
