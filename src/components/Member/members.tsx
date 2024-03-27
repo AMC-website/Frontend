@@ -1,6 +1,7 @@
 import MemberCard from '@/components/Member/MemberCard';
 import { color, h4, h5 } from '@/constants';
 import { Box, Typography, useMediaQuery } from '@mui/material';
+import MemberData from '@/data/members';
 
 export default function Members() {
     const breakPoint = useMediaQuery('(min-width:600px)');
