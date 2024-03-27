@@ -135,7 +135,7 @@ export default function Home() {
                     </Box>
                 </section>
             </section>
-            <section
+            {/* <section
                 id="gallery"
                 style={{
                     backgroundColor: bgColor,
@@ -143,7 +143,7 @@ export default function Home() {
                 }}
             >
                 <CustomCarousel />
-            </section>
+            </section> */}
             <MovingText />
             <section
                 id="projects"
