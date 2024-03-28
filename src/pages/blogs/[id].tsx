@@ -2,7 +2,8 @@ import React from 'react';
 
 import { getAllPostIds, getPostData } from 'lib/getPosts';
 import Markdown from 'markdown-to-jsx';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
+import { bgColor, color, h4, h5, h6 } from '@/constants';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
@@ -22,14 +23,39 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData }) {
-    return (
-        <Box>
-            <Typography variant="h1">{postData.title}</Typography>
+    const breakPoint = useMediaQuery('(min-width:600px)');
 
-            <Typography variant="body2">{postData.date}</Typography>
+    return (
+        <Box padding="0 7.5% 100px" bgcolor={bgColor} color="white">
+            <Typography
+                variant="h1"
+                color={color}
+                fontSize={breakPoint ? h4 : h5}
+                mb="35px"
+            >
+                {postData.title}
+            </Typography>
+
+            <Typography
+                variant="body1"
+                lineHeight="1.5"
+                color='gray'
+                margin="8px auto"
+                fontSize={h6}
+            >
+                {postData.date}
+            </Typography>
 
             <Box>
-                <Markdown children={postData.contentHtml} />
+                <Typography
+                    variant="h3"
+                    lineHeight="1.5"
+                    color={color}
+                    margin="0 auto"
+                    fontSize={h6}
+                >
+                    <Markdown children={postData.contentHtml} />
+                </Typography>
             </Box>
         </Box>
     );
