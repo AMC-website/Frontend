@@ -1,30 +1,35 @@
 import React, { Key } from 'react';
 import { getSortedPostsData } from 'lib/getPosts';
 import Link from 'next/link';
+import { Box, Container, Typography } from '@mui/material';
 
 export default function BlogPosts({ allPostsData }) {
     return (
-        <div>
+        <Box>
             {/* Keep the existing code here */}
 
             {/* Add this <section> tag below the existing <section> tag */}
-            <section>
-                <h2>List of all Blogs</h2>
+            <Container>
+                <Typography variant="h2">List of all Blogs</Typography>
                 <ul>
                     {allPostsData.map(
                         ({ id, date, title, subtitle }, index: Key) => (
-                            <div key={index}>
+                            <Box key={index}>
                                 <Link href={`/blogs/${id}`}>
-                                    <h2>{title}</h2>
+                                    <Typography variant="h2">
+                                        {title}
+                                    </Typography>
                                 </Link>
-                                <p>{date}</p>
-                                <p>{subtitle}</p>
-                            </div>
+                                <Typography variant="body2">{date}</Typography>
+                                <Typography variant="body1">
+                                    {subtitle}
+                                </Typography>
+                            </Box>
                         )
                     )}
                 </ul>
-            </section>
-        </div>
+            </Container>
+        </Box>
     );
 }
 

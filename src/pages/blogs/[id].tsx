@@ -2,6 +2,7 @@ import React from 'react';
 
 import { getAllPostIds, getPostData } from 'lib/getPosts';
 import Markdown from 'markdown-to-jsx';
+import { Box, Typography } from '@mui/material';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
@@ -22,14 +23,14 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
     return (
-        <div>
-            <h1>{postData.title}</h1>
+        <Box>
+            <Typography variant="h1">{postData.title}</Typography>
 
-            <p>{postData.date}</p>
+            <Typography variant="body2">{postData.date}</Typography>
 
-            <div>
+            <Box>
                 <Markdown children={postData.contentHtml} />
-            </div>
-        </div>
+            </Box>
+        </Box>
     );
 }
