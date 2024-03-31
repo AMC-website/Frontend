@@ -8,7 +8,7 @@ export default function BlogPosts({ allPostsData }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
 
     return (
-        <Box padding="0 7.5% 100px" bgcolor={bgColor} color="white">
+        <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
             {/* Keep the existing code here */}
 
             {/* Add this <section> tag below the existing <section> tag */}

@@ -26,7 +26,7 @@ export default function Post({ postData }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
 
     return (
-        <Box padding="0 7.5% 100px" bgcolor={bgColor} color="white">
+        <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
             <Typography
                 variant="h1"
                 color={color}
@@ -39,7 +39,7 @@ export default function Post({ postData }) {
             <Typography
                 variant="body1"
                 lineHeight="1.5"
-                color='gray'
+                color="gray"
                 margin="8px auto"
                 fontSize={h6}
             >
