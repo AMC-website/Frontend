@@ -1,4 +1,3 @@
-import ContactForm from '@/components/Contact/ContactForm';
 import CardHolder from '@/components/Home/CardHolder';
 import { Box, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -168,9 +167,7 @@ export default function Home() {
             <section
                 id="contact"
                 style={{ backgroundColor: bgColor, padding: '100px 0' }}
-            >
-                <ContactForm />
-            </section>
+            ></section>
         </div>
     );
 }

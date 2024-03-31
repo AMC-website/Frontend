@@ -8,7 +8,7 @@ import Images from '@/data/imagegallery';
 export default function Gallery() {
     return (
         <Box>
-            <Box>
+            <Box maxWidth={'80%'} maxHeight={'60vw'}>
                 <LiteYouTubeEmbed
                     id="L2vS_050c-M"
                     title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
