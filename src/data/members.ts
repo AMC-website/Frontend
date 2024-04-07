@@ -38,6 +38,12 @@ const MemberData: MemberDatatype[] = [
         memberQuote: 'Empowering through technology.',
     },
     {
+        memberName: 'Abhijeet Mankani',
+        memberRole: 'Core Team',
+        memberQuote:
+            "Among the clouds, fulfilling dreams while others merely fantasize.",
+    },
+    {
         memberName: 'Aryan Gupta',
         memberRole: 'Core Team',
         memberQuote:
