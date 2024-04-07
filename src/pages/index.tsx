@@ -156,13 +156,6 @@ export default function Home() {
             >
                 <Projects />
             </section>
-
-            <section
-                id="contact"
-                style={{ backgroundColor: bgColor, padding: '100px 0' }}
-            >
-                <ContactForm />
-            </section>
         </div>
     );
 }
