@@ -2,7 +2,6 @@ import { color, h4, h6_, titleColor } from '@/constants';
 import { Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 interface NavItemProps {
     isHovered: boolean;
@@ -42,9 +41,9 @@ function NavItem({
             );
         } else {
             return (
-                <AnchorLink style={linkStyles} href={`#${lowerCasePage}`}>
+                <Link style={linkStyles} href={`/#${lowerCasePage}`}>
                     {children}
-                </AnchorLink>
+                </Link>
             );
         }
     };
