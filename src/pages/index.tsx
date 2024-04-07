@@ -2,10 +2,8 @@ import CardHolder from '@/components/Home/CardHolder';
 import { Box, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import CustomCarousel from '@/components/Carousel';
 import AMCSection from '@/components/Home/AMCSection';
 import Parallax from '@/components/Home/Parallax';
-import Members from '@/components/Member/members';
 import MovingText from '@/components/MovingText';
 import { bgColor, color, h4, h5, h6, titleColor } from '@/constants';
 import Projects from '../components/Projects/projects';
@@ -154,14 +152,12 @@ export default function Home() {
             >
                 <Projects />
             </section>
+
             <section
-                id="members"
-                style={{
-                    backgroundColor: bgColor,
-                    padding: '100px 0',
-                }}
+                id="contact"
+                style={{ backgroundColor: bgColor, padding: '100px 0' }}
             >
-                <Members />
+                <ContactForm />
             </section>
         </div>
     );
