@@ -33,6 +33,13 @@ function NavItem({
                 </Link>
             );
         }
+        if (page === 'MEMBERS') {
+            return (
+                <Link style={linkStyles} href={'members'}>
+                    {children}
+                </Link>
+            );
+        }
         if (page === 'GALLERY') {
             return (
                 <Link style={linkStyles} href={'gallery'}>
