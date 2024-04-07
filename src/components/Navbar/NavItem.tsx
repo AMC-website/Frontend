@@ -1,4 +1,4 @@
-import { color, h4, h6_, titleColor } from '@/constants';
+import { color, h5, h6_, titleColor } from '@/constants';
 import { Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -71,7 +71,7 @@ function NavItem({
             <NavbarLink page={title}>
                 <Typography
                     variant="h4"
-                    fontSize={breakPoint ? h6_ : h4}
+                    fontSize={breakPoint ? h6_ : h5}
                     padding="10px 0 10px 10px"
                     textAlign="right"
                 >

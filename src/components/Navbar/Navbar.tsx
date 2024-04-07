@@ -134,9 +134,9 @@ function Navbar(props: NavProps) {
                     <motion.div
                         style={{
                             display: 'flex',
-                            gap: breakPoint ? '4px' : '35px',
+                            gap: breakPoint ? '4px' : '10px',
                             flexDirection: breakPoint ? 'row' : 'column',
-                            position: breakPoint ? 'static' : 'absolute',
+                            position: breakPoint ? 'static' : 'fixed',
                             top: '0',
                             left: '-35px',
                             minHeight: breakPoint ? '100%' : '100vh',

@@ -25,9 +25,13 @@ export default function Home() {
             >
                 <AMCSection />
             </section>
-            <section id="parallax">
-                <Parallax />
-            </section>
+            {breakPoint ? (
+                <section id="parallax">
+                    <Parallax />
+                </section>
+            ) : (
+                <div> </div>
+            )}
             <section id="about">
                 <section
                     id="amenities"
