@@ -128,7 +128,7 @@ function Navbar(props: NavProps) {
                         boxSizing: 'border-box',
                     }}
                 >
-                    <Link href="/" style={{ width: '13%' }}>
+                    <Link href="/">
                         {props.staticLogo ? <LogoStatic /> : <Logo />}
                     </Link>
                     <motion.div

@@ -55,8 +55,8 @@ export default function Logo() {
             height={1080}
             style={{
                 objectFit: 'cover',
-                height: '70%',
-                width: '100%',
+                height: '20%',
+                width: '30%',
                 marginBottom: 'auto',
                 marginTop: 'auto',
                 transition: 'transform 0.05s',
@@ -80,8 +80,8 @@ export function LogoStatic() {
             height={1080}
             style={{
                 objectFit: 'cover',
-                height: '70%',
-                width: '100%',
+                height: '40%',
+                width: '30%',
                 marginBottom: 'auto',
                 marginTop: 'auto',
                 userSelect: 'none',
