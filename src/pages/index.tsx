@@ -163,11 +163,6 @@ export default function Home() {
             >
                 <Members />
             </section>
-
-            <section
-                id="contact"
-                style={{ backgroundColor: bgColor, padding: '100px 0' }}
-            ></section>
         </div>
     );
 }
