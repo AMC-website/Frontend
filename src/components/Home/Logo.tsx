@@ -17,7 +17,7 @@ function map(
 
 export default function Logo() {
     const breakPoint = useMediaQuery('(min-width:900px)');
-    const [logoWidth, setlogoWidth] = useState(70);
+    const [logoWidth, setlogoWidth] = useState(60);
     const [logoHeight, setlogoHeight] = useState(50);
     const [isAtTop, setIsAtTop] = useState(false);
 
@@ -29,7 +29,7 @@ export default function Logo() {
             let y = window.scrollY;
 
             if (y <= windowHeight * 0.45) {
-                setlogoWidth(map(y, 0, triggerHeight, 70, 12));
+                setlogoWidth(map(y, 0, triggerHeight, 60, 12));
                 setlogoHeight(map(y, 0, triggerHeight, 50, 10));
                 setIsAtTop(false);
             } else {
