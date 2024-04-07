@@ -18,7 +18,7 @@ export default function Home() {
                 id="welcome"
                 style={{
                     backgroundColor: bgColor,
-                    padding: '0 7.5% 100px',
+                    padding: breakPoint ? '0 7.5% 100px' : '',
                 }}
             >
                 <AMCSection />

@@ -104,7 +104,7 @@ function Navbar(props: NavProps) {
                 top={0}
                 zIndex="50"
                 height="16vh"
-                left="50%"
+                left={breakPoint ? '50%' : '50%'}
                 width="100%"
                 display="flex"
                 justifyContent="center"
@@ -138,17 +138,18 @@ function Navbar(props: NavProps) {
                             flexDirection: breakPoint ? 'row' : 'column',
                             position: breakPoint ? 'static' : 'fixed',
                             top: '0',
-                            left: '-35px',
+                            left: breakPoint ? '-35px' : '',
                             minHeight: breakPoint ? '100%' : '100vh',
                             width: breakPoint ? '' : '100vw',
                             justifyContent: breakPoint
                                 ? 'space-between'
-                                : 'center',
-                            alignItems: breakPoint ? 'center' : 'end',
+                                : 'start',
+                            alignItems: breakPoint ? 'center' : 'flex-end',
                             backgroundColor: 'black',
-                            paddingTop: breakPoint ? '' : '13vh',
+                            paddingTop: breakPoint ? '' : '10vh',
+                            paddingRight: breakPoint ? '' : '10vw',
                             boxSizing: 'border-box',
-                            zIndex: breakPoint ? 10 : isOpen ? 10 : -999,
+                            zIndex: breakPoint ? 10 : isOpen ? 50 : -999,
                             pointerEvents:
                                 !breakPoint && !isOpen ? 'none' : 'auto',
                         }}
@@ -162,6 +163,7 @@ function Navbar(props: NavProps) {
                                     key={index} // Add a unique key for each iteration
                                     onMouseEnter={() => handleMouseEnter(index)}
                                     onMouseLeave={handleMouseLeave}
+                                    onClick={handleClick}
                                 >
                                     <NavItem
                                         title={title}

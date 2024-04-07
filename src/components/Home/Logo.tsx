@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
 function map(
     value: number,
     start1: number,
@@ -15,7 +16,8 @@ function map(
 }
 
 export default function Logo() {
-    const [logoWidth, setlogoWidth] = useState(60);
+    const breakPoint = useMediaQuery('(min-width:900px)');
+    const [logoWidth, setlogoWidth] = useState(70);
     const [logoHeight, setlogoHeight] = useState(50);
     const [isAtTop, setIsAtTop] = useState(false);
 
@@ -27,7 +29,7 @@ export default function Logo() {
             let y = window.scrollY;
 
             if (y <= windowHeight * 0.45) {
-                setlogoWidth(map(y, 0, triggerHeight, 60, 12));
+                setlogoWidth(map(y, 0, triggerHeight, 70, 12));
                 setlogoHeight(map(y, 0, triggerHeight, 50, 10));
                 setIsAtTop(false);
             } else {
@@ -61,7 +63,7 @@ export default function Logo() {
                 width: (true ? logoWidth : logoWidth) + '%',
                 marginBottom: 'auto',
                 marginTop: 'auto',
-                zIndex: isAtTop ? 0 : 50,
+                zIndex: isAtTop ? 0 : breakPoint ? 50 : 40,
                 userSelect: 'none',
             }}
         />
