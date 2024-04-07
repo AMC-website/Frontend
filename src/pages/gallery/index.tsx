@@ -1,4 +1,3 @@
-import 'react-image-gallery/styles/css/image-gallery.css';
 import { Box } from '@mui/material';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
