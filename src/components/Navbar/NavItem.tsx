@@ -28,21 +28,21 @@ function NavItem({
         const lowerCasePage = page.toLowerCase();
         if (page === 'BLOGS') {
             return (
-                <Link style={linkStyles} href={'blogs'}>
+                <Link style={linkStyles} href={'/blogs'}>
                     {children}
                 </Link>
             );
         }
         if (page === 'MEMBERS') {
             return (
-                <Link style={linkStyles} href={'members'}>
+                <Link style={linkStyles} href={'/members'}>
                     {children}
                 </Link>
             );
         }
         if (page === 'GALLERY') {
             return (
-                <Link style={linkStyles} href={'gallery'}>
+                <Link style={linkStyles} href={'/gallery'}>
                     {children}
                 </Link>
             );
