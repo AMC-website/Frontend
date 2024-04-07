@@ -31,55 +31,10 @@ export default function Members() {
                         memberName={member.memberName}
                         memberRole={member.memberRole}
                         memberDescription={member.memberQuote}
-                        memberThumbnail="flight1.jpg"
+                        memberThumbnail={`members/${member.memberName.toLowerCase()}.jpg`}
                     />
                 ))}
             </Box>
         </Box>
     );
 }
-
-// <Box
-//     sx={{
-//         '& .MuiStack-root': {
-//             backgroundColor: 'transparent',
-//             padding: '0px',
-//         },
-//     }}
-// >
-//     <Box>
-//         <Typography
-//             height="40vh"
-//             variant="h1"
-//             bgcolor="black"
-//             display="flex"
-//             justifyContent="center"
-//             alignItems="center"
-//             textAlign="center"
-//             color={theme.palette.secondary.main}
-//         >
-//             Members
-//         </Typography>
-//     </Box>
-
-//     <Stack
-//         direction={'column'}
-//         divider={<Divider orientation="horizontal" flexItem></Divider>}
-//         bgcolor="#F0E4DC"
-//         sx={{
-//             '& .MuiStack-root': {
-//                 backgroundColor: 'transparent',
-//                 padding: '0px',
-//             },
-//         }}
-//     >
-//         {membersData.map((member, index) => (
-//             <MemberCard
-//                 key={index}
-//                 name={member.name}
-//                 role={member.role}
-//                 image={member.profileImage}
-//             ></MemberCard>
-//         ))}
-//     </Stack>
-// </Box>

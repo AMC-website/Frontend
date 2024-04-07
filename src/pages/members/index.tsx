@@ -8,7 +8,7 @@ export default function MembersPage() {
                 id="members"
                 style={{
                     backgroundColor: bgColor,
-                    padding: '100px 0',
+                    padding: '50px 0',
                 }}
             >
                 <Members />
