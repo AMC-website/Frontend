@@ -4,15 +4,10 @@ import dynamic from 'next/dynamic';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Email } from '@mui/icons-material';
+import { social, contactInfo } from '@/data/contact';
+import { pages } from '@/data/navigation';
 
 const Footer = () => {
-    const sections = ['Events', 'Projects', 'About'];
-    const contactInfo = [
-        'Vivekananda Common Room, Vivekananda Hostel, IIT (BHU), Varanasi - 221005',
-        'aero.iitbhu@gmail.com',
-        'devyan.mishra.mec21@iitbhu.ac.in',
-    ];
-
     const iconStyles = {
         '&:hover': {
             scale: '1.2',
@@ -30,7 +25,7 @@ const Footer = () => {
                 gap: h6,
             }}
         >
-            {sections.map((sectionName, index) => {
+            {pages.map((sectionName, index) => {
                 return (
                     <Link
                         key={index}
@@ -86,13 +81,13 @@ const Footer = () => {
                     color: color,
                 }}
             >
-                <Link href="https://www.facebook.com/amc.iitbhu/">
+                <Link href={social.facebook}>
                     <FacebookIcon sx={iconStyles} />
                 </Link>
-                <Link href="/">
+                <Link href={social.instagram}>
                     <InstagramIcon sx={iconStyles} />
                 </Link>
-                <Link href="/">
+                <Link href={social.Email}>
                     <Email sx={iconStyles} />
                 </Link>
             </Box>

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import NavItem from './NavItem';
 import { bgColor, color } from '@/constants';
 import Logo, { LogoStatic } from './Logo';
-import { pages } from './data/pages';
+import { pages } from '@/data/navigation';
 // import {
 //     returnBgColor,
 //     returnColor,

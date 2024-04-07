@@ -6,6 +6,7 @@ import { photos } from '@/data/photos';
 import { bgColor, color, h4, h5 } from '@/constants';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'react-image-gallery/styles/css/image-gallery.css';
+import { ytvideos } from '@/data/imagegallery';
 
 export default function Gallery() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -16,10 +17,13 @@ export default function Gallery() {
                 margin="0 auto"
                 width={breakPoint ? '50%' : '90%'}
             >
-                <LiteYouTubeEmbed
-                    id="L2vS_050c-M"
-                    title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
-                ></LiteYouTubeEmbed>
+                {
+                    // eslint-disable-next-line
+                    <LiteYouTubeEmbed
+                        id={ytvideos[0].id}
+                        title={ytvideos[0].title}
+                    ></LiteYouTubeEmbed>
+                }
             </Box>
             <Box
                 color="white"
