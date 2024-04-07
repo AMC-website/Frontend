@@ -11,5 +11,9 @@ const Images = [
         original: 'https://picsum.photos/id/1019/1000/600/',
         thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
+    {
+        original: '/imageGallery/3.jpg',
+        thumbnail: '/imageGallery/3.jpg',
+    },
 ];
 export default Images;
