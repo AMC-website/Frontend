@@ -19,13 +19,16 @@ export default function BlogPosts({ allPostsData }) {
                     fontSize={breakPoint ? h4 : h5}
                     mb="35px"
                 >
-                    List of all Blogs
+                    Aero Blogs
                 </Typography>
                 <ul>
                     {allPostsData.map(
                         ({ id, date, title, subtitle }, index: Key) => (
                             <Box key={index} mb="35px">
-                                <Link href={`/blogs/${id}`}>
+                                <Link
+                                    href={`/blogs/${id}`}
+                                    style={{ textDecoration: 'none' }}
+                                >
                                     <Typography
                                         variant="h2"
                                         color={color}

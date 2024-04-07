@@ -4,8 +4,6 @@ subtitle: 'The first Tejas Mk-1A aircraft on Thursday made its maiden flight fro
 date: '06-04-2024'
 ---
 
-# India’s Tejas Mk1a Takes First Flight
-
 The first Tejas Mk-1A aircraft on Thursday made its maiden flight from a Hindustan Aeronautics Limited (HAL) facility in Bengaluru, and the country can look forward to its early induction into the Indian Air Force (IAF).
 
 The Tejas Mk-1A will have an advanced electronic radar, superior warfare capabilities, and improved maintenance features.

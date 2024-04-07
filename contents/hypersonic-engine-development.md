@@ -4,8 +4,6 @@ subtitle: 'GE Aerospace reveals successful testing of dual-mode ramjet engine.'
 date: '06-04-2024'
 ---
 
-# GE Aerospace Achieves Breakthrough in Hypersonic Engine Development
-
 GE Aerospace on 14 December revealed that scientists at its Global Research Center in Upstate New York successfully tested a dual-mode ramjet (DMRJ) engine subscale demonstrator that uses a novel technique called rotating detonation combustion (RDC).
 
 The company says the design could enable high-speed, long-range flight with greater efficiency than what is available with current scramjet engines, for both expendable and reusable vehicles.
