@@ -1,4 +1,4 @@
-# AEROMODELLING CLUB <img src="AMC.jpg" alt="Aeromodelling Club Logo" align="right" width="110" height="113">
+# AEROMODELLING CLUB <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfA6Lsw9OjXRUqY00bO22-gQQlsUeU0R5Gww&s" alt="Aeromodelling Club Logo" align="right" width="110" height="113">
 
 ## 🛫 Introduction
 Welcome to the AEROMODELLING CLUB of IIT (BHU),Varanasi. We are a passionate group of students dedicated to the design, construction, and flight of model aircraft, RC planes, Quadcopters, etc. Our club provides a platform for enthusiasts to explore aerodynamics, flight mechanics, and the practical aspects of aircraft design.
