@@ -4,14 +4,14 @@
 Welcome to the AEROMODELLING CLUB of IIT (BHU),Varanasi. We are a passionate group of students dedicated to the design, construction, and flight of model aircraft, RC planes, Quadcopters, etc. Our club provides a platform for enthusiasts to explore aerodynamics, flight mechanics, and the practical aspects of aircraft design.
 
 ## 📋 Table of Contents
-- 🛫 [Introduction](#🛫-introduction)
-- 🛠️ [Built With](#🛠️-built-with)
-- ✨ [Features](#✨-features)
-- ⚙️ [Installation](#⚙️-installation)
-- 🔧 [Configuration](#🔧-configuration)
-- 📦 [Dependencies](#📦-dependencies)
-- 📂 [Repository Structure](#📂-repository-structure)
-- 📞 [Contact Us](#📞-contact-us)
+- 🛫 [Introduction](#-introduction)
+- 🛠️ [Built With](#%EF%B8%8F-built-with)
+- ✨ [Features](#-features)
+- ⚙️ [Installation](#%EF%B8%8F-installation)
+- 🔧 [Configuration](#-configuration)
+- 📦 [Dependencies](#-dependencies)
+- 📂 [Repository Structure](#-repository-structure)
+- 📞 [Contact Us](#-contact-us)
 
 
 ## 🛠️ Built With
