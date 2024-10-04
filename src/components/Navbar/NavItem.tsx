@@ -33,6 +33,13 @@ function NavItem({
                 </Link>
             );
         }
+        if (page === 'ADMIN') {
+            return (
+                <Link style={linkStyles} href={'/admin'}>
+                    {children}
+                </Link>
+            );
+        }
         if (page === 'MEMBERS') {
             return (
                 <Link style={linkStyles} href={'/members'}>
