@@ -1,11 +1,35 @@
-import React, { Key } from 'react';
+import React, { Key, useState, useEffect } from 'react';
 import { getSortedPostsData } from 'lib/getPosts';
 import Link from 'next/link';
 import { Box, Container, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase.js'; // Import the initialized database
 
 export default function BlogPosts({ allPostsData }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
+    const [blogs, setBlogs] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Reference to 'users' collection
+                const querySnapshot = await getDocs(collection(db, 'users'));
+
+                // Map the documents from the snapshot to an array of user data
+                const usersData = querySnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+
+                setBlogs(usersData);
+            } catch (error) {
+                console.error('Error reading data: ', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
@@ -22,8 +46,8 @@ export default function BlogPosts({ allPostsData }) {
                     Aero Blogs
                 </Typography>
                 <ul>
-                    {allPostsData.map(
-                        ({ id, date, title, subtitle }, index: Key) => (
+                    {blogs.map(
+                        ({ id, date, title, description }, index: Key) => (
                             <Box key={index} mb="35px">
                                 <Link
                                     href={`/blogs/${id}`}
@@ -44,7 +68,7 @@ export default function BlogPosts({ allPostsData }) {
                                     margin="4px auto"
                                     fontSize={h6}
                                 >
-                                    {subtitle}
+                                    {description}
                                 </Typography>
                                 <Typography
                                     variant="body1"
