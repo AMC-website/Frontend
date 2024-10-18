@@ -1,0 +1,115 @@
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    margin-top: 80px;
+    background-color: #2c2e3a;
+    width: 80%;
+    border-radius: 1rem;
+}
+
+.options {
+    display: flex;
+    background-color: #2c2e3a;
+    height: 4rem;
+    border-radius: 1rem;
+}
+
+.opthigh {
+    width: 6rem;
+    background-color: #141619;
+    height: 4rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 1px solid white;
+    border-bottom: none;
+    text-align: center;
+    align-content: center;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.optlow {
+    width: 6rem;
+    background-color: #2c2e3a;
+    height: 4rem;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    text-align: center;
+    align-content: center;
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.opthigh:hover {
+    opacity: 1;
+}
+
+.optlow:hover {
+    opacity: 1;
+}
+
+.innerContainer {
+    background-color: #141619;
+    padding-top: 3rem;
+    border-radius: 1rem;
+    border-top-left-radius: 0;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading {
+    align-self: flex-start;
+    background-color: transparent;
+    margin-left: 2rem;
+    font-size: 20px;
+}
+
+.data {
+    width: 90%;
+    height: 400px;
+    padding: 20px;
+    margin: 40px;
+    background-color: #2c2e3a;
+    border-radius: 1rem;
+    border: none;
+    font-size: 16px;
+}
+
+.btns {
+    background-color: transparent;
+    margin: 1rem;
+    display: flex;
+    justify-content: end;
+    align-self: flex-end;
+}
+
+.btn {
+    width: 4rem;
+    background-color: darkgreen;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    margin: 1rem;
+    cursor: pointer;
+    color: gainsboro;
+}
+
+.btn:disabled {
+    background-color: grey;
+}
+
+.previewTab {
+    background-color: #141619;
+    border-radius: 1rem;
+    border: 1px solid white;
+    padding: 4rem;
+}
