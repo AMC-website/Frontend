@@ -1,10 +1,11 @@
 import React from 'react';
 //import GetBlogs from '../admin/blogs/GetBlogs';
 import { getPostData, getAllPostIds } from 'lib/getPosts';
-//import Markdown from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
-//import matter from 'gray-matter';
+import { useRouter } from 'next/router';
+import matter from 'gray-matter';
 
 // export async function getStaticProps({ params }) {
 //     const blogs = GetBlogs();
@@ -35,6 +36,7 @@ import { bgColor, color, h4, h5, h6 } from '@/constants';
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
+    // console.log(params.id);
 
     return {
         props: {
@@ -50,9 +52,10 @@ export async function getStaticPaths() {
     };
 }
 
-export default function Post({ blog }) {
+export default function Post({ postData }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    // const blogData = matter(blog);
+    const router = useRouter();
+    // console.log(router.query.id)
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
@@ -62,7 +65,7 @@ export default function Post({ blog }) {
                 fontSize={breakPoint ? h4 : h5}
                 mb="35px"
             >
-                {/* {blogData.data.title} */}
+                {postData.title}
             </Typography>
 
             <Typography
@@ -72,7 +75,7 @@ export default function Post({ blog }) {
                 margin="8px auto"
                 fontSize={h6}
             >
-                {/* {blogData.data.date} */}
+                {postData.date}
             </Typography>
 
             <Box>
@@ -83,7 +86,7 @@ export default function Post({ blog }) {
                     margin="0 auto"
                     fontSize={h6}
                 >
-                    {/* <Markdown children={blogData.data.content} /> */}
+                    <Markdown children={postData.contentHtml} />
                 </Typography>
             </Box>
         </Box>
