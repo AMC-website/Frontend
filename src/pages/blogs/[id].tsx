@@ -1,31 +1,49 @@
 import React from 'react';
 import GetBlogs from '../admin/blogs/GetBlogs';
+import { getPostData, getAllPostIds } from 'lib/getPosts';
 import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
 import matter from 'gray-matter';
 
+// export async function getStaticProps({ params }) {
+//     const blogs = GetBlogs();
+//     const blog = blogs.filter((id) => id == params.id);
+
+//     return {
+//         props: {
+//             blog,
+//         },
+//     };
+// }
+
+// export async function getStaticPaths() {
+//     const blogs = GetBlogs();
+//     const paths = blogs.map((id) => {
+//         return {
+//             params: {
+//                 id: id.id,
+//             },
+//         };
+//     });
+
+//     return {
+//         paths,
+//         fallback: false,
+//     };
+// }
+
 export async function getStaticProps({ params }) {
-    const blogs = GetBlogs();
-    const blog = blogs.filter((id) => id == params.id);
+    const postData = await getPostData(params.id);
 
     return {
         props: {
-            blog,
+            postData,
         },
     };
 }
-
 export async function getStaticPaths() {
-    const blogs = GetBlogs();
-    const paths = blogs.map((id) => {
-        return {
-            params: {
-                id: id.id,
-            },
-        };
-    });
-
+    const paths = getAllPostIds();
     return {
         paths,
         fallback: false,
