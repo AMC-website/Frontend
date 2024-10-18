@@ -1,9 +1,37 @@
 import React from 'react';
-
-import { getAllPostIds, getPostData } from 'lib/getPosts';
-import Markdown from 'markdown-to-jsx';
+//import GetBlogs from '../admin/blogs/GetBlogs';
+import { getPostData, getAllPostIds } from 'lib/getPosts';
+//import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
+//import matter from 'gray-matter';
+
+// export async function getStaticProps({ params }) {
+//     const blogs = GetBlogs();
+//     const blog = blogs.filter((id) => id == params.id);
+
+//     return {
+//         props: {
+//             blog,
+//         },
+//     };
+// }
+
+// export async function getStaticPaths() {
+//     const blogs = GetBlogs();
+//     const paths = blogs.map((id) => {
+//         return {
+//             params: {
+//                 id: id.id,
+//             },
+//         };
+//     });
+
+//     return {
+//         paths,
+//         fallback: false,
+//     };
+// }
 
 export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
@@ -22,8 +50,9 @@ export async function getStaticPaths() {
     };
 }
 
-export default function Post({ postData }) {
+export default function Post({ blog }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
+    // const blogData = matter(blog);
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
@@ -33,7 +62,7 @@ export default function Post({ postData }) {
                 fontSize={breakPoint ? h4 : h5}
                 mb="35px"
             >
-                {postData.title}
+                {/* {blogData.data.title} */}
             </Typography>
 
             <Typography
@@ -43,7 +72,7 @@ export default function Post({ postData }) {
                 margin="8px auto"
                 fontSize={h6}
             >
-                {postData.date}
+                {/* {blogData.data.date} */}
             </Typography>
 
             <Box>
@@ -54,7 +83,7 @@ export default function Post({ postData }) {
                     margin="0 auto"
                     fontSize={h6}
                 >
-                    <Markdown children={postData.contentHtml} />
+                    {/* <Markdown children={blogData.data.content} /> */}
                 </Typography>
             </Box>
         </Box>
