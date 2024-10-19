@@ -1,61 +1,60 @@
 import React from 'react';
-//import GetBlogs from '../admin/blogs/GetBlogs';
-import { getPostData, getAllPostIds } from 'lib/getPosts';
+import GetBlogs from '../../admin/blogs/GetBlogs';
+// import { getPostData, getAllPostIds } from 'lib/getPosts';
 import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
-import { useRouter } from 'next/router';
 import matter from 'gray-matter';
 
+export async function getStaticProps({ params }) {
+    const blogs = await GetBlogs();
+    const blog = blogs.filter((blog) => {
+        return blog.id == params.id;
+    })[0].data.data;
+    return {
+        props: {
+            blog,
+        },
+    };
+}
+
+export async function getStaticPaths() {
+    const blogs = await GetBlogs();
+    const paths = blogs.map((blog) => {
+        return {
+            params: {
+                id: blog.id,
+            },
+        };
+    });
+
+    return {
+        paths,
+        fallback: true,
+    };
+}
+
 // export async function getStaticProps({ params }) {
-//     const blogs = GetBlogs();
-//     const blog = blogs.filter((id) => id == params.id);
+//     const postData = await getPostData(params.id);
+//     // console.log(params.id);
 
 //     return {
 //         props: {
-//             blog,
+//             postData,
 //         },
 //     };
 // }
-
 // export async function getStaticPaths() {
-//     const blogs = GetBlogs();
-//     const paths = blogs.map((id) => {
-//         return {
-//             params: {
-//                 id: id.id,
-//             },
-//         };
-//     });
-
+//     const paths = getAllPostIds();
 //     return {
 //         paths,
 //         fallback: false,
 //     };
 // }
 
-export async function getStaticProps({ params }) {
-    const postData = await getPostData(params.id);
-    // console.log(params.id);
-
-    return {
-        props: {
-            postData,
-        },
-    };
-}
-export async function getStaticPaths() {
-    const paths = getAllPostIds();
-    return {
-        paths,
-        fallback: false,
-    };
-}
-
-export default function Post({ postData }) {
+export default function Post({ blog }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    const router = useRouter();
-    // console.log(router.query.id)
+    const blogData = matter(blog);
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
@@ -65,7 +64,7 @@ export default function Post({ postData }) {
                 fontSize={breakPoint ? h4 : h5}
                 mb="35px"
             >
-                {postData.title}
+                {blogData.data.title}
             </Typography>
 
             <Typography
@@ -75,7 +74,7 @@ export default function Post({ postData }) {
                 margin="8px auto"
                 fontSize={h6}
             >
-                {postData.date}
+                {blogData.data.date}
             </Typography>
 
             <Box>
@@ -86,7 +85,7 @@ export default function Post({ postData }) {
                     margin="0 auto"
                     fontSize={h6}
                 >
-                    <Markdown children={postData.contentHtml} />
+                    <Markdown children={blogData.content} />
                 </Typography>
             </Box>
         </Box>
