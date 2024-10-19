@@ -35,7 +35,7 @@ export default function Home() {
                     id="amenities"
                     style={{
                         backgroundColor: bgColor,
-                        padding: '100px 7.5%',
+                        padding: '50px 7.5%',
                     }}
                 >
                     <CardHolder

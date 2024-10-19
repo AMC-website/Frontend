@@ -10,7 +10,7 @@ export const social: Social = {
 };
 
 export const contactInfo = [
-    'Vivekananda Common Room, Vivekananda Hostel, IIT (BHU), Varanasi - 221005',
+    'CV Raman Common Room, CV Raman Hostel, IIT (BHU), Varanasi - 221005',
     'aero.iitbhu@gmail.com',
-    'devyan.mishra.mec21@iitbhu.ac.in',
+    // 'devyan.mishra.mec21@iitbhu.ac.in',
 ];

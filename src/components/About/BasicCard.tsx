@@ -30,6 +30,7 @@ function BasicCard({
                     backgroundColor: cardColor || 'transparent',
                     borderStyle: 'solid',
                     borderColor: color,
+                    padding: '2px',
                     borderWidth: '0.5px',
                     display: 'flex',
                     alignITems: 'center',

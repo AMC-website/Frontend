@@ -45,9 +45,14 @@ function CardHolder({
             <Box
                 display="grid"
                 gridTemplateColumns={
-                    breakPoint2 ? '30% 30% 30%' : breakPoint ? '45% 45%' : '80%'
+                    breakPoint2
+                        ? '30% 30% 30%'
+                        : breakPoint
+                        ? '45% 45%'
+                        : 'repeat(2, 45%)'
                 }
                 justifyContent={breakPoint ? 'space-between' : 'center'}
+                gap="20px"
             >
                 {' '}
                 <BasicCard
