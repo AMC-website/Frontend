@@ -58,9 +58,10 @@ export default function Logo() {
             width={1080}
             height={1080}
             style={{
-                objectFit: 'cover',
+                objectFit: 'contain',
                 height: (true ? logoHeight : logoHeight) + '%',
                 width: (true ? logoWidth : logoWidth) + '%',
+                minHeight: '95%',
                 marginBottom: 'auto',
                 marginTop: 'auto',
                 zIndex: isAtTop ? 0 : breakPoint ? 50 : 40,
