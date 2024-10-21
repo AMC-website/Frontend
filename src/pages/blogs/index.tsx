@@ -1,6 +1,6 @@
 import React, { Key, useState, useEffect } from 'react';
 import Link from 'next/link';
-import GetBlogs from '../admin/blogs/GetBlogs';
+import GetBlogs from 'lib/GetBlogs';
 import { Box, Container, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 import matter from 'gray-matter';
@@ -26,13 +26,7 @@ export default function BlogPosts() {
             console.error('Error reading data: ', error);
         }
     }, []);
-    // const blogs = await GetBlogs();
 
-    // let blogData = {};
-    // for (let blog of blogs) {
-    //     blogData[blog.id] = matter(blog.data.data);
-    // }
-    // console.log(blogData["6lb8Yp4WP4fsUmL2lGct"].data);
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
             {/* Keep the existing code here */}
@@ -48,7 +42,7 @@ export default function BlogPosts() {
                     Aero Blogs
                 </Typography>
                 <ul>
-                    {blogs.map(({ id, data }, index: Key) => (
+                    {blogs.map(({ id }, index: Key) => (
                         <Box key={index} mb="35px">
                             <Link
                                 href={`/blogs/${id}`}

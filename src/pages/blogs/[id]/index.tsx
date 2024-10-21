@@ -1,6 +1,6 @@
 import React from 'react';
-import GetBlogs from '../../admin/blogs/GetBlogs';
-// import { getPostData, getAllPostIds } from 'lib/getPosts';
+// import GetBlogs from '../../admin/blogs/GetBlogs';
+import GetBlogs from 'lib/GetBlogs';
 import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
@@ -8,7 +8,7 @@ import matter from 'gray-matter';
 
 export async function getStaticProps({ params }) {
     const blogs = await GetBlogs();
-    const blog = blogs.filter((blog) => {
+    const blog: string = blogs.filter((blog) => {
         return blog.id == params.id;
     })[0].data.data;
     return {
@@ -33,24 +33,6 @@ export async function getStaticPaths() {
         fallback: true,
     };
 }
-
-// export async function getStaticProps({ params }) {
-//     const postData = await getPostData(params.id);
-//     // console.log(params.id);
-
-//     return {
-//         props: {
-//             postData,
-//         },
-//     };
-// }
-// export async function getStaticPaths() {
-//     const paths = getAllPostIds();
-//     return {
-//         paths,
-//         fallback: false,
-//     };
-// }
 
 export default function Post({ blog }) {
     const breakPoint = useMediaQuery('(min-width:600px)');

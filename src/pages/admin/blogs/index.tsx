@@ -10,6 +10,11 @@ import matter from 'gray-matter';
 
 export default function Markdown() {
     const breakPoint = useMediaQuery('(min-width:600px)');
+    const [title, setTitle] = useState('');
+    const [subtitle, setSubtitle] = useState('');
+    const [date, setDate] = useState('');
+
+    const [data, setData] = useState<string>('');
 
     const [isPrevClicked, setIsPrevClicked] = useState<boolean>(false);
     const [isEditClicked, setIsEditClicked] = useState<boolean>(true);
@@ -23,12 +28,6 @@ export default function Markdown() {
         setIsEditClicked(true);
         setIsPrevClicked(false);
     };
-
-    const [title, setTitle] = useState('');
-    const [subtitle, setSubtitle] = useState('');
-    const [date, setDate] = useState('');
-
-    const [data, setData] = useState<string>('');
 
     const handleSave = () => {
         setTitle(matter(data).data.title);
@@ -52,6 +51,14 @@ export default function Markdown() {
         setData('');
         let add = document.querySelector('#add') as HTMLButtonElement;
         if (add) add.disabled = true;
+    };
+
+    const handleChange = (e) => {
+        setData(e.target.value);
+        let save = document.querySelector('#save') as HTMLButtonElement;
+        if (save) save.disabled = false;
+        let add = document.querySelector('#add') as HTMLButtonElement;
+        if (add) add.disabled = false;
     };
 
     return (
@@ -92,17 +99,7 @@ export default function Markdown() {
                             className={styles.data}
                             placeholder="Write Blog"
                             style={{ color: color }}
-                            onChange={(e) => {
-                                setData(e.target.value);
-                                let save = document.querySelector(
-                                    '#save'
-                                ) as HTMLButtonElement;
-                                if (save) save.disabled = false;
-                                let add = document.querySelector(
-                                    '#add'
-                                ) as HTMLButtonElement;
-                                if (add) add.disabled = false;
-                            }}
+                            onChange={(e) => handleChange(e)}
                             value={data}
                         ></textarea>
                     </div>
