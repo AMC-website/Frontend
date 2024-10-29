@@ -4,17 +4,16 @@ import styles from '../../../styles/Markdown.module.css';
 import { db } from '../../../firebase.js';
 import { bgColor, color, h5, h5_, h6, h6_ } from '@/constants';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import matter from 'gray-matter';
 
 // Define the function type for addUser
 
 export default function Markdown() {
     const breakPoint = useMediaQuery('(min-width:600px)');
+
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
     const [date, setDate] = useState('');
-
-    const [data, setData] = useState<string>('');
+    const [content, setContent] = useState('');
 
     const [isPrevClicked, setIsPrevClicked] = useState<boolean>(false);
     const [isEditClicked, setIsEditClicked] = useState<boolean>(true);
@@ -30,10 +29,6 @@ export default function Markdown() {
     };
 
     const handleSave = () => {
-        setTitle(matter(data).data.title);
-        setSubtitle(matter(data).data.subtitle);
-        setDate(matter(data).data.date);
-
         let save = document.querySelector('#save') as HTMLButtonElement;
         if (save) save.disabled = true;
     };
@@ -42,19 +37,24 @@ export default function Markdown() {
         try {
             // Add a new document to the 'users' collection
             await addDoc(collection(db, 'users'), {
-                data: data,
+                title: title,
+                subtitle: subtitle,
+                date: date,
+                content: content,
             });
             console.log('Document written successfully');
         } catch {
             console.log('Error adding document');
         }
-        setData('');
+        setTitle('');
+        setSubtitle('');
+        setDate('');
+        setContent('');
         let add = document.querySelector('#add') as HTMLButtonElement;
         if (add) add.disabled = true;
     };
 
-    const handleChange = (e) => {
-        setData(e.target.value);
+    const handleChange = () => {
         let save = document.querySelector('#save') as HTMLButtonElement;
         if (save) save.disabled = false;
         let add = document.querySelector('#add') as HTMLButtonElement;
@@ -93,14 +93,59 @@ export default function Markdown() {
                     style={{ display: isEditClicked ? 'block' : 'none' }}
                 >
                     <div>
-                        <h4 className={styles.heading}>Blog :</h4>
-                        <textarea
-                            id="data"
+                        <h4 className={styles.heading}>Title :</h4>
+                        <input
+                            id="title"
                             className={styles.data}
-                            placeholder="Write Blog"
+                            placeholder="Add Title..."
                             style={{ color: color }}
-                            onChange={(e) => handleChange(e)}
-                            value={data}
+                            onChange={(e) => {
+                                handleChange();
+                                setTitle(e.target.value);
+                            }}
+                            value={title}
+                        ></input>
+                    </div>
+                    <div>
+                        <h4 className={styles.heading}>Subtitle :</h4>
+                        <textarea
+                            id="subtitle"
+                            className={styles.data}
+                            placeholder="Add Subtitle..."
+                            style={{ color: color }}
+                            onChange={(e) => {
+                                handleChange();
+                                setSubtitle(e.target.value);
+                            }}
+                            value={subtitle}
+                        ></textarea>
+                    </div>
+                    <div>
+                        <h4 className={styles.heading}>Date :</h4>
+                        <input
+                            id="date"
+                            className={styles.data}
+                            placeholder="Add Date..."
+                            style={{ color: color }}
+                            onChange={(e) => {
+                                handleChange();
+                                setDate(e.target.value);
+                            }}
+                            value={date}
+                        ></input>
+                    </div>
+                    <div>
+                        <h4 className={styles.heading}>Content :</h4>
+                        <textarea
+                            id="content"
+                            className={styles.content}
+                            placeholder="Add Content..."
+                            style={{ color: color }}
+                            onChange={(e) => {
+                                handleChange();
+                                setContent(e.target.value);
+                            }}
+                            value={content}
                         ></textarea>
                     </div>
 

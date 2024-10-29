@@ -3,7 +3,6 @@ import Link from 'next/link';
 import GetBlogs from 'lib/GetBlogs';
 import { Box, Container, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
-import matter from 'gray-matter';
 
 export default function BlogPosts() {
     const breakPoint = useMediaQuery('(min-width:600px)');
@@ -17,7 +16,7 @@ export default function BlogPosts() {
                 setBlogs(blog);
                 let blogData = {};
                 for (let b of blog) {
-                    blogData[b.id] = matter(b.data.data);
+                    blogData[b.id] = b;
                 }
                 setBlogData(blogData);
             };
@@ -53,7 +52,7 @@ export default function BlogPosts() {
                                     color={color}
                                     fontSize={breakPoint ? h5 : h5_}
                                 >
-                                    {blogData[id].data.title}
+                                    {blogData[id].title}
                                 </Typography>
                             </Link>
                             <Typography
@@ -63,7 +62,7 @@ export default function BlogPosts() {
                                 margin="4px auto"
                                 fontSize={h6}
                             >
-                                {blogData[id].data.subtitle}
+                                {blogData[id].subtitle}
                             </Typography>
                             <Typography
                                 variant="body1"
@@ -72,7 +71,7 @@ export default function BlogPosts() {
                                 margin="4px auto"
                                 fontSize={h6_}
                             >
-                                {blogData[id].data.date}
+                                {blogData[id].date}
                             </Typography>
                         </Box>
                     ))}

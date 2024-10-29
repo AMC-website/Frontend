@@ -75,7 +75,17 @@
 
 .data {
     width: 90%;
-    height: 400px;
+    padding: 20px;
+    margin: 40px;
+    background-color: #2c2e3a;
+    border-radius: 1rem;
+    border: none;
+    font-size: 16px;
+}
+
+.content {
+    width: 90%;
+    height: 200px;
     padding: 20px;
     margin: 40px;
     background-color: #2c2e3a;

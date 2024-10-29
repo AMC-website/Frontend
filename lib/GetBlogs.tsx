@@ -11,7 +11,7 @@ export default async function GetBlogs() {
         // Map the documents from the snapshot to an array of user data
         const usersData = querySnapshot.docs.map((doc) => ({
             id: doc.id,
-            data: doc.data(),
+            ...doc.data(),
         }));
         return usersData;
     } catch (error) {

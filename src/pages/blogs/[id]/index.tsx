@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-// import GetBlogs from '../../admin/blogs/GetBlogs';
 import GetBlogs from 'lib/GetBlogs';
 import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
-import matter from 'gray-matter';
 
 export async function getStaticProps({ params }) {
     const id = params.id;
@@ -33,31 +31,14 @@ export async function getStaticPaths() {
 
 export default function Post({ id }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    const [blogData, setBlogData] = useState({
-        data: {
-            title: "",
-            date: ""
-        },
-        content: ""
-    });
-
+    const [blogData, setBlogData] = useState({});
 
     GetBlogs().then((blogs) => {
-        const blog: string = blogs.filter((blog) => {
+        const blog = blogs.filter((blog) => {
             return blog.id == id;
-        })[0].data.data;
-        const data = matter(blog);
-        setBlogData({
-            data: {
-                title: data.data.title,
-                date: data.data.date
-            },
-            content: data.content
         });
+        setBlogData(blog);
     });
-
-
-
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
@@ -67,7 +48,7 @@ export default function Post({ id }) {
                 fontSize={breakPoint ? h4 : h5}
                 mb="35px"
             >
-                {blogData.data.title}
+                {blogData.title}
             </Typography>
 
             <Typography
@@ -77,7 +58,7 @@ export default function Post({ id }) {
                 margin="8px auto"
                 fontSize={h6}
             >
-                {blogData.data.date}
+                {blogData.date}
             </Typography>
 
             <Box>
