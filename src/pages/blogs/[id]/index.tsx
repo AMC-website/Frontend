@@ -36,7 +36,7 @@ export default function Post({ id }) {
     GetBlogs().then((blogs) => {
         const blog = blogs.filter((blog) => {
             return blog.id == id;
-        });
+        })[0];
         setBlogData(blog);
     });
 
