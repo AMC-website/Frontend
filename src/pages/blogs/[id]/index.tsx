@@ -31,7 +31,7 @@ export async function getStaticPaths() {
 
 export default function Post({ id }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    const [blogData, setBlogData] = useState({});
+    const [blogData, setBlogData] = useState<{ title?: string; date?: string; content?: string; id?: string }>({});
 
     GetBlogs().then((blogs) => {
         const blog = blogs.filter((blog) => {

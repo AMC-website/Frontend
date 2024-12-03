@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import styles from '../../../styles/Markdown.module.css';
 import { db } from '../../../firebase.js';
-import { bgColor, color, h5, h5_, h6, h6_ } from '@/constants';
+import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 import { Box, Typography, useMediaQuery } from '@mui/material';
+import { today, getLocalTimeZone } from "@internationalized/date";
+import Markdown from 'markdown-to-jsx';
 
 // Define the function type for addUser
 
-export default function Markdown() {
+export default function BlogEdit() {
     const breakPoint = useMediaQuery('(min-width:600px)');
+
+    let now = today(getLocalTimeZone());
 
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(now.day + "-" + now.month + "-" + now.year);
     const [content, setContent] = useState('');
+
+
 
     const [isPrevClicked, setIsPrevClicked] = useState<boolean>(false);
     const [isEditClicked, setIsEditClicked] = useState<boolean>(true);
@@ -28,10 +34,6 @@ export default function Markdown() {
         setIsPrevClicked(false);
     };
 
-    const handleSave = () => {
-        let save = document.querySelector('#save') as HTMLButtonElement;
-        if (save) save.disabled = true;
-    };
 
     const handleSubmit = async () => {
         try {
@@ -55,8 +57,6 @@ export default function Markdown() {
     };
 
     const handleChange = () => {
-        let save = document.querySelector('#save') as HTMLButtonElement;
-        if (save) save.disabled = false;
         let add = document.querySelector('#add') as HTMLButtonElement;
         if (add) add.disabled = false;
     };
@@ -151,13 +151,6 @@ export default function Markdown() {
 
                     <div className={styles.btns}>
                         <button
-                            id="save"
-                            className={styles.btn}
-                            onClick={handleSave}
-                        >
-                            Save
-                        </button>
-                        <button
                             id="add"
                             className={styles.btn}
                             onClick={handleSubmit}
@@ -170,7 +163,14 @@ export default function Markdown() {
                     className={styles.previewTab}
                     style={{ display: isEditClicked ? 'none' : 'block' }}
                 >
-                    <Box mb="35px">
+
+                    <Typography
+                        variant="h2"
+                        color={color}
+                        fontSize={breakPoint ? h5 : h5_}>
+                        Blog Listing Preview
+                    </Typography>
+                    <Box mb="35px" padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
                         <Typography
                             variant="h2"
                             color={color}
@@ -197,6 +197,51 @@ export default function Markdown() {
                             {date}
                         </Typography>
                     </Box>
+
+                    <hr />
+
+                    <Typography
+                        variant="h2"
+                        color={color}
+                        fontSize={breakPoint ? h5 : h5_}>
+                        Blog Content preview
+                    </Typography>
+
+                    <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
+                        <Typography
+                            variant="h1"
+                            color={color}
+                            fontSize={breakPoint ? h4 : h5}
+                            mb="35px"
+                        >
+                            {title}
+                        </Typography>
+
+                        <Typography
+                            variant="body1"
+                            lineHeight="1.5"
+                            color="gray"
+                            margin="8px auto"
+                            fontSize={h6}
+                        >
+                            {date}
+                        </Typography>
+
+                        <Box>
+                            <Typography
+                                variant="h3"
+                                lineHeight="1.5"
+                                color={color}
+                                margin="0 auto"
+                                fontSize={h6}
+                            >
+                                <Markdown children={content} />
+                            </Typography>
+                        </Box>
+                    </Box>
+
+
+
                 </div>
             </div>
         </div>
