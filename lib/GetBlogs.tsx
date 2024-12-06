@@ -1,4 +1,3 @@
-'use client';
 //import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../src/firebase';
@@ -13,6 +12,7 @@ export default async function GetBlogs() {
             id: doc.id,
             ...doc.data(),
         }));
+        console.log('request sent');
         return usersData;
     } catch (error) {
         console.error('Error reading data: ', error);

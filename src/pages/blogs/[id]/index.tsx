@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GetBlogs from 'lib/GetBlogs';
 import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
@@ -31,14 +31,34 @@ export async function getStaticPaths() {
 
 export default function Post({ id }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    const [blogData, setBlogData] = useState<{ title?: string; date?: string; content?: string; id?: string }>({});
+    const [blogData, setBlogData] = useState<{
+        title?: string;
+        date?: string;
+        content?: string;
+        id?: string;
+    }>({});
 
-    GetBlogs().then((blogs) => {
-        const blog = blogs.filter((blog) => {
-            return blog.id == id;
-        })[0];
-        setBlogData(blog);
-    });
+    // GetBlogs().then((blogs) => {
+    //     const blog = blogs.filter((blog) => {
+    //         return blog.id == id;
+    //     })[0];
+    //     setBlogData(blog);
+    // });
+
+    useEffect(() => {
+        try {
+            const fetchData = async () => {
+                const blog = await GetBlogs();
+                let blogData = blog.filter((blog) => {
+                    return blog.id == id;
+                })[0];
+                setBlogData(blogData);
+            };
+            fetchData();
+        } catch (error) {
+            console.error('Error reading data: ', error);
+        }
+    }, []);
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
