@@ -1,6 +1,6 @@
 import React, { Key, useState, useEffect } from 'react';
 import Link from 'next/link';
-import GetBlogs from 'lib/GetBlogs';
+import { GetBlogs } from 'lib/GetBlogs';
 import { Box, Container, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 

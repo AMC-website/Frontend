@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import GetBlogs from 'lib/GetBlogs';
+import React, { useEffect, useState } from 'react';
+import { GetBlogById } from 'lib/GetBlogs';
 import Markdown from 'markdown-to-jsx';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import { bgColor, color, h4, h5, h6 } from '@/constants';
@@ -14,31 +14,24 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const blogs = await GetBlogs();
-    const paths = blogs.map((blog) => {
-        return {
-            params: {
-                id: blog.id,
-            },
-        };
-    });
-
     return {
-        paths,
-        fallback: true,
+        paths: [],
+        fallback: 'blocking',
     };
 }
 
 export default function Post({ id }) {
     const breakPoint = useMediaQuery('(min-width:600px)');
-    const [blogData, setBlogData] = useState<{ title?: string; date?: string; content?: string; id?: string }>({});
+    const [blogData, setBlogData] = useState<{ title?: string; date?: string; content?: string; subtitle?: string }>({});
 
-    GetBlogs().then((blogs) => {
-        const blog = blogs.filter((blog) => {
-            return blog.id == id;
-        })[0];
-        setBlogData(blog);
-    });
+    useEffect(
+        () => {
+            GetBlogById(id).then((blog) => {
+                setBlogData(blog);
+            });
+        },
+        [],
+    )
 
     return (
         <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
