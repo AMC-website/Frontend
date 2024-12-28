@@ -1,11 +1,26 @@
+import React, { useState, useEffect } from 'react';
 import Card from '@/components/Projects/ProjectCard';
 import { bgColor, color, h4, h5 } from '@/constants';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import modelData from '@/data/projects';
+import GetProjects from 'lib/GetProjects';
 
 export default function Projects() {
     const breakPoint = useMediaQuery('(min-width:600px)');
     const breakPoint2 = useMediaQuery('(min-width:750px)');
+    const [projectsData, setProjectsData] = useState([]);
+
+    useEffect(() => {
+        try {
+            const fetchData = async () => {
+                const project = await GetProjects();
+                setProjectsData(project);
+                console.log(GetProjects());
+            };
+            fetchData();
+        } catch (error) {
+            console.error('Error reading data: ', error);
+        }
+    }, []);
 
     return (
         <>
@@ -36,12 +51,12 @@ export default function Projects() {
                     }
                     justifyContent={breakPoint ? 'space-between' : 'center'}
                 >
-                    {modelData.map((modelDataInst, index) => (
+                    {projectsData.map((model, id) => (
                         <Card
-                            key={index}
-                            projectName={modelDataInst.modelName}
-                            projectContent={modelDataInst.modelDesc}
-                            projectThumbnail={modelDataInst.modelImg}
+                            key={id}
+                            projectName={model.modelName}
+                            projectContent={model.modelDesc}
+                            projectThumbnail={model.modelImg}
                         />
                     ))}
                 </Box>
