@@ -5,7 +5,7 @@ import { height } from '@mui/system';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 import axios from 'axios';
 
-export default function addProject() {
+export default function AddProject() {
     const [modelName, setModelName] = useState('');
     const [file, setFile] = useState(null);
     const [modelDesc, setModelDesc] = useState('');
