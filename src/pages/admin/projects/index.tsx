@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../../firebase.js';
-import { height } from '@mui/system';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 import axios from 'axios';
 

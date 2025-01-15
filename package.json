@@ -12,8 +12,6 @@
         "eslint:fix": "eslint --ext .tsx --fix src/components"
     },
     "dependencies": {
-        "@cloudinary/react": "^1.13.1",
-        "@cloudinary/url-gen": "^1.21.0",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@internationalized/date": "^3.6.0",
@@ -30,7 +28,6 @@
         "@types/react-dom": "18.0.10",
         "axios": "^1.7.9",
         "bootstrap": "^5.3.3",
-        "cloudinary": "^2.5.1",
         "dotenv": "^16.4.6",
         "firebase": "^10.14.1",
         "firebase-admin": "^12.6.0",
