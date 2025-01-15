@@ -4,7 +4,7 @@ import styles from '../../../styles/Markdown.module.css';
 import { db } from '../../../firebase.js';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 import { Box, Typography, useMediaQuery } from '@mui/material';
-import { today, getLocalTimeZone } from "@internationalized/date";
+import { today, getLocalTimeZone } from '@internationalized/date';
 import Markdown from 'markdown-to-jsx';
 
 // Define the function type for addUser
@@ -16,10 +16,10 @@ export default function BlogEdit() {
 
     const [title, setTitle] = useState('');
     const [subtitle, setSubtitle] = useState('');
-    const [date, setDate] = useState(now.day + "-" + now.month + "-" + now.year);
+    const [date, setDate] = useState(
+        now.day + '-' + now.month + '-' + now.year
+    );
     const [content, setContent] = useState('');
-
-
 
     const [isPrevClicked, setIsPrevClicked] = useState<boolean>(false);
     const [isEditClicked, setIsEditClicked] = useState<boolean>(true);
@@ -33,7 +33,6 @@ export default function BlogEdit() {
         setIsEditClicked(true);
         setIsPrevClicked(false);
     };
-
 
     const handleSubmit = async () => {
         try {
@@ -163,14 +162,19 @@ export default function BlogEdit() {
                     className={styles.previewTab}
                     style={{ display: isEditClicked ? 'none' : 'block' }}
                 >
-
                     <Typography
                         variant="h2"
                         color={color}
-                        fontSize={breakPoint ? h5 : h5_}>
+                        fontSize={breakPoint ? h5 : h5_}
+                    >
                         Blog Listing Preview
                     </Typography>
-                    <Box mb="35px" padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
+                    <Box
+                        mb="35px"
+                        padding="10px 7.5% 100px"
+                        bgcolor={bgColor}
+                        color="white"
+                    >
                         <Typography
                             variant="h2"
                             color={color}
@@ -203,11 +207,16 @@ export default function BlogEdit() {
                     <Typography
                         variant="h2"
                         color={color}
-                        fontSize={breakPoint ? h5 : h5_}>
+                        fontSize={breakPoint ? h5 : h5_}
+                    >
                         Blog Content preview
                     </Typography>
 
-                    <Box padding="10px 7.5% 100px" bgcolor={bgColor} color="white">
+                    <Box
+                        padding="10px 7.5% 100px"
+                        bgcolor={bgColor}
+                        color="white"
+                    >
                         <Typography
                             variant="h1"
                             color={color}
@@ -239,9 +248,6 @@ export default function BlogEdit() {
                             </Typography>
                         </Box>
                     </Box>
-
-
-
                 </div>
             </div>
         </div>

@@ -1,0 +1,19 @@
+.fileInputWrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.fileInputButton {
+    border-radius: 1rem;
+    color: black;
+}
+
+.fileInput::file-selector-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    font-size: 100px;
+    cursor: pointer;
+}
