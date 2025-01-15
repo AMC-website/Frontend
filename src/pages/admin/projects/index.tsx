@@ -3,6 +3,8 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../../firebase.js';
 import { bgColor, color, h4, h5, h5_, h6, h6_ } from '@/constants';
 import axios from 'axios';
+import { border, borderRadius } from '@mui/system';
+import styles from "@/styles/admin.projects.module.css"
 
 export default function AddProject() {
     const [modelName, setModelName] = useState('');
@@ -70,7 +72,7 @@ export default function AddProject() {
                 </label>
                 <input
                     name="modelName"
-                    placeholder="enter project name"
+                    placeholder="Enter project name"
                     type="text"
                     onChange={(e) => setModelName(e.target.value)}
                     value={modelName}
@@ -94,19 +96,28 @@ export default function AddProject() {
                 <label style={{ fontSize: h5_ }} htmlFor="modelImg">
                     Project Image :
                 </label>
-                <input
-                    name="modelImg"
-                    placeholder="enter project image"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setFile(e.target.files[0])}
-                    style={{
-                        width: '100%',
-                        fontSize: h6,
-                        borderRadius: '1rem',
-                        marginTop: '20px',
-                    }}
-                />
+                <br />
+                <div className={styles.fileInputWrapper}>
+                    <button className={styles.fileInputButton}
+                        style={{
+                            fontSize: h6,
+                            borderRadius: '1rem',
+                            marginTop: '20px',
+                            marginRight: '10px',
+                        }}>Choose File</button>
+                    <input
+                        name="modelImg"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setFile(e.target.files[0])}
+                        className={styles.fileInput}
+                        style={{
+                            fontSize: h6,
+                            borderRadius: '1rem',
+                            marginTop: '20px',
+                        }}
+                    />
+                </div>
             </div>
             <div
                 style={{
@@ -119,7 +130,7 @@ export default function AddProject() {
                 </label>
                 <textarea
                     name="modelDesc"
-                    placeholder="enter project description"
+                    placeholder="Enter project description"
                     onChange={(e) => setModelDesc(e.target.value)}
                     style={{
                         backgroundColor: color,
