@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery, Button, Modal, TextField } from '@mui/m
 import { color, h4, h5 } from '@/constants';
 import MemberData, { MemberDatatype } from '@/data/members';
 import AdminMemberCard from '@/components/Admin/AdminMemberCard';
-import { getDocs, getDocsFromCache, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getDocs, getDocsFromCache, collection, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 
@@ -60,12 +60,23 @@ export default function Members() {
     }
   }
 
-  function handleEdit(docId: string, updatedMember: Partial<MemberDatatype>) {
-    setMembers((prevMembers) =>
-      prevMembers.map((member) =>
-        member.docId === docId ? { ...member, ...updatedMember } : member
-      )
-    );
+  async function handleEdit(docId: string, updatedMember: Partial<MemberDatatype>) {
+    try {
+      const memberRef = doc(db, 'members', docId);
+      await updateDoc(memberRef, {
+        name: updatedMember.memberName,
+        role: updatedMember.memberRole,
+        quote: updatedMember.memberQuote,
+        image: updatedMember.memberImage
+      });
+      setMembers((prevMembers) =>
+        prevMembers.map((member) =>
+          member.docId === docId ? { ...member, ...updatedMember } : member
+        )
+      );
+    } catch (error) {
+      console.error('Error updating member:', error);
+    }
   }
 
   async function handleAddMember() {
