@@ -1,22 +1,22 @@
 import { color, h2_, h4, h6, h6_, titleColor } from '@/constants';
 import { Backdrop, Box, Typography, Button, Modal, TextField, useMediaQuery } from '@mui/material';
 import { useState } from 'react';
+import { MemberDatatype } from '@/data/members';
 
 interface AdminMemberCardProps {
   adminName: string;
   adminRole: string;
-  adminThumbnail: string;
   adminDescription: string;
-  key: number;
+  adminThumbnail: string;
   onDelete: () => void;
-  onEdit: (updatedAdmin: Partial<AdminMemberCardProps>) => void;
+  onEdit: (updatedAdmin: Partial<MemberDatatype>) => void;
 }
 
 const AdminMemberCard = ({
   adminName,
   adminRole,
-  adminThumbnail,
   adminDescription,
+  adminThumbnail,
   onDelete,
   onEdit,
 }: AdminMemberCardProps) => {
@@ -24,10 +24,12 @@ const AdminMemberCard = ({
   const [isClicked, setIsClicked] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  // Temporary state for editing. These keys are temporary.
   const [editedAdmin, setEditedAdmin] = useState({
     name: adminName,
     role: adminRole,
-    thumbnail: adminThumbnail,
+    thumbnail: '', // This will map to memberImage
     description: adminDescription,
   });
 
@@ -36,11 +38,12 @@ const AdminMemberCard = ({
   }
 
   function handleEditSave() {
+    // Map the temporary keys to MemberDatatype keys
     onEdit({
-      adminName: editedAdmin.name,
-      adminRole: editedAdmin.role,
-      adminThumbnail: editedAdmin.thumbnail,
-      adminDescription: editedAdmin.description,
+      memberName: editedAdmin.name,
+      memberRole: editedAdmin.role,
+      memberImage: editedAdmin.thumbnail, // if thumbnail is provided, it updates memberImage
+      memberQuote: editedAdmin.description,
     });
     setIsEditModalOpen(false);
   }
@@ -97,7 +100,6 @@ const AdminMemberCard = ({
               >
                 {adminName}
               </Typography>
-
               <Typography
                 variant="h3"
                 fontSize={breakPoint ? h6 : h6_}
@@ -107,7 +109,6 @@ const AdminMemberCard = ({
               >
                 {adminRole}
               </Typography>
-
               <Typography
                 variant="h3"
                 fontSize={breakPoint ? h6 : h6_}
@@ -147,13 +148,8 @@ const AdminMemberCard = ({
           {adminRole}
         </Typography>
 
-        {/* Admin-only Edit and Delete buttons */}
         <Box display="flex" justifyContent="space-evenly" width="100%" mt="auto" p={1}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setIsEditModalOpen(true)}
-          >
+          <Button variant="contained" color="primary" onClick={() => setIsEditModalOpen(true)}>
             Edit
           </Button>
           <Button variant="outlined" color="secondary" onClick={onDelete}>
@@ -162,7 +158,6 @@ const AdminMemberCard = ({
         </Box>
       </Box>
 
-      {/* Edit Modal with white background */}
       <Modal open={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
         <Box
           sx={{
@@ -201,7 +196,7 @@ const AdminMemberCard = ({
           />
           <TextField
             fullWidth
-            label="Thumbnail URL"
+            label="Image URL"
             value={editedAdmin.thumbnail}
             onChange={(e) =>
               setEditedAdmin((prev) => ({ ...prev, thumbnail: e.target.value }))
