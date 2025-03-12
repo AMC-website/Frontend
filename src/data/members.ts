@@ -1,8 +1,8 @@
 export interface MemberDatatype {
+    docId?: string;
     memberName: string;
     memberRole: string;
     memberQuote: string;
-    memberYear?: string;
     memberImage?: string;
 }
 
