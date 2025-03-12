@@ -1,14 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Typography, useMediaQuery, Button, Modal, TextField } from '@mui/material';
 import { color, h4, h5 } from '@/constants';
 import MemberData, { MemberDatatype } from '@/data/members';
 import AdminMemberCard from '@/components/Admin/AdminMemberCard';
+import { getDocs, getDocsFromCache, collection, addDoc } from 'firebase/firestore';
+import { db } from '@/firebase';
+
 
 export default function Members() {
   const breakPoint = useMediaQuery('(min-width:600px)');
   const breakPoint2 = useMediaQuery('(min-width:750px)');
 
   const [members, setMembers] = useState<MemberDatatype[]>(MemberData);
+
+  useEffect(() => {
+    async function fetchMembers() {
+      const res = await getDocsFromCache(collection(db, 'members'));
+      if (!res.empty) {
+        const memberData = res.docs.map((doc) => doc.data() as MemberDatatype);
+        setMembers(memberData);
+      }
+      else {
+        const res = await getDocs(collection(db, 'members'));
+        if (!res.empty) {
+          // const memberData = res.docs.map((doc) => doc.data() as MemberDatatype);
+          const memberData = res.docs.map((doc) => {
+            const data = doc.data()
+            return {
+              memberName: data.name,
+              memberRole: data.role,
+              memberQuote: data.quote,
+              memberImage: data.image
+            } as MemberDatatype
+          });
+          // console.log(memberData);
+          setMembers(memberData);
+        }
+      }
+    }
+    fetchMembers();
+  }, []);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newMember, setNewMember] = useState({
@@ -30,18 +61,33 @@ export default function Members() {
     );
   }
 
-  function handleAddMember() {
-    setMembers((prevMembers) => [
-      ...prevMembers,
-      {
-        memberName: newMember.memberName,
-        memberRole: newMember.memberRole,
-        memberImage: newMember.memberImage,
-        memberQuote: newMember.memberQuote
-      }
-    ]);
-    setIsAddModalOpen(false);
-    setNewMember({ memberName: '', memberRole: '', memberImage: '', memberQuote: '' });
+  async function handleAddMember() {
+    try {
+      const membersRef = collection(db, 'members');
+      await addDoc(membersRef, {
+        name: newMember.memberName,
+        role: newMember.memberRole,
+        quote: newMember.memberQuote,
+        image: newMember.memberImage
+      });
+      setMembers((prevMembers) => [
+        ...prevMembers,
+        {
+          memberName: newMember.memberName,
+          memberRole: newMember.memberRole,
+          memberImage: newMember.memberImage,
+          memberQuote: newMember.memberQuote
+        }
+      ]);
+
+      // Close the "Add Member" modal
+      setIsAddModalOpen(false);
+
+      // Reset the newMember form state back to empty values
+      setNewMember({ memberName: '', memberRole: '', memberImage: '', memberQuote: '' });
+    } catch (error) {
+      console.error('Error adding member:', error);
+    }
   }
 
   return (

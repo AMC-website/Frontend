@@ -2,7 +2,6 @@ export interface MemberDatatype {
     memberName: string;
     memberRole: string;
     memberQuote: string;
-    memberYear?: string;
     memberImage?: string;
 }
 
