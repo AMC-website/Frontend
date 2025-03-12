@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery, Button, Modal, TextField } from '@mui/m
 import { color, h4, h5 } from '@/constants';
 import MemberData, { MemberDatatype } from '@/data/members';
 import AdminMemberCard from '@/components/Admin/AdminMemberCard';
-import { getDocs, getDocsFromCache, collection, addDoc } from 'firebase/firestore';
+import { getDocs, getDocsFromCache, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 
@@ -17,23 +17,25 @@ export default function Members() {
     async function fetchMembers() {
       const res = await getDocsFromCache(collection(db, 'members'));
       if (!res.empty) {
-        const memberData = res.docs.map((doc) => doc.data() as MemberDatatype);
+        const memberData = res.docs.map((doc) => ({
+          ...doc.data() as MemberDatatype,
+          docId: doc.id
+        }));
         setMembers(memberData);
       }
       else {
         const res = await getDocs(collection(db, 'members'));
         if (!res.empty) {
-          // const memberData = res.docs.map((doc) => doc.data() as MemberDatatype);
           const memberData = res.docs.map((doc) => {
             const data = doc.data()
             return {
+              docId: doc.id,
               memberName: data.name,
               memberRole: data.role,
               memberQuote: data.quote,
               memberImage: data.image
             } as MemberDatatype
           });
-          // console.log(memberData);
           setMembers(memberData);
         }
       }
@@ -49,14 +51,19 @@ export default function Members() {
     memberQuote: ''
   });
 
-  function handleDelete(index: number) {
-    setMembers(members.filter((_, i) => i !== index));
+  async function handleDelete(docId: string) {
+    try {
+      await deleteDoc(doc(db, 'members', docId));
+      setMembers(members.filter((member) => member.docId !== docId));
+    } catch (error) {
+      console.error('Error deleting member:', error);
+    }
   }
 
-  function handleEdit(index: number, updatedMember: Partial<MemberDatatype>) {
+  function handleEdit(docId: string, updatedMember: Partial<MemberDatatype>) {
     setMembers((prevMembers) =>
-      prevMembers.map((member, i) =>
-        i === index ? { ...member, ...updatedMember } : member
+      prevMembers.map((member) =>
+        member.docId === docId ? { ...member, ...updatedMember } : member
       )
     );
   }
@@ -64,7 +71,7 @@ export default function Members() {
   async function handleAddMember() {
     try {
       const membersRef = collection(db, 'members');
-      await addDoc(membersRef, {
+      const docRef = await addDoc(membersRef, {
         name: newMember.memberName,
         role: newMember.memberRole,
         quote: newMember.memberQuote,
@@ -73,17 +80,14 @@ export default function Members() {
       setMembers((prevMembers) => [
         ...prevMembers,
         {
+          docId: docRef.id,
           memberName: newMember.memberName,
           memberRole: newMember.memberRole,
           memberImage: newMember.memberImage,
           memberQuote: newMember.memberQuote
         }
       ]);
-
-      // Close the "Add Member" modal
       setIsAddModalOpen(false);
-
-      // Reset the newMember form state back to empty values
       setNewMember({ memberName: '', memberRole: '', memberImage: '', memberQuote: '' });
     } catch (error) {
       console.error('Error adding member:', error);
@@ -115,15 +119,15 @@ export default function Members() {
           }
           justifyContent={breakPoint ? 'space-between' : 'center'}
         >
-          {members.map((member, index) => (
+          {members.map((member) => (
             <AdminMemberCard
-              key={index}
+              key={member.docId}
               adminName={member.memberName}
               adminRole={member.memberRole}
               adminDescription={member.memberQuote}
               adminThumbnail={member.memberImage ? `members/${member.memberImage}.jpg` : ''}
-              onDelete={() => handleDelete(index)}
-              onEdit={(updatedMember) => handleEdit(index, updatedMember)}
+              onDelete={() => handleDelete(member.docId!)}
+              onEdit={(updatedMember) => handleEdit(member.docId!, updatedMember)}
             />
           ))}
         </Box>
