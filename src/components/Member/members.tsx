@@ -58,29 +58,29 @@ export default function Members() {
         description: ''
     });
 
-    function handleDelete(index: number) {
-        setMembers(members.filter((_, i) => i !== index));
-    }
+    // function handleDelete(index: number) {
+    //     setMembers(members.filter((_, i) => i !== index));
+    // }
 
-    function handleEdit(index: number, updatedMember: Partial<MemberCardProps>) {
-        const updatedMembers = [...members];
-        updatedMembers[index] = { ...updatedMembers[index], ...updatedMember };
-        setMembers(updatedMembers);
-    }
+    // function handleEdit(index: number, updatedMember: Partial<MemberCardProps>) {
+    //     const updatedMembers = [...members];
+    //     updatedMembers[index] = { ...updatedMembers[index], ...updatedMember };
+    //     setMembers(updatedMembers);
+    // }
 
-    function handleAddMember() {
-        setMembers([
-            ...members,
-            {
-                memberName: newMember.name,
-                memberRole: newMember.role,
-                memberThumbnail: newMember.thumbnail,
-                memberQuote: newMember.description
-            }
-        ]);
-        setIsAddModalOpen(false);
-        setNewMember({ name: '', role: '', thumbnail: '', description: '' });
-    }
+    // function handleAddMember() {
+    //     setMembers([
+    //         ...members,
+    //         {
+    //             memberName: newMember.name,
+    //             memberRole: newMember.role,
+    //             memberThumbnail: newMember.thumbnail,
+    //             memberQuote: newMember.description
+    //         }
+    //     ]);
+    //     setIsAddModalOpen(false);
+    //     setNewMember({ name: '', role: '', thumbnail: '', description: '' });
+    // }
 
     return (
         <Box width="85%" marginX="auto">
@@ -94,14 +94,14 @@ export default function Members() {
             </Typography>
 
             {/* Add Member Button */}
-            <Button
+            {/* <Button
                 variant="contained"
                 color="primary"
                 onClick={() => setIsAddModalOpen(true)}
                 sx={{ mb: 3 }}
             >
                 Add Member
-            </Button>
+            </Button> */}
 
             <Box
                 display="grid"
@@ -118,9 +118,9 @@ export default function Members() {
                         memberRole={member.memberRole}
                         memberDescription={member.memberQuote}
                         memberThumbnail={`members/${member.memberName.toLowerCase()}.jpg`}
-                        onDelete={() => handleDelete(index)}
-                        onEdit={(updatedMember) => handleEdit(index, updatedMember)}
                     />
+                    // onDelete={() => handleDelete(index)}
+                    // onEdit={(updatedMember) => handleEdit(index, updatedMember)}
                 ))}
             </Box>
 
@@ -179,7 +179,7 @@ export default function Members() {
                         margin="normal"
                     />
                     <Box mt={2} display="flex" justifyContent="space-between">
-                        <Button
+                        {/* <Button
                             variant="contained"
                             color="primary"
                             onClick={handleAddMember}
@@ -191,7 +191,7 @@ export default function Members() {
                             onClick={() => setIsAddModalOpen(false)}
                         >
                             Cancel
-                        </Button>
+                        </Button> */}
                     </Box>
                 </Box>
             </Modal>
