@@ -1,45 +1,47 @@
 import { useState } from 'react';
 import { Box, Typography, useMediaQuery, Button, Modal, TextField } from '@mui/material';
 import { color, h4, h5 } from '@/constants';
-import MemberData from '@/data/members';
+import MemberData, { MemberDatatype } from '@/data/members';
 import AdminMemberCard from '@/components/Admin/AdminMemberCard';
 
 export default function Members() {
   const breakPoint = useMediaQuery('(min-width:600px)');
   const breakPoint2 = useMediaQuery('(min-width:750px)');
 
-  const [members, setMembers] = useState(MemberData);
+  const [members, setMembers] = useState<MemberDatatype[]>(MemberData);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newMember, setNewMember] = useState({
-    name: '',
-    role: '',
-    thumbnail: '',
-    description: ''
+    memberName: '',
+    memberRole: '',
+    memberImage: '',
+    memberQuote: ''
   });
 
   function handleDelete(index: number) {
     setMembers(members.filter((_, i) => i !== index));
   }
 
-  function handleEdit(index: number, updatedMember: any) {
-    const updatedMembers = [...members];
-    updatedMembers[index] = { ...updatedMembers[index], ...updatedMember };
-    setMembers(updatedMembers);
+  function handleEdit(index: number, updatedMember: Partial<MemberDatatype>) {
+    setMembers((prevMembers) =>
+      prevMembers.map((member, i) =>
+        i === index ? { ...member, ...updatedMember } : member
+      )
+    );
   }
 
   function handleAddMember() {
-    setMembers([
-      ...members,
+    setMembers((prevMembers) => [
+      ...prevMembers,
       {
-        memberName: newMember.name,
-        memberRole: newMember.role,
-        memberThumbnail: newMember.thumbnail,
-        memberQuote: newMember.description
+        memberName: newMember.memberName,
+        memberRole: newMember.memberRole,
+        memberImage: newMember.memberImage,
+        memberQuote: newMember.memberQuote
       }
     ]);
     setIsAddModalOpen(false);
-    setNewMember({ name: '', role: '', thumbnail: '', description: '' });
+    setNewMember({ memberName: '', memberRole: '', memberImage: '', memberQuote: '' });
   }
 
   return (
@@ -73,14 +75,14 @@ export default function Members() {
               adminName={member.memberName}
               adminRole={member.memberRole}
               adminDescription={member.memberQuote}
-              adminThumbnail={`members/${member.memberName.toLowerCase()}.jpg`}
+              adminThumbnail={member.memberImage ? `members/${member.memberImage}.jpg` : ''}
               onDelete={() => handleDelete(index)}
               onEdit={(updatedMember) => handleEdit(index, updatedMember)}
             />
           ))}
         </Box>
 
-        {/* Add Member Modal with white background */}
+        {/* Add Member Modal */}
         <Modal open={isAddModalOpen} onClose={() => setIsAddModalOpen(false)}>
           <Box
             sx={{
@@ -102,36 +104,36 @@ export default function Members() {
             <TextField
               fullWidth
               label="Name"
-              value={newMember.name}
+              value={newMember.memberName}
               onChange={(e) =>
-                setNewMember((prev) => ({ ...prev, name: e.target.value }))
+                setNewMember((prev) => ({ ...prev, memberName: e.target.value }))
               }
               margin="normal"
             />
             <TextField
               fullWidth
               label="Role"
-              value={newMember.role}
+              value={newMember.memberRole}
               onChange={(e) =>
-                setNewMember((prev) => ({ ...prev, role: e.target.value }))
+                setNewMember((prev) => ({ ...prev, memberRole: e.target.value }))
               }
               margin="normal"
             />
             <TextField
               fullWidth
-              label="Thumbnail URL"
-              value={newMember.thumbnail}
+              label="Image Name"
+              value={newMember.memberImage}
               onChange={(e) =>
-                setNewMember((prev) => ({ ...prev, thumbnail: e.target.value }))
+                setNewMember((prev) => ({ ...prev, memberImage: e.target.value }))
               }
               margin="normal"
             />
             <TextField
               fullWidth
-              label="Description"
-              value={newMember.description}
+              label="Quote"
+              value={newMember.memberQuote}
               onChange={(e) =>
-                setNewMember((prev) => ({ ...prev, description: e.target.value }))
+                setNewMember((prev) => ({ ...prev, memberQuote: e.target.value }))
               }
               margin="normal"
             />
